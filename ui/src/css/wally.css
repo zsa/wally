@@ -1,0 +1,269 @@
+html,
+body,
+div {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+body {
+  color: rgba(53, 53, 53, 0.64);
+  background: url('../images/background.png') no-repeat center center;
+  background-size: cover;
+  font-family: "lato";
+  font-weight: light;
+  width: 100vw;
+  height: 100vh;
+}
+
+.frame {
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  font-size: 14px;
+  overflow: hidden;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+.dots {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 24px 0px;
+}
+
+.dots .dot {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  height: 10px;
+  margin: 0 8px;
+  transform: scale(0.75);
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), background 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  width: 10px;
+}
+
+.dots .dot.active {
+  background: white;
+  transform: scale(1.2);
+  transition-delay: 0.4s;
+}
+
+.body {
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  display: flex;
+  flex: 1;
+  text-align: center;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.footer {
+  height: 40px;
+  width: 100vw;
+  background-color: #393838;
+  display: flex;
+  align-items: center;
+  padding: 0px 16px;
+}
+
+.footer .title{
+  color: #B2B2B2;
+}
+
+.footer .status {
+  color: #FFFFFF;
+  font-weight: bold;
+  margin-left: 16px;
+  flex: 1;
+}
+
+.footer .status .logo{
+  position: relative;
+  top: 1px;
+}
+
+.footer .logo {
+  position: relative;
+  top: 1px;
+}
+
+.footer .zsa-logo {
+  height: 25px;
+}
+
+.footer .log-toggle {
+  background-color: rgba(0,0,0,0.1);
+  border-radius: 2px;
+  color: white;
+  cursor: pointer;
+  font-family: monospace;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-right: 20px;
+  padding: 1px 5px 7px 5px;
+  position: relative;
+}
+
+.footer .log-toggle .bubble {
+  position: fixed;
+  bottom: 25px;
+  right: 150px;
+  padding: 2px 5px 2px 5px;
+  background-color: #EF5253;
+  color: #fff;
+  font-size: 0.65em;
+  border-radius: 50%;
+}
+
+.footer .log-toggle:hover {
+  background-color: rgba(0,0,0,0.2);
+}
+
+.footer .version {
+  color: #FFEE97;
+}
+
+.screens {
+  align-self: stretch;
+  position: relative;
+  padding: 0;
+}
+
+.screen {
+  list-style-type: none;
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  width: 100%;
+}
+
+.screen.active {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+  transition-delay: 0.4s;
+}
+
+.media-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 0px 24px 0px;
+}
+
+.media-container.list {
+  justify-content: space-around;
+}
+
+.media.offset {
+  margin-left: 95px;
+}
+
+.media.clickable {
+  cursor: pointer;
+}
+
+.media.clickable:hover {
+  opacity: 0.9;
+}
+
+h3 {
+  color: #403C3A;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+
+p {
+  line-height: 27px;
+  font-size: 18px;
+  margin: 8px 0px;
+  padding: 0 30px;
+}
+
+.button {
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  background-color: transparent;
+  border-radius: 4px;
+  border: 2px solid #403C3A;
+  color: #403C3A;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 8px;
+  padding: 10px 25px;
+  text-align: center;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  user-select: none;
+  vertical-align: middle;
+}
+
+.button:hover {
+  opacity: 0.8;
+}
+
+.rail {
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 88px;
+  height: 20px;
+  padding: 2px;
+  background-color: rgba(0, 0, 0, 0.1)
+}
+
+.rail .progress {
+  border-radius: 88px;
+  height: 100%;
+  background-color: #ffffff;
+  transition: width 200ms ease-in-out;
+}
+
+.console {
+  background: #18262F;
+  color: #A6AFB8;
+  overflow-y: auto;
+  font-family: monospace;
+  height: 400px;
+  left: 0;
+  padding: 15px;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.console .lines {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.console .lines .line {
+  display: flex;
+}
+
+.console .lines .line .timestamp {
+  color: #A363D5;
+  width: 70px;
+}
+
+.console .lines .line .level {
+  text-align: center;
+  width: 70px;
+}
+
+.console .lines .line .level.info {
+  color: #33B5E1;
+}
+
+.console .lines .line .level.error {
+  color: #EF5253;
+}
+
+.console .lines .line .message {
+  flex: 1;
+}

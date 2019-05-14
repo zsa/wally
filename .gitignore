@@ -1,0 +1,15 @@
+assets.go
+
+ui/yarn-error.log
+ui/build
+ui/node_modules
+
+dist/osx/Wally.app/Contents/MacOS/Wally
+dist/osx/wally-cli
+dist/linux64/wally
+dist/linux64/wally-cli
+dist/win64/wally.exe
+dist/win64/wally-cli.exe
+Wally_rc.syso
+
+.DS_Store

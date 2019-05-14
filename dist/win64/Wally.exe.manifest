@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
+	<assemblyIdentity
+		version="1.0.0.0"
+		processorArchitecture="x86"
+		name="Wally"
+		type="win32"
+		/>
+	<dependency>
+		<dependentAssembly>
+			<assemblyIdentity
+				type="win32"
+				name="Wally"
+				version="0.0.0.0"
+				processorArchitecture="*"
+				language="*"
+				/>
+		</dependentAssembly>
+	</dependency>
+</assembly>

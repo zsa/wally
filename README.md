@@ -7,7 +7,7 @@ Flash your [ZSA Keyboard](https://ergodox-ez.com) the EZ way.
 Wally comes in two flavors, a GUI and a CLI app.
 Download the application for your favorite plateform from the [release page](https://github.com/zsa/wally/releases).
 
-Note for Linux users, follow the instructions from our [wiki page](https://github.com/ezuk/wally/wiki/Linux-install) before running the application.
+Note for Linux users, follow the instructions from our [wiki page](https://github.com/zsa/wally/wiki/Linux-install) before running the application.
 
 Note for Mac OS users, the CLI requires libusb to be installed: `brew install libusb`
 
@@ -31,7 +31,7 @@ Wally is compatible with Windows, Linux, and macOS. Develping using each platefo
 
 #### Linux
 
-Follow the instructions from our [wiki page](https://github.com/ezuk/wally/wiki/Linux-install)
+Follow the instructions from our [wiki page](https://github.com/zsa/wally/wiki/Linux-install)
 
 #### macOS
 

@@ -4,7 +4,7 @@ package main
 
 import (
 	"github.com/fdidron/webview"
-	"wally/wally"
+	"github.com/zsa/wally/wally"
 )
 
 // Init returns a configured and ready to use webview.

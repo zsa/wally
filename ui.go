@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/fdidron/webview"
-	"wally/wally"
+	"github.com/zsa/wally/wally"
 )
 
 func handleRPC(w webview.WebView, data string, s *wally.State) {

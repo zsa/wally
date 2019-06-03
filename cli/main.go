@@ -8,7 +8,7 @@ import (
 	"os"
 	"path/filepath"
 	"time"
-	"wally/wally"
+	"github.com/zsa/wally/wally"
 )
 
 func main() {

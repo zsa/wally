@@ -1,8 +1,8 @@
-import { Component, h } from "preact";
+import React from "react";
 import PlanckReset from "../images/planck-reset.png";
 import ErgodoxReset from "../images/ergodox-reset.png";
 
-export default class DeviceReset extends Component {
+export default class DeviceReset extends React.Component {
   componentDidMount() {
     this.startPolling();
   }

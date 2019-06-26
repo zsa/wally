@@ -1,4 +1,4 @@
-import { Component, h } from "preact";
+import React from "react";
 
 import ZSALogo from "../images/zsa-logo.png";
 import ErgodoxLogo from "../images/ergodox-logo.svg";

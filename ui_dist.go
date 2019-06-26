@@ -28,7 +28,7 @@ func Init() (wv webview.WebView) {
 	w := webview.New(webview.Settings{
 		Debug:     false,
 		Width:     630,
-		Height:    440,
+		Height:    500,
 		Title:     "Wally",
 		Resizable: false,
 		URL:       `data:text/html,` + html,

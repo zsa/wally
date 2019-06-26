@@ -1,4 +1,4 @@
-import {Component, h} from 'preact';
+import React from "react";
 
 export default () => (
   <div className="sk-cube-grid">

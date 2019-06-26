@@ -1,9 +1,9 @@
-import { Component, h } from "preact";
+import React from "react";
 
 import PlanckGlyph from "../images/planck.svg";
 import ErgodoxGlyph from "../images/ergodox.svg";
 
-export default class DeviceSelect extends Component {
+export default class DeviceSelect extends React.Component {
   handleDeviceSelect = (e, device) => {
     e.preventDefault();
     this.props.selectDevice(device.model, device.bus, device.port);

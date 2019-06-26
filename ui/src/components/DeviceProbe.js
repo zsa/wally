@@ -1,8 +1,8 @@
-import { Component, h } from "preact";
+import React from "react";
 import Loader from "./Loader";
 import SearchGlyph from "../images/search.svg";
 
-export default class DeviceSelect extends Component {
+export default class DeviceSelect extends React.Component {
   state = {
     ticks: 0
   };

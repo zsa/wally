@@ -1,7 +1,7 @@
-import { Component, h } from "preact";
+import React from "react";
 import CompleteGlyph from "../images/complete.svg";
 
-export default class FlashComplete extends Component {
+export default class FlashComplete extends React.Component {
   handleResetClick = e => {
     e.preventDefault();
     this.props.resetState();

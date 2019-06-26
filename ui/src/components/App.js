@@ -1,4 +1,4 @@
-import { Component, h } from "preact";
+import React from "react";
 
 import DeviceProbe from "./DeviceProbe";
 import DeviceSelect from "./DeviceSelect";
@@ -9,7 +9,7 @@ import FlashComplete from "./FlashComplete";
 import Console from "./Console";
 import Footer from "./Footer";
 
-export default class App extends Component {
+export default class App extends React.Component {
   state = {
     logToggle: false
   };

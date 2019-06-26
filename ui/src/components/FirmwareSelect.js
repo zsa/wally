@@ -1,7 +1,7 @@
-import { Component, h } from "preact";
+import React from "react";
 import FileGlyph from "../images/file.svg";
 
-export default class FirmwareSelect extends Component {
+export default class FirmwareSelect extends React.Component {
   handleButtonClick = e => {
     e.preventDefault();
     window.external.invoke("openFirmwareFile");

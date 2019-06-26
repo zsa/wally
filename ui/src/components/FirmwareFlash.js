@@ -1,8 +1,8 @@
-import { Component, h } from "preact";
+import React from "react";
 import Loader from "./Loader";
 import FlashGlyph from "../images/flash.svg";
 
-export default class FirmwareFlash extends Component {
+export default class FirmwareFlash extends React.Component {
   componentDidMount() {
     this.startPolling();
   }

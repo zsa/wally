@@ -1,4 +1,4 @@
-import { Component, h } from "preact";
+import React from "react";
 
 const LogLine = ({ line }) => {
   const timestamp = new Date(line.timestamp * 1000).toTimeString().substr(0, 8);

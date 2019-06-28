@@ -4,7 +4,7 @@ import ZSALogo from "../images/zsa-logo.png";
 import ErgodoxLogo from "../images/ergodox-logo.svg";
 import PlanckLogo from "../images/planck-logo.svg";
 
-export default ({ model, step, toggleLog, hasError }) => {
+export default ({ appVersion, model, step, toggleLog, hasError }) => {
   return (
     <div className="footer">
       <div className="title">KEYBOARD:</div>
@@ -26,7 +26,7 @@ export default ({ model, step, toggleLog, hasError }) => {
       <div>
         <img alt="ZSA" className="logo zsa-logo" src={ZSALogo} />
       </div>
-      <div className="version">V1.0.0</div>
+      <div className="version">V{appVersion}</div>
     </div>
   );
 };

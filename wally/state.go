@@ -2,6 +2,7 @@ package wally
 
 import (
 	"path/filepath"
+	"runtime"
 	"time"
 )
 
@@ -20,12 +21,28 @@ type FlashProgress struct {
 
 //State represents the global state of the application
 type State struct {
+	AppVersion    string        `json:"appVersion"`
 	Device        Device        `json:"device"`        // The user selected usb device
 	Devices       []Device      `json:"devices"`       // The list of usb devices connected
 	Step          int8          `json:"step"`          // The current flashing process step. // 0 - Probing keyboard // 1 - Select keyboard // 2 - Select firmware file // 3 - Waiting for keybiard reset // 4 - Flashing // 5 - Complete
 	FirmwarePath  string        `json:"firmwarePath"`  // The firmware absolute Path selected by the user
 	FlashProgress FlashProgress `json:"flashProgress"` // The Flashing state progress
 	Logs          []log         `json:"logs"`          // Log object
+}
+
+func NewState(step int8) State {
+	s := State{Step: step}
+	switch os := runtime.GOOS; os {
+	case "darwin":
+		s.AppVersion = "1.1.0"
+	case "linux":
+		s.AppVersion = "1.1.0"
+	case "windows":
+		s.AppVersion = "1.1.0"
+	default:
+		s.AppVersion = "1.1.0"
+	}
+	return s
 }
 
 func (s *State) Log(level string, message string) {

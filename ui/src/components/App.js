@@ -11,9 +11,10 @@ import Console from "./Console";
 import Footer from "./Footer";
 
 export default function App(props) {
+  console.log(props.state);
   const {
     state: {
-      data: { device, devices, logs, step, flashProgress },
+      data: { device, appVersion, devices, logs, step, flashProgress },
       log,
       completeFlash,
       probeDevices,
@@ -111,6 +112,7 @@ export default function App(props) {
       )}
       {toggleLog === true && <Console logs={logs} />}
       <Footer
+        appVersion={appVersion}
         hasError={hasError}
         step={step}
         model={device.model}

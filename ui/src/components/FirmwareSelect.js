@@ -19,12 +19,14 @@ export default class FirmwareSelect extends React.Component {
         <h3>Select firmware</h3>
         {model === 0 && (
           <p>
-            Select a <strong>bin file</strong> compatible with your Planck EZ.
+            Select or drop a <strong>bin file</strong> compatible with your
+            Planck EZ.
           </p>
         )}
         {model === 1 && (
           <p>
-            Select a <strong>hex file</strong> compatible with your ErgoDox EZ.
+            Select or drop a <strong>hex file</strong> compatible with your
+            ErgoDox EZ.
           </p>
         )}
         <button className="button" onClick={this.handleButtonClick}>

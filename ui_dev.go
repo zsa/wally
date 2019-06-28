@@ -37,7 +37,7 @@ func Init() (wv webview.WebView) {
 		Width:     630,
 		Height:    500,
 		Title:     "Wally",
-		Resizable: true,
+		Resizable: false,
 		URL:       `data:text/html,` + html,
 		ExternalInvokeCallback: func(w webview.WebView, command string) {
 			handleRPC(w, command, &State)

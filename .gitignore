@@ -10,6 +10,7 @@ dist/linux64/wally
 dist/linux64/wally-cli
 dist/win64/wally.exe
 dist/win64/wally-cli.exe
+dist/win64/installer/Output
 Wally_rc.syso
 
 .DS_Store

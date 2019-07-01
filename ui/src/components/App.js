@@ -11,7 +11,6 @@ import Console from "./Console";
 import Footer from "./Footer";
 
 export default function App(props) {
-  console.log(props.state);
   const {
     state: {
       data: { device, appVersion, devices, logs, step, flashProgress },
@@ -22,16 +21,27 @@ export default function App(props) {
       selectFirmware,
       flashFirmware,
       pollFlashProgress,
-      resetState
+      resetState,
+      selectFirmwareWithData
     }
   } = props;
 
   const onDrop = useCallback(files => {
     const allowedExtension = device.model === 0 ? "bin" : "hex";
     const file = files[0];
-    const isValidExtension = file.name.split(".").pop() === allowedExtension;
+    const fileExtension = file.name.split(".").pop();
+    const isValidExtension = fileExtension === allowedExtension;
     if (isValidExtension === true) {
-      console.log(file, allowedExtension);
+      const reader = new FileReader();
+      reader.readAsArrayBuffer(file);
+      reader.onload = function() {
+        const view = new Int8Array(reader.result);
+        const bin = view.map(n => n.toString(10)).join(" ");
+        selectFirmwareWithData(bin);
+      };
+      reader.onerror = function(evt) {
+        log("error", "Error while reading the firmware file.");
+      };
     } else {
       log(
         "error",

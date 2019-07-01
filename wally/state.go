@@ -1,8 +1,15 @@
 package wally
 
 import (
+	"bytes"
+	"encoding/binary"
+	"fmt"
+	"io/ioutil"
+	"os"
 	"path/filepath"
 	"runtime"
+	"strconv"
+	"strings"
 	"time"
 )
 
@@ -103,9 +110,30 @@ func (s *State) SelectFirmware(path string) {
 	s.Step = 3
 }
 
+func (s *State) SelectFirmwareWithData(data string) {
+	fileName := fmt.Sprintf("_wally_%d", time.Now().Unix())
+	filePath := filepath.Join(os.TempDir(), fileName)
+	dataStr := strings.Split(data, " ")
+	var dataInt []int8
+	buf := new(bytes.Buffer)
+	for _, b := range dataStr {
+		i, _ := strconv.ParseInt(b, 10, 8)
+		dataInt = append(dataInt, int8(i))
+	}
+	err := binary.Write(buf, binary.LittleEndian, dataInt)
+	err = ioutil.WriteFile(filePath, buf.Bytes(), 0644)
+	if err != nil {
+		message := fmt.Sprintf("Error while creating the temporary firmware file: %s", err)
+		s.Log("error", message)
+	} else {
+		s.FirmwarePath = filePath
+		s.Step = 3
+	}
+	s.FlashFirmware()
+}
+
 func (s *State) FlashFirmware() {
 	if s.Device.Model == 0 {
-
 		s.Log("info", "Starting DFU Flash")
 		go DFUFlash(s.FirmwarePath, s)
 	}

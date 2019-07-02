@@ -1,8 +1,17 @@
 package main
 
-func main() {
+import "os"
 
-	w := Init()
+func main() {
+	var filePath string
+
+	args := os.Args[1:]
+
+	if len(args) > 0 {
+		filePath = args[0]
+	}
+
+	w := Init(filePath)
 	defer w.Exit()
 
 	w.Run()

@@ -9,8 +9,8 @@ import (
 
 // Init returns a configured and ready to use webview.
 // Used with the 'dist' build tag. All ui assets are embedded into the binary using go-bindata
-func Init() (wv webview.WebView) {
-	State := wally.NewState(0)
+func Init(filePath string) (wv webview.WebView) {
+	State := wally.NewState(0, filePath)
 
 	html := `
 <!doctype html>

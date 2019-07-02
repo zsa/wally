@@ -37,7 +37,8 @@ type State struct {
 	Logs          []log         `json:"logs"`          // Log object
 }
 
-func NewState(step int8) State {
+func NewState(step int8, filePath string) State {
+
 	s := State{Step: step}
 	switch os := runtime.GOOS; os {
 	case "darwin":
@@ -48,6 +49,27 @@ func NewState(step int8) State {
 		s.AppVersion = "1.1.0"
 	default:
 		s.AppVersion = "1.1.0"
+	}
+
+	if filePath != "" {
+		_, err := ioutil.ReadFile(filePath)
+		if err != nil {
+			message := fmt.Sprintf("Error while opening firmware: %s", err)
+			s.Log("error", message)
+		} else {
+			extension := filepath.Ext(filePath)
+			if extension == ".bin" {
+				s.Device = Device{Model: 0, Bus: 0, Port: 0}
+
+			} else if extension == ".hex" {
+				s.Device = Device{Model: 1, Bus: 0, Port: 0}
+			} else {
+				message := fmt.Sprintf("File extension %s is not supported", extension)
+				s.Log("error", message)
+				return s
+			}
+			s.SelectFirmware(filePath)
+		}
 	}
 	return s
 }
@@ -129,7 +151,6 @@ func (s *State) SelectFirmwareWithData(data string) {
 		s.FirmwarePath = filePath
 		s.Step = 3
 	}
-	s.FlashFirmware()
 }
 
 func (s *State) FlashFirmware() {

@@ -4,6 +4,7 @@ import ErgodoxReset from "../images/ergodox-reset.png";
 
 export default class DeviceReset extends React.Component {
   componentDidMount() {
+    this.props.flashFirmware();
     this.startPolling();
   }
 

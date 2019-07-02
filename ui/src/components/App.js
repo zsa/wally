@@ -92,6 +92,7 @@ export default function App(props) {
             {step === 3 && (
               <DeviceReset
                 device={device}
+                flashFirmware={flashFirmware}
                 pollFlashProgress={pollFlashProgress}
               />
             )}
@@ -101,7 +102,6 @@ export default function App(props) {
               <FirmwareFlash
                 device={device}
                 completeFlash={completeFlash}
-                flashFirmware={flashFirmware}
                 pollFlashProgress={pollFlashProgress}
                 flashProgress={flashProgress}
               />

@@ -22,7 +22,6 @@ func handleRPC(w webview.WebView, data string, s *wally.State) {
 
 		if firmwarePath != "" {
 			s.SelectFirmware(firmwarePath)
-			s.FlashFirmware()
 			w.Dispatch(func() {
 				w.Bind("state", s)
 			})

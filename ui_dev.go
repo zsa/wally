@@ -9,8 +9,8 @@ import (
 
 // Init returns a configured and ready to use webview.
 // Used with the 'dev' build tag. All ui assets are expected to be served locally on port 8080. A local dev server can be run from the ui folder running yarn dev.
-func Init() (wv webview.WebView) {
-	State := wally.NewState(0)
+func Init(filePath string) (wv webview.WebView) {
+	State := wally.NewState(0, filePath)
 
 	html := `
 <!doctype html>

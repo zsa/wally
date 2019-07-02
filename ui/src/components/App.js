@@ -126,6 +126,7 @@ export default function App(props) {
         hasError={hasError}
         step={step}
         model={device.model}
+        resetState={resetState}
         toggleLog={() => {
           setToggleLog(!toggleLog);
         }}

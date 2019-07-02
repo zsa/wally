@@ -37,6 +37,12 @@ func TeensyFlash(path string, s *State) {
 	// Loop until a keyboard is ready to flash
 	for {
 		s.Log("info", "Waiting for a DFU capable device")
+		// if the app is reset stop this goroutine and close the usb context
+		if s.Step != 3 {
+			s.Log("info", "App reset, interrupting the flashing process.")
+			return
+		}
+
 		devs, err := ctx.OpenDevices(func(desc *gousb.DeviceDesc) bool {
 			if desc.Vendor == gousb.ID(halfKayVendorID) && desc.Product == gousb.ID(halfKayProductID) {
 				return true
@@ -50,7 +56,7 @@ func TeensyFlash(path string, s *State) {
 			}
 		}()
 
-		if (err != nil && runtime.GOOS != "windows") {
+		if err != nil && runtime.GOOS != "windows" {
 			message := fmt.Sprintf("OpenDevices: %s", err)
 			s.Log("error", message)
 			return

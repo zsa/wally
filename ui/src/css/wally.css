@@ -77,15 +77,22 @@ body {
 }
 
 .footer .status {
+  align-items: center;
   color: #FFFFFF;
+  display: flex;
+  flex: 1;
   font-weight: bold;
   margin-left: 16px;
-  flex: 1;
 }
 
 .footer .status .logo{
   position: relative;
   top: 1px;
+}
+
+.footer .status .reset{
+  margin-left: 10px;
+  color: #fff;
 }
 
 .footer .logo {

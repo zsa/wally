@@ -138,6 +138,11 @@ func DFUFlash(path string, s *State) {
 
 	// Get the list of device that match TMK's vendor id
 	for {
+		// if the app is reset stop this goroutine and close the usb context
+		if s.Step != 3 {
+			s.Log("info", "App reset, interrupting the flashing process.")
+			return
+		}
 		s.Log("info", "Waiting for a DFU capable device")
 		devs, err := ctx.OpenDevices(func(desc *gousb.DeviceDesc) bool {
 			if desc.Vendor == gousb.ID(dfuVendorID) && desc.Product == gousb.ID(dfuProductID) {
@@ -152,7 +157,7 @@ func DFUFlash(path string, s *State) {
 			}
 		}()
 
-		if (err != nil && runtime.GOOS != "windows") {
+		if err != nil && runtime.GOOS != "windows" {
 			message := fmt.Sprintf("OpenDevices: %s", err)
 			s.Log("error", message)
 			return

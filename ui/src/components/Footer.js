@@ -4,7 +4,14 @@ import ZSALogo from "../images/zsa-logo.png";
 import ErgodoxLogo from "../images/ergodox-logo.svg";
 import PlanckLogo from "../images/planck-logo.svg";
 
-export default ({ appVersion, model, step, toggleLog, hasError }) => {
+export default ({
+  appVersion,
+  model,
+  step,
+  toggleLog,
+  hasError,
+  resetState
+}) => {
   return (
     <div className="footer">
       <div className="title">KEYBOARD:</div>
@@ -17,6 +24,18 @@ export default ({ appVersion, model, step, toggleLog, hasError }) => {
             className="logo"
             src={model === 0 ? PlanckLogo : ErgodoxLogo}
           />
+        )}
+        {(step === 2 || step === 3) && (
+          <a
+            className="reset"
+            href="#reset"
+            onClick={e => {
+              e.preventDefault();
+              resetState();
+            }}
+          >
+            restart
+          </a>
         )}
       </div>
       <div className="log-toggle" onClick={toggleLog}>

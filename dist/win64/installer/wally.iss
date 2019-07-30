@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Wally"
-#define MyAppVersion "1.1.2"
+#define MyAppVersion "1.1.3"
 #define MyAppPublisher "ZSA.io"
 #define MyAppURL "https://ergodox-ez.com"
 #define MyAppExeName "wally.exe"
@@ -27,7 +27,6 @@ SetupIconFile=D:\dev\go\src\github.com\zsa\wally\dist\win64\Wally.ico
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
-AlwaysRestart=yes
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
@@ -37,17 +36,18 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 
 [Files]
 Source: "D:\dev\go\src\github.com\zsa\wally\dist\win64\wally.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\dev\go\src\github.com\zsa\wally\dist\win64\drivers_list"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\dev\go\src\github.com\zsa\wally\dist\win64\post_install.bat"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\dev\go\src\github.com\zsa\wally\dist\win64\qmk_driver_installer.exe"; DestDir: "{app}";
 Source: "D:\dev\go\src\github.com\zsa\wally\dist\win64\wally-cli.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\dev\go\src\github.com\zsa\wally\dist\win64\planck_driver\*"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\dev\go\src\github.com\zsa\wally\dist\win64\planck_driver\license\*"; DestDir: "{app}\license"; Flags: ignoreversion
+Source: "D:\dev\go\src\github.com\zsa\wally\dist\win64\planck_driver\amd64\*"; DestDir: "{app}\amd64"; Flags: ignoreversion
+Source: "D:\dev\go\src\github.com\zsa\wally\dist\win64\planck_driver\x86\*"; DestDir: "{app}\x86"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
-Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
+Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}";
 Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\post_install.bat"; Flags: runhidden
+Filename: "{app}\post_install.bat"; WorkingDir: "{app}";Flags: runhidden
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 

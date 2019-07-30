@@ -1,0 +1,1 @@
+%windir%\sysnative\pnputil.exe /add-driver STM32__BOOTLOADER.inf /install

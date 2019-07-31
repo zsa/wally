@@ -46,7 +46,7 @@ func NewState(step int8, filePath string) State {
 	case "linux":
 		s.AppVersion = "1.1.0"
 	case "windows":
-		s.AppVersion = "1.1.3"
+		s.AppVersion = "1.1.4"
 	default:
 		s.AppVersion = "1.1.0"
 	}

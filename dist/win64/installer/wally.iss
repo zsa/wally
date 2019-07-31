@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Wally"
-#define MyAppVersion "1.1.3"
+#define MyAppVersion "1.1.4"
 #define MyAppPublisher "ZSA.io"
 #define MyAppURL "https://ergodox-ez.com"
 #define MyAppExeName "wally.exe"
@@ -37,10 +37,8 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 [Files]
 Source: "D:\dev\go\src\github.com\zsa\wally\dist\win64\wally.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "D:\dev\go\src\github.com\zsa\wally\dist\win64\wally-cli.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\dev\go\src\github.com\zsa\wally\dist\win64\planck_driver\*"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\dev\go\src\github.com\zsa\wally\dist\win64\planck_driver\license\*"; DestDir: "{app}\license"; Flags: ignoreversion
-Source: "D:\dev\go\src\github.com\zsa\wally\dist\win64\planck_driver\amd64\*"; DestDir: "{app}\amd64"; Flags: ignoreversion
-Source: "D:\dev\go\src\github.com\zsa\wally\dist\win64\planck_driver\x86\*"; DestDir: "{app}\x86"; Flags: ignoreversion
+Source: "D:\dev\go\src\github.com\zsa\wally\dist\win64\post_install.bat"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\dev\go\src\github.com\zsa\wally\dist\win64\wdi-simple.exe"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

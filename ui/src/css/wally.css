@@ -271,6 +271,10 @@ p {
   color: #EF5253;
 }
 
+.console .lines .line .level.warning {
+  color: #FF6200;
+}
+
 .console .lines .line .message {
   flex: 1;
 }

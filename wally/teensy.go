@@ -11,8 +11,8 @@ import (
 
 // TeensyFlash: Flashes Teensy boards.
 // It opens the firmware file at the provided path, checks it's integrity, wait for the keyboard to be in Flash mode, flashes it and reboots the board.
-func TeensyFlash(path string, s *State) {
-	file, err := os.Open(path)
+func TeensyFlash(firmwarePath string, s *State) {
+	file, err := os.Open(firmwarePath)
 	if err != nil {
 		message := fmt.Sprintf("Error while opening firmware: %s", err)
 		s.Log("error", message)
@@ -119,12 +119,21 @@ func TeensyFlash(path string, s *State) {
 
 	s.FlashProgress.Step = 2
 
-	s.Log("info", "Sending the reboot command")
-	buf := make([]byte, ergodoxBlockSize+2)
-	buf[0] = byte(0xFF)
-	buf[1] = byte(0xFF)
-	buf[2] = byte(0xFF)
-	_, err = dev.Control(0x21, 9, 0x0200, 0, buf)
+	if runtime.GOOS == "darwin" {
+		s.Log("info", "Executing ergoboot routine")
+		cfg.Close()
+		dev.Close()
+		ctx.Close()
+		Ergoboot()
+	} else {
+		s.Log("info", "Sending the reboot command")
+		buf := make([]byte, ergodoxBlockSize+2)
+		buf[0] = byte(0xFF)
+		buf[1] = byte(0xFF)
+		buf[2] = byte(0xFF)
+		_, err = dev.Control(0x21, 9, 0x0200, 0, buf)
+	}
+
 	if err != nil {
 		message := fmt.Sprintf("Error while rebooting device: %s", err)
 		s.Log("error", message)

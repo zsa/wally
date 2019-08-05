@@ -7,7 +7,7 @@
     <key>CFBundleGetInfoString</key>
     <string>Wally</string>
     <key>CFBundleIconFile</key>
-    <string>wally</string>
+    <string>Wally</string>
     <key>CFBundleIdentifier</key>
     <string>com.zsa.wally</string>
     <key>CFBundleName</key>

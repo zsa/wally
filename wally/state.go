@@ -42,11 +42,11 @@ func NewState(step int8, filePath string) State {
 	s := State{Step: step}
 	switch os := runtime.GOOS; os {
 	case "darwin":
-		s.AppVersion = "1.1.0"
+		s.AppVersion = "1.1.1"
 	case "linux":
 		s.AppVersion = "1.1.0"
 	case "windows":
-		s.AppVersion = "1.1.0"
+		s.AppVersion = "1.1.4"
 	default:
 		s.AppVersion = "1.1.0"
 	}

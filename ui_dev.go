@@ -35,7 +35,7 @@ func Init(filePath string) (wv webview.WebView) {
 	w := webview.New(webview.Settings{
 		Debug:     true,
 		Width:     630,
-		Height:    500,
+		Height:    520,
 		Title:     "Wally",
 		Resizable: false,
 		URL:       `data:text/html,` + html,

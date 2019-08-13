@@ -56,10 +56,9 @@ func TeensyFlash(path string, s *State) {
 			}
 		}()
 
-		if err != nil && runtime.GOOS != "windows" {
+		if err != nil {
 			message := fmt.Sprintf("OpenDevices: %s", err)
-			s.Log("error", message)
-			return
+			s.Log("warning", message)
 		}
 
 		if len(devs) > 0 {

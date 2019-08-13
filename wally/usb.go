@@ -65,9 +65,9 @@ func ProbeDevices(s *State) []Device {
 		return false
 	})
 
-	if (err != nil && runtime.GOOS != "windows") {
+	if err != nil {
 		message := fmt.Sprintf("OpenDevices: %s", err)
-		s.Log("error", message)
+		s.Log("warning", message)
 	}
 
 	message := fmt.Sprintf("Found %d compatible device(s)", len(devices))

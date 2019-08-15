@@ -3,7 +3,6 @@ package wally
 import (
 	"fmt"
 	"github.com/google/gousb"
-	"runtime"
 )
 
 type Device struct {

@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"github.com/google/gousb"
 	"io/ioutil"
-	"runtime"
 	"time"
 )
 

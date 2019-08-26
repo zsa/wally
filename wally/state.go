@@ -42,7 +42,7 @@ func NewState(step int8, filePath string) State {
 	s := State{Step: step}
 	switch os := runtime.GOOS; os {
 	case "darwin":
-		s.AppVersion = "1.1.1"
+		s.AppVersion = "1.1.2"
 	case "linux":
 		s.AppVersion = "1.1.1"
 	case "windows":
@@ -51,7 +51,7 @@ func NewState(step int8, filePath string) State {
 		s.AppVersion = "1.1.0"
 	}
 
-	if filePath != "" {
+	if filePath != "" && runtime.GOOS != "darwin" {
 		_, err := ioutil.ReadFile(filePath)
 		if err != nil {
 			message := fmt.Sprintf("Error while opening firmware: %s", err)

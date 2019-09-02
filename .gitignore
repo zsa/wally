@@ -5,6 +5,7 @@ ui/build
 ui/node_modules
 
 dist/ppa/wally/wally-*
+dist/ppa/wally/wally_*
 dist/ppa/wally/template/wally
 dist/ppa/wally/template/wally-cli
 dist/osx/Wally.app/Contents/MacOS/Wally

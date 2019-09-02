@@ -4,6 +4,9 @@ ui/yarn-error.log
 ui/build
 ui/node_modules
 
+dist/ppa/wally/wally-*
+dist/ppa/wally/template/wally
+dist/ppa/wally/template/wally-cli
 dist/osx/Wally.app/Contents/MacOS/Wally
 dist/osx/wally-cli
 dist/linux64/wally

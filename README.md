@@ -93,13 +93,15 @@ Note: you need to have a launchpad account and be added to the [zsa's teaml](htt
 In the `dist/ppa/wally` directory, copy the `template` directory and give it a name matching this pattern: `wally-MAJOR.MINOR.PATCH`. For example for version 1.1.1, the directory should be `wally-1.1.1`.
 
 Inside the new directory run the following command:
+
 `debuild -k"YOUR_PGP_PUBLIC_KEY" -S`
+
 Note that the `YOUR_PGP_PUBLIC_KEY` var should match the gpg key of your launchpad account.
 
 Go back to the `dist/ppa/wally` folder. From there you can run
 `dput wally wally_1.1.1_source.changes` assuming you have correctly setup dput
 
-`~/.dput.cf`
+For example: `~/.dput.cf`
 ```
 [wally]
   fqdn = ppa.launchpad.net

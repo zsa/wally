@@ -87,4 +87,27 @@ Update the version on `wally/state.go` for the platform you are updating, build 
 
 Update this [file](https://github.com/Homebrew/homebrew-cask-drivers/blob/master/Casks/zsa-wally.rb) and make a PR against the [brew cask driver repo](https://github.com/Homebrew/homebrew-cask-drivers) following [these instructions](https://github.com/Homebrew/homebrew-cask/blob/master/CONTRIBUTING.md#updating-a-cask)
 
+#### Publish to zsa's launchpad
+Note: you need to have a launchpad account and be added to the [zsa's teaml](https://launchpad.net/~zsa)
+
+In the `dist/ppa/wally` directory, copy the `template` directory and give it a name matching this pattern: `wally-MAJOR.MINOR.PATCH`. For example for version 1.1.1, the directory should be `wally-1.1.1`.
+
+Inside the new directory run the following command:
+`debuild -k"YOUR_PGP_PUBLIC_KEY" -S`
+Note that the `YOUR_PGP_PUBLIC_KEY` var should match the gpg key of your launchpad account.
+
+Go back to the `dist/ppa/wally` folder. From there you can run
+`dput wally wally_1.1.1_source.changes` assuming you have correctly setup dput
+
+`~/.dput.cf`
+```
+[wally]
+  fqdn = ppa.launchpad.net
+  method = ftp
+  incoming = ~zsa/wally/ubuntu/
+  login = <Your launchpad email>
+  allow_unsigned_uploads = 0
+```
+
+
 

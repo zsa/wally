@@ -19,6 +19,8 @@ Found a bug? Open an [issue here](https://github.com/zsa/wally/issues).
 
 Wally is built using [Go](https://golang.org/) at its core and [Preact](https://preactjs.com/) for the UI. The binding between core and ui happens using a [fork](https://github.com/fdidron/webview) of the [webview package](https://github.com/zserge/webview). This guide assumes you have a proper Go and NodeJS development environment running.
 
+Commit messages should follow the [conventional commits](https://www.conventionalcommits.org/) notation. A git hook is setup to check proper messages right before commiting. 
+
 ### Installing dev dependencies
 
 Wally is compatible with Windows, Linux, and macOS. Develping using each plateform requires some extra setup:
@@ -76,3 +78,13 @@ Run `build.linux.sh`
 #### Mac OS
 
 Run `build.osx.sh`
+
+#### Release on github
+
+Update the version on `wally/state.go` for the platform you are updating, build a binary using one of the release build command above and upload the binary to a new release page on Github.
+
+#### Release on brew cask
+
+Update this [file](https://github.com/Homebrew/homebrew-cask-drivers/blob/master/Casks/zsa-wally.rb) and make a PR against the [brew cask driver repo](https://github.com/Homebrew/homebrew-cask-drivers) following [these instructions](https://github.com/Homebrew/homebrew-cask/blob/master/CONTRIBUTING.md#updating-a-cask)
+
+

@@ -10,6 +10,7 @@ dist/ppa/wally/template/wally
 dist/ppa/wally/template/wally-cli
 dist/osx/Wally.app/Contents/MacOS/Wally
 dist/osx/wally-cli
+dist/osx/*dmg
 dist/linux64/wally
 dist/linux64/wally-cli
 dist/win64/wally.exe

@@ -5,7 +5,7 @@ Flash your [ZSA Keyboard](https://ergodox-ez.com) the EZ way.
 ## Getting started
 
 Wally comes in two flavors, a GUI and a CLI app.
-Download the application for your favorite plateform from the [release page](https://github.com/zsa/wally/releases).
+Download the application for your favorite platform from the [release page](https://github.com/zsa/wally/releases).
 
 Note for Linux users, follow the instructions from our [wiki page](https://github.com/zsa/wally/wiki/Linux-install) before running the application.
 
@@ -17,11 +17,11 @@ The following instructions apply only to those who wish to actively _develop_ Wa
 
 Found a bug? Open an [issue here](https://github.com/zsa/wally/issues).
 
-Wally is built using [Go](https://golang.org/) at its core and [Preact](https://preactjs.com/) for the UI. The binding between core and ui happens using a [fork](https://github.com/fdidron/webview) of the [webview package](https://github.com/zserge/webview). This guide assumes you have a proper Go and NodeJS development environment running.
+Wally is built using [Go](https://golang.org/) at its core and [Preact](https://preactjs.com/) for the UI. The binding between core and UI happens using a [fork](https://github.com/fdidron/webview) of the [webview package](https://github.com/zserge/webview). This guide assumes you have a proper Go and NodeJS development environment running.
 
 ### Installing dev dependencies
 
-Wally is compatible with Windows, Linux, and macOS. Develping using each plateform requires some extra setup:
+Wally is compatible with Windows, Linux, and macOS. Developing using each platform requires some extra setup:
 
 #### Windows
 
@@ -53,7 +53,7 @@ Run the following:
 go build -tags dev -o wally
 ```
 
-This build will bind its ui with the local webpack server.
+This build will bind its UI with the local webpack server.
 
 ### Compile the CLI
 

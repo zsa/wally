@@ -66,8 +66,10 @@ go build cli/main.go -o wally-cli
 ### Compile a release build
 
 #### Pre requisites for all OS
+
 1. Install [dep](https://github.com/golang/dep) and run the command `dep ensure` to grab all the go dependencies.
 2. Install [go-bindata](https://github.com/jteeuwen/go-bindata) by running the command `go get -u github.com/jteeuwen/go-bindata/...`.
+
 #### Windows
 
 Run `build.win.bat`
@@ -78,4 +80,12 @@ Run `build.linux.sh`
 
 #### Mac OS
 
-Run `build.osx.sh`
+1. Install libusb using `brew`: `brew install libusb`.
+2. Install `upx` using `brew`: `brew install upx`.
+3. Run `build.osx.sh`
+
+The wally gui and cli apps should be in `./dist/osx` .
+
+Note: the GUI app won't include libusb so it needs to be installed on the computer running it. To embed libusb into the binary, install [dylibbundler](https://github.com/auriamg/macdylibbundler/) and run:
+
+`dylibbundler -of -b -x ./dist/osx/Wally.app/Contents/MacOS/Wally -d ./dist/osx/Wally.app/Contents/libs/`

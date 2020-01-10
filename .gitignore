@@ -17,4 +17,6 @@ dist/win64/wally-cli.exe
 dist/win64/installer/Output
 Wally_rc.syso
 
+vendor
+
 .DS_Store

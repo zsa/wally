@@ -69,6 +69,7 @@ go build cli/main.go -o wally-cli
 
 1. Install [dep](https://github.com/golang/dep) and run the command `dep ensure` to grab all the go dependencies.
 2. Install [go-bindata](https://github.com/jteeuwen/go-bindata) by running the command `go get -u github.com/jteeuwen/go-bindata/...`.
+3. Install `cross-env` and `webpack` by running the command `yarn global add cross-env webpack` or `npm i -g cross-env webpack`.
 
 #### Windows
 

@@ -1,0 +1,15 @@
+github.com/caarlos0/spin v1.1.0 h1:EjsfGbZJejib25BPnDqf7iL2z9RUna7refvUf+AN9UE=
+github.com/caarlos0/spin v1.1.0/go.mod h1:HOC4pUvfhjXR2yDt+sEY9dRc2m4CCaK5z5oQYAbzXSA=
+github.com/fdidron/webview v0.0.0-20190809052019-e2f958b6efce/go.mod h1:AM9yOqHx6WgdidqgrQG4541jtGVaBzpkPZhJx2f94ag=
+github.com/google/gousb v0.0.0-20190812193832-18f4c1d8a750 h1:DVKHLo3yE4psTjD9aM2pY7EHoicaQbgmaxxvvHC6ZSM=
+github.com/google/gousb v0.0.0-20190812193832-18f4c1d8a750/go.mod h1:Tl4HdAs1ThE3gECkNwz+1MWicX6FXddhJEw7L8jRDiI=
+github.com/logrusorgru/aurora v0.0.0-20190417123914-21d75270181e h1:yRWBTwWfMy5YPjT14Jr+p12ygqLpM9K5ojbbNPSd8hI=
+github.com/logrusorgru/aurora v0.0.0-20190417123914-21d75270181e/go.mod h1:7rIyQOR62GCctdiQpZ/zOJlFyk6y+94wXzv6RNZgaR4=
+github.com/marcinbor85/gohex v0.0.0-20180128172054-7a43cd876e46 h1:wXG2bA8fO7Vv7lLk2PihFMTqmbT173Tje39oKzQ50Mo=
+github.com/marcinbor85/gohex v0.0.0-20180128172054-7a43cd876e46/go.mod h1:Pb6XcsXyropB9LNHhnqaknG/vEwYztLkQzVCHv8sQ3M=
+github.com/mattn/go-runewidth v0.0.7 h1:Ei8KR0497xHyKJPAv59M1dkC+rOZCMBJ+t3fZ+twI54=
+github.com/mattn/go-runewidth v0.0.7/go.mod h1:H031xJmbD/WCDINGzjvQ9THkh0rPKHF+m2gUSrubnMI=
+golang.org/x/sys v0.0.0-20200107162124-548cf772de50 h1:YvQ10rzcqWXLlJZ3XCUoO25savxmscf4+SC+ZqiCHhA=
+golang.org/x/sys v0.0.0-20200107162124-548cf772de50/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
+gopkg.in/cheggaaa/pb.v1 v1.0.28 h1:n1tBJnnK2r7g9OW2btFH91V92STTUevLXYFb8gy9EMk=
+gopkg.in/cheggaaa/pb.v1 v1.0.28/go.mod h1:V/YB90LKu/1FcN3WVnfiiE5oMCibMjukxqG/qStrOgw=

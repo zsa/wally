@@ -4,7 +4,7 @@ import "runtime"
 
 // GetAppVersion returns the current version number.
 func GetAppVersion() string {
-	switch os := runtime.GOOS; os {
+	switch runtime.GOOS {
 	case "darwin":
 		return "1.1.2"
 	case "linux":

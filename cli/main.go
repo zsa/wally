@@ -21,6 +21,7 @@ func main() {
 	if args[0] == "--version" {
 		appVersion := fmt.Sprintf("wally-cli v%s", wally.GetAppVersion())
 		fmt.Println(Blue(appVersion))
+		os.Exit(0)
 	}
 
 	path := args[0]

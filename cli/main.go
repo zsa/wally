@@ -4,11 +4,11 @@ import (
 	"fmt"
 	"github.com/caarlos0/spin"
 	. "github.com/logrusorgru/aurora"
+	"github.com/zsa/wally/wally"
 	"gopkg.in/cheggaaa/pb.v1"
 	"os"
 	"path/filepath"
 	"time"
-	"github.com/zsa/wally/wally"
 )
 
 func main() {
@@ -16,6 +16,12 @@ func main() {
 	if len(args) != 1 {
 		fmt.Println(Blue("Usage: wally-cli <firmware file>"))
 		os.Exit(1)
+	}
+
+	if args[0] == "--version" {
+		appVersion := fmt.Sprintf("wally-cli v%s", wally.GetAppVersion())
+		fmt.Println(Blue(appVersion))
+		os.Exit(0)
 	}
 
 	path := args[0]

@@ -28,6 +28,12 @@ export default props => {
           on the right half of your keyboard, next to the three LEDs.
         </p>
       )}
+      {model === 2 && (
+        <p>
+          You’re going to need a paperclip for this: The reset button is located
+          on the left half of your keyboard, next to the three LEDs.
+        </p>
+      )}
     </div>
   );
 };

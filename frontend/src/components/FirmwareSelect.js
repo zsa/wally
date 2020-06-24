@@ -29,6 +29,16 @@ export default class FirmwareSelect extends React.Component {
             ErgoDox EZ.
           </p>
         )}
+        {model === 2 && (
+          <p>
+            Select or drop a <strong>bin file</strong> compatible with your board
+          </p>
+        )}
+        {model === 3 && (
+          <p>
+            Select or drop a <strong>bin file</strong> compatible with your board
+          </p>
+        )}
         <button className="button" onClick={this.handleButtonClick}>
           Select File
         </button>

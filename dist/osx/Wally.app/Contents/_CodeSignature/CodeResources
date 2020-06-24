@@ -13,10 +13,6 @@
 	<dict>
 		<key>Resources/Wally.icns</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			K0wrUf9wvedvcEBt3yqd/IPRUgs=
-			</data>
 			<key>hash2</key>
 			<data>
 			srga4h1jKx8QxUgznUaN0g42zeATDYmjJeryoOCU1j8=
@@ -24,13 +20,9 @@
 		</dict>
 		<key>libs/libusb-1.0.0.dylib</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			a6s5Dg/NiQsDpX2PthS1mam27tk=
-			</data>
 			<key>hash2</key>
 			<data>
-			/fEt/2p2/RzQ4viZ7Tu/er5SNDKlPCn1NlZFpVWquGs=
+			19yeJZYbE7ajbNsUf82TzkzwgIJ0jSnHSZApdi2MyPI=
 			</data>
 		</dict>
 	</dict>

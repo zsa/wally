@@ -12,9 +12,11 @@ type Device struct {
 }
 
 const (
-	vendorID  int = 0xFEED
+	vendorID1 int = 0xFEED
+	vendorID2 int = 0x3297
 	planckID  int = 0x6060
 	ergodoxID int = 0x1307
+	defaultID int = 0x1969
 
 	dfuSuffixVendorID  int = 0x83
 	dfuSuffixProductID int = 0x11
@@ -43,7 +45,7 @@ func ProbeDevices(s *State) []Device {
 	s.Log("info", "Probing compatible usb devices")
 
 	_, err := ctx.OpenDevices(func(desc *gousb.DeviceDesc) bool {
-		if desc.Vendor == gousb.ID(vendorID) {
+		if desc.Vendor == gousb.ID(vendorID1) || desc.Vendor == gousb.ID(vendorID2) {
 			if desc.Product == gousb.ID(planckID) {
 				devices = append(devices, Device{Model: 0, Bus: desc.Bus, Port: desc.Port})
 
@@ -51,10 +53,13 @@ func ProbeDevices(s *State) []Device {
 			if desc.Product == gousb.ID(ergodoxID) {
 				devices = append(devices, Device{Model: 1, Bus: desc.Bus, Port: desc.Port})
 			}
+			if desc.Product == gousb.ID(defaultID) {
+				devices = append(devices, Device{Model: 2, Bus: desc.Bus, Port: desc.Port})
+			}
 		}
 
 		if desc.Vendor == gousb.ID(dfuVendorID) && desc.Product == gousb.ID(dfuProductID) {
-			devices = append(devices, Device{Model: 0, Bus: desc.Bus, Port: desc.Port})
+			devices = append(devices, Device{Model: 3, Bus: desc.Bus, Port: desc.Port})
 		}
 
 		if desc.Vendor == gousb.ID(halfKayVendorID) && desc.Product == gousb.ID(halfKayProductID) {

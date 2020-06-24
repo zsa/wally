@@ -4,20 +4,15 @@ import ZSALogo from "../images/zsa-logo.png";
 import ErgodoxLogo from "../images/ergodox-logo.svg";
 import PlanckLogo from "../images/planck-logo.svg";
 
-export default ({
-  appVersion,
-  model,
-  step,
-  toggleLog,
-  hasError,
-}) => {
+export default ({ appVersion, model, step, toggleLog, hasError }) => {
+  const hasLogo = model < 2;
   return (
     <div className="footer">
-      <div className="title">KEYBOARD:</div>
+      {hasLogo && <div className="title">KEYBOARD:</div>}
       <div className="status">
         {step === 0 && "LOOKING..."}
         {step === 1 && "-SELECT-"}
-        {step > 1 && (
+        {step > 1 && hasLogo && (
           <img
             alt="Planck Logo"
             className="logo"
@@ -33,7 +28,7 @@ export default ({
               window.backend.State.ResetState();
             }}
           >
-            restart
+            Restart
           </a>
         )}
       </div>

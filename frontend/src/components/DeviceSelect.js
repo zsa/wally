@@ -13,7 +13,7 @@ export default class DeviceSelect extends React.Component {
     const { devices } = this.props;
     return devices.map((device, idx) => {
       let model;
-      let glyph;
+      let glyph = null;
       switch (device.model) {
         case 0:
           model = "Planck EZ";
@@ -22,6 +22,13 @@ export default class DeviceSelect extends React.Component {
         case 1:
           model = "Ergodox EZ";
           glyph = ErgodoxGlyph;
+          break;
+        case 2:
+          model = "Default Board";
+          glyph = ErgodoxGlyph;
+          break;
+        case 3:
+          model = "Board in reset mode";
           break;
         default:
           break;
@@ -32,7 +39,8 @@ export default class DeviceSelect extends React.Component {
           key={idx}
           onClick={e => this.handleDeviceSelect(e, device)}
         >
-          <img alt={model} className="glyph" src={glyph} />
+          {glyph && <img alt={model} className="glyph" src={glyph} />}
+          {!glyph && <p>{model} </p>}
         </div>
       );
     });

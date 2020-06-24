@@ -22,7 +22,6 @@ type log struct {
 
 //FlashProgress represents the current flashing state, it gets updated by the flashing methods.
 type FlashProgress struct {
-	Step  int `json:"step"`  // 0 - Probing keyboards // 1 - Flashing // 2 - Rebooting // 3 - Complete
 	Total int `json:"total"` // total of firmware bytes to send
 	Sent  int `json:"sent"`  // total of bytes sent
 }
@@ -100,14 +99,6 @@ func (s *State) ProbeDevices() {
 	}
 }
 
-func (s *State) PollFlashProgress() {
-	state := s
-	s = state
-	if s.FlashProgress.Step == 3 {
-		s.Step = 5
-	}
-}
-
 func (s *State) CompleteFlash() {
 	s.Step = 5
 }
@@ -131,12 +122,10 @@ func (s *State) SelectDevice(model int, bus int, port int) {
 
 func (s *State) SelectFirmware() {
 	filter := ""
-	if s.Device.Model == 0 {
-		filter = "*.bin"
-	}
-
 	if s.Device.Model == 1 {
 		filter = "*.hex"
+	} else {
+		filter = "*.bin"
 	}
 	s.FirmwarePath = s.runtime.Dialog.SelectFile("Select a firmware file", filter)
 	fmt.Println("Select")
@@ -177,12 +166,11 @@ func (s *State) Shutdown() {
 }
 
 func (s *State) FlashFirmware() {
-	if s.Device.Model == 0 {
-		s.Log("info", "Starting DFU Flash")
-		go DFUFlash(s)
-	}
 	if s.Device.Model == 1 {
 		s.Log("info", "Starting Teensy Flash")
 		go TeensyFlash(s)
+	} else {
+		s.Log("info", "Starting DFU Flash")
+		go DFUFlash(s)
 	}
 }

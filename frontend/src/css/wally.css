@@ -82,16 +82,15 @@ body {
   display: flex;
   flex: 1;
   font-weight: bold;
-  margin-left: 16px;
 }
 
 .footer .status .logo{
   position: relative;
   top: 1px;
+  margin-right: 10px;
 }
 
 .footer .status .reset{
-  margin-left: 10px;
   color: #fff;
 }
 

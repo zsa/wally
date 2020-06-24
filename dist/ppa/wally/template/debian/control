@@ -1,0 +1,9 @@
+Source: wally
+Maintainer: Florian Didron <fd@librem.one>
+Section: utils
+Priority: optional
+
+Package: wally
+Architecture: amd64
+Depends: gtk+3.0, webkit2gtk-4.0, libusb-dev
+Description: The Flash(ing tool) ZSA keyboards can do a lot — and all of that intelligence lives right on the board. You customize the firmware online, download a file, and flash it using Wally.

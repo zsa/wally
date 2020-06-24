@@ -1,0 +1,35 @@
+{
+  "name": "wally",
+  "author": "Florian Didron<0x6664@hey.com>",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@wailsapp/runtime": "^1.0.10",
+    "core-js": "^3.6.4",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "react-dropzone": "^11.0.1",
+    "wails-react-scripts": "3.0.1-2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

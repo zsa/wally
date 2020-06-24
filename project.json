@@ -1,0 +1,21 @@
+{
+ "name": "Wally",
+ "description": "Enter your project description",
+ "author": {
+  "name": "Florian Didron",
+  "email": "0x6664@hey.com"
+ },
+ "version": "0.1.0",
+ "binaryname": "wally",
+ "frontend": {
+  "dir": "frontend",
+  "install": "npm install",
+  "build": "npm run build",
+  "bridge": "src",
+  "serve": "npm run start"
+ },
+ "WailsVersion": "",
+ "CrossCompile": false,
+ "Platform": "",
+ "Architecture": ""
+}

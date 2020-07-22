@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Wally
+Name[en_US]=Wally
+Comment=Flash your ZSA keyboard the EZ way
+Exec=wally
+Icon=wally
+Terminal=false
+Categories=Development;

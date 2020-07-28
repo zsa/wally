@@ -4,8 +4,10 @@
 <dict>
     <key>CFBundleExecutable</key>
     <string>Wally</string>
-    <key>CFBundleGetInfoString</key>
-    <string>Wally</string>
+    <key>CFBundleVersion</key>
+    <string>2.0.0</string>
+    <key>CFShortVersionString</key>
+    <string>2.0.0</string>
     <key>CFBundleIconFile</key>
     <string>Wally</string>
     <key>CFBundleIdentifier</key>

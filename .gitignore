@@ -15,7 +15,9 @@ dist/ppa/wally/wally_*
 dist/ppa/wally/template/wally
 dist/ppa/wally/template/wally-cli
 dist/osx/Wally.app/Contents/MacOS/Wally
-dist/osx/Wally - Notarized
+dist/osx/Wally.app/Contents/CodeResources
+dist/osx/Wally.app/Contents/_CodeSignature
+dist/osx/*Notarized
 dist/osx/wally-cli
 dist/osx/*dmg
 dist/linux64/wally

@@ -1,18 +1,35 @@
 import React from "react";
 import PlanckReset from "../images/planck-reset.png";
 import ErgodoxReset from "../images/ergodox-reset.png";
+import MoonlanderReset from "../images/moonlander-reset.png";
 
 export default props => {
   const { model } = props.device;
+  let glyph;
+  let glyphOffset = true;
+  switch (model) {
+    case 0:
+      glyph = PlanckReset;
+      break;
+    case 1:
+      glyph = ErgodoxReset;
+      break;
+    case 2:
+      glyph = MoonlanderReset;
+      glyphOffset = false;
+      break;
+    default:
+      glyph = null;
+      break;
+  }
+
   return (
     <div>
       <div className="media-container">
-        <div className="media offset">
-          <img
-            alt="Flash"
-            className="glyph"
-            src={model === 0 ? PlanckReset : ErgodoxReset}
-          />
+        <div className={`media${glyphOffset === true && " offset"}`}>
+          {glyph && (
+            <img alt="Reset your board" className="glyph" src={glyph} />
+          )}
         </div>
       </div>
       <h3>Press your keyboard's reset button</h3>

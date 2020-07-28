@@ -31,7 +31,7 @@ export default class FirmwareSelect extends React.Component {
         )}
         {model === 2 && (
           <p>
-            Select or drop a <strong>bin file</strong> compatible with your board
+            Select or drop a <strong>bin file</strong> compatible with your Moonlander MK1.
           </p>
         )}
         {model === 3 && (

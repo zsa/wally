@@ -1,18 +1,15 @@
 {
   "title": "Wally",
   "icon": "Wally.app/Contents/Resources/wally.icns",
-  "background": "background.png",
+  "background-color": "#01b3ca",
   "contents": [
-    { "x": 50, "y": 50, "type": "file", "path": "wally-cli" },
-    { "x": 50, "y": 242, "type": "file", "path": "Wally.app" },
-    { "x": 242, "y": 242, "type": "link", "path": "/Applications" },
-    { "x": 242, "y": 50, "type": "link", "path": "/usr/local/bin" }
-
+    { "x": 50, "y": 85, "type": "file", "path": "Wally.app" },
+    { "x": 242, "y": 85, "type": "link", "path": "/Applications" }
   ],
   "window": {
     "size": {
       "width": 400,
-      "height": 350
+      "height": 200
     }
   }
 }

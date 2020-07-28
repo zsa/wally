@@ -17,7 +17,6 @@ export default function App(props) {
       device,
       devices,
       flashProgress,
-      log,
       logs,
       ready,
       ResetState,
@@ -26,7 +25,21 @@ export default function App(props) {
   } = props;
 
   const onDrop = useCallback(files => {
-    const allowedExtension = device.model === 0 ? "bin" : "hex";
+    let allowedExtension;
+    switch (device.model) {
+      case 0:
+        allowedExtension = "bin";
+        break;
+      case 1:
+        allowedExtension = "hex";
+        break;
+      case 2:
+        allowedExtension = "bin";
+        break;
+      default:
+        allowedExtension = null;
+        break;
+    }
     const file = files[0];
     const fileExtension = file.name.split(".").pop();
     const isValidExtension = fileExtension === allowedExtension;
@@ -39,10 +52,13 @@ export default function App(props) {
         window.backend.State.SelectFirmwareWithData(bin);
       };
       reader.onerror = function () {
-        log("error", "Error while reading the firmware file.");
+        window.backend.State.Log(
+          "error",
+          "Error while reading the firmware file."
+        );
       };
     } else {
-      log(
+      window.backend.State.Log(
         "error",
         `The file "${file.name}" is not a valid firmware file, a .${allowedExtension} is expected.`
       );
@@ -55,7 +71,7 @@ export default function App(props) {
 
   const [toggleLog, setToggleLog] = useState(false);
 
-  if(ready === false) return null;
+  if (ready === false) return null;
 
   const hasError = logs !== null && logs.some(log => log.level === "error");
   const allowedExtension =
@@ -72,33 +88,19 @@ export default function App(props) {
       <div className="body">
         <ul className="screens">
           <li className={step === 0 ? "screen active" : "screen"}>
-            {step === 0 && (
-              <DeviceProbe />
-            )}
+            {step === 0 && <DeviceProbe />}
           </li>
           <li className={step === 1 ? "screen active" : "screen"}>
-            {step === 1 && (
-              <DeviceSelect devices={devices} />
-            )}
+            {step === 1 && <DeviceSelect devices={devices} />}
           </li>
           <li className={step === 2 ? "screen active" : "screen"}>
-            {step === 2 && (
-              <FirmwareSelect device={device} />
-            )}
+            {step === 2 && <FirmwareSelect device={device} />}
           </li>
           <li className={step === 3 ? "screen active" : "screen"}>
-            {step === 3 && (
-              <DeviceReset
-                device={device}
-              />
-            )}
+            {step === 3 && <DeviceReset device={device} />}
           </li>
           <li className={step === 4 ? "screen active" : "screen"}>
-            {step === 4 && (
-              <FirmwareFlash
-                flashProgress={flashProgress}
-              />
-            )}
+            {step === 4 && <FirmwareFlash flashProgress={flashProgress} />}
           </li>
           <li className={step === 5 ? "screen active" : "screen"}>
             {step === 5 && <FlashComplete resetState={ResetState} />}
@@ -134,6 +136,12 @@ export default function App(props) {
           {device.model === 1 && (
             <p>
               Drop a <strong>hex file</strong> compatible with your ErgoDox EZ.
+            </p>
+          )}
+          {device.model === 2 && (
+            <p>
+              Drop a <strong>bin file</strong> compatible with your Moonlander
+              MK1.
             </p>
           )}
         </div>

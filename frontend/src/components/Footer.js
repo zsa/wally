@@ -1,24 +1,32 @@
 import React from "react";
 
 import ZSALogo from "../images/zsa-logo.png";
-import ErgodoxLogo from "../images/ergodox-logo.svg";
-import PlanckLogo from "../images/planck-logo.svg";
 
 export default ({ appVersion, model, step, toggleLog, hasError }) => {
-  const hasLogo = model < 2;
+  let modelLabel;
+  switch (model) {
+    case 0:
+      modelLabel = "PLANCK EZ";
+      break;
+    case 1:
+      modelLabel = "ERGODOX EZ";
+      break;
+    case 2:
+      modelLabel = "MOONLANDER MK1";
+      break;
+    default:
+      modelLabel = "";
+      break;
+  }
   return (
     <div className="footer">
-      {hasLogo && <div className="title">KEYBOARD:</div>}
+      <div className="title">KEYBOARD:</div>
       <div className="status">
-        {step === 0 && "LOOKING..."}
-        {step === 1 && "-SELECT-"}
-        {step > 1 && hasLogo && (
-          <img
-            alt="Planck Logo"
-            className="logo"
-            src={model === 0 ? PlanckLogo : ErgodoxLogo}
-          />
-        )}
+        <div className="model">
+          {step === 0 && "LOOKING..."}
+          {step === 1 && "-SELECT-"}
+          {step > 1 && modelLabel}
+        </div>
         {(step === 2 || step === 3) && (
           <a
             className="reset"

@@ -84,10 +84,8 @@ body {
   font-weight: bold;
 }
 
-.footer .status .logo{
-  position: relative;
-  top: 1px;
-  margin-right: 10px;
+.footer .status .model {
+  margin: 0 10px;
 }
 
 .footer .status .reset{
@@ -175,6 +173,10 @@ body {
 
 .media.clickable:hover {
   opacity: 0.9;
+}
+
+.media .logo {
+  max-width: 128px;
 }
 
 h3 {

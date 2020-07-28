@@ -1,7 +1,8 @@
 import React from "react";
 
-import PlanckGlyph from "../images/planck.svg";
-import ErgodoxGlyph from "../images/ergodox.svg";
+import PlanckGlyph from "../images/planck-logo.png";
+import ErgodoxGlyph from "../images/ergodox-logo.png";
+import MoonlanderGlyph from "../images/moonlander-logo.png";
 
 export default class DeviceSelect extends React.Component {
   handleDeviceSelect = (e, device) => {
@@ -24,8 +25,8 @@ export default class DeviceSelect extends React.Component {
           glyph = ErgodoxGlyph;
           break;
         case 2:
-          model = "Default Board";
-          glyph = ErgodoxGlyph;
+          model = "Moonlander MK1";
+          glyph = MoonlanderGlyph;
           break;
         case 3:
           model = "Board in reset mode";
@@ -39,7 +40,7 @@ export default class DeviceSelect extends React.Component {
           key={idx}
           onClick={e => this.handleDeviceSelect(e, device)}
         >
-          {glyph && <img alt={model} className="glyph" src={glyph} />}
+          {glyph && <img alt={model} className="logo glyph" src={glyph} />}
           {!glyph && <p>{model} </p>}
         </div>
       );

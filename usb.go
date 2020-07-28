@@ -6,17 +6,17 @@ import (
 )
 
 type Device struct {
-	Model int `json:"model"` // 0 - planck // 1 - ergodox
+	Model int `json:"model"` // 0 - planck // 1 - ergodox // 2 - moonlander
 	Bus   int `json:"bus"`
 	Port  int `json:"port"`
 }
 
 const (
-	vendorID1 int = 0xFEED
-	vendorID2 int = 0x3297
-	planckID  int = 0x6060
-	ergodoxID int = 0x1307
-	defaultID int = 0x1969
+	vendorID1    int = 0xFEED
+	vendorID2    int = 0x3297
+	planckID     int = 0x6060
+	ergodoxID    int = 0x1307
+	moonlanderID int = 0x1969
 
 	dfuSuffixVendorID  int = 0x83
 	dfuSuffixProductID int = 0x11
@@ -50,10 +50,12 @@ func ProbeDevices(s *State) []Device {
 				devices = append(devices, Device{Model: 0, Bus: desc.Bus, Port: desc.Port})
 
 			}
+
 			if desc.Product == gousb.ID(ergodoxID) {
 				devices = append(devices, Device{Model: 1, Bus: desc.Bus, Port: desc.Port})
 			}
-			if desc.Product == gousb.ID(defaultID) {
+
+			if desc.Product == gousb.ID(moonlanderID) {
 				devices = append(devices, Device{Model: 2, Bus: desc.Bus, Port: desc.Port})
 			}
 		}

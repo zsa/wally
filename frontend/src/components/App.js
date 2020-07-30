@@ -24,6 +24,7 @@ export default function App(props) {
     }
   } = props;
 
+  console.log(props)
   const onDrop = useCallback(files => {
     let allowedExtension;
     switch (device.model) {
@@ -73,7 +74,7 @@ export default function App(props) {
 
   if (ready === false) return null;
 
-  const hasError = logs !== null && logs.some(log => log.level === "error");
+  const hasError = logs && logs.some(log => log.level === "error");
   const allowedExtension =
     step === 2 ? (device.model === 0 ? ".bin" : ".hex") : "";
 

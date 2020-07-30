@@ -48,7 +48,6 @@ func ProbeDevices(s *State) []Device {
 		if desc.Vendor == gousb.ID(vendorID1) || desc.Vendor == gousb.ID(vendorID2) {
 			if desc.Product == gousb.ID(planckID) {
 				devices = append(devices, Device{Model: 0, Bus: desc.Bus, Port: desc.Port})
-
 			}
 
 			if desc.Product == gousb.ID(ergodoxID) {

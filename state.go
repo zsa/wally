@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"encoding/binary"
+	"encoding/json"
 	"fmt"
 	"github.com/wailsapp/wails"
 	"io/ioutil"
@@ -13,6 +14,16 @@ import (
 	"strings"
 	"time"
 )
+
+
+func jsonEscape(i string) string {
+    b, err := json.Marshal(i)
+    if err != nil {
+        panic(err)
+	}
+
+    return string(b[1:len(b)-1])
+}
 
 type log struct {
 	Timestamp int64  `json:"timestamp"`
@@ -78,7 +89,7 @@ func (s *State) emitUpdate() {
 
 func (s *State) Log(level string, message string) {
 	now := time.Now()
-	l := log{Timestamp: now.Unix(), Level: level, Message: message}
+	l := log{Timestamp: now.Unix(), Level: level, Message: jsonEscape(message)}
 	s.Logs = append(s.Logs, l)
 	s.emitUpdate()
 }
@@ -127,7 +138,9 @@ func (s *State) SelectFirmware() {
 	} else {
 		filter = "*.bin"
 	}
-	s.FirmwarePath = s.runtime.Dialog.SelectFile("Select a firmware file", filter)
+	filePath := s.runtime.Dialog.SelectFile("Select a firmware file", filter)
+
+	s.FirmwarePath = jsonEscape(filePath)
 
 	if s.FirmwarePath != "" {
 		s.Step = 3
@@ -152,7 +165,7 @@ func (s *State) SelectFirmwareWithData(data string) {
 		message := fmt.Sprintf("Error while creating the temporary firmware file: %s", err)
 		s.Log("error", message)
 	} else {
-		s.FirmwarePath = filePath
+		s.FirmwarePath = jsonEscape(filePath)
 		s.Step = 3
 		s.FlashFirmware()
 		s.emitUpdate()

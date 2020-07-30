@@ -128,8 +128,6 @@ func (s *State) SelectFirmware() {
 		filter = "*.bin"
 	}
 	s.FirmwarePath = s.runtime.Dialog.SelectFile("Select a firmware file", filter)
-	fmt.Println("Select")
-	fmt.Println(s.FirmwarePath)
 
 	if s.FirmwarePath != "" {
 		s.Step = 3

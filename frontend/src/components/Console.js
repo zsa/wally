@@ -17,7 +17,7 @@ export default ({ logs }) => {
   return (
     <div className="console">
       <div className="lines">
-        {logs.map((line, index) => (
+        { logs && logs.map((line, index) => (
           <LogLine key={index} line={line} />
         ))}
       </div>

@@ -60,7 +60,7 @@ export default function App(props) {
     } else {
       window.backend.State.Log(
         "error",
-        `The file "${file.name}" is not a valid firmware file, a .${allowedExtension} is expected.`
+        `The file ${file.name} is not a valid firmware file, a .${allowedExtension} is expected.`
       );
     }
   });

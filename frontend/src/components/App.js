@@ -36,10 +36,14 @@ export default function App(props) {
       case 2:
         allowedExtension = "bin";
         break;
+      case 3:
+        allowedExtension = "bin";
+        break;
       default:
         allowedExtension = null;
         break;
     }
+    console.log(allowedExtension, device)
     const file = files[0];
     const fileExtension = file.name.split(".").pop();
     const isValidExtension = fileExtension === allowedExtension;

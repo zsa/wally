@@ -17,15 +17,15 @@ export default class DeviceSelect extends React.Component {
       let glyph = null;
       switch (device.model) {
         case 0:
-          model = "Planck EZ";
+          model = "Select your Planck EZ";
           glyph = PlanckGlyph;
           break;
         case 1:
-          model = "Ergodox EZ";
+          model = "Select your Ergodox EZ";
           glyph = ErgodoxGlyph;
           break;
         case 2:
-          model = "Moonlander MK1";
+          model = "Select your Moonlander MK1";
           glyph = MoonlanderGlyph;
           break;
         case 3:
@@ -36,8 +36,10 @@ export default class DeviceSelect extends React.Component {
       }
       return (
         <div
+          aria-label={model}
           className="media clickable"
           key={idx}
+          role="button"
           onClick={e => this.handleDeviceSelect(e, device)}
         >
           {glyph && <img alt={model} className="logo glyph" src={glyph} />}

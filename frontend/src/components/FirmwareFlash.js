@@ -8,7 +8,7 @@ export default props => {
     <div>
       <div className="media-container">
         <div className="media">
-          <img alt="Flash" src={FlashGlyph} />
+          <img alt="Your keyboard is being flashed, don't unplug it" src={FlashGlyph} />
         </div>
       </div>
       <h3>Flashing firmware</h3>

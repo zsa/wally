@@ -39,7 +39,7 @@ export default class FirmwareSelect extends React.Component {
             Select or drop a <strong>bin file</strong> compatible with your board
           </p>
         )}
-        <button className="button" onClick={this.handleButtonClick}>
+        <button className="button" role="button" onClick={this.handleButtonClick}>
           Select File
         </button>
       </div>

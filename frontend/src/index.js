@@ -8,7 +8,6 @@ import App from "./components/App";
 
 import Wails from "@wailsapp/runtime";
 
-
 class Wally extends React.Component {
   state = {
     ready: false,

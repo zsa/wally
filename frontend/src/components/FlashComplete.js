@@ -25,10 +25,10 @@ export default class FlashComplete extends React.Component {
           Your keyboard was successfully flashed and rebooted. <br />
           Enjoy the new firmware!
         </p>
-        <button className="button" onClick={this.handleResetClick}>
+        <button className="button" role="button" onClick={this.handleResetClick}>
           Flash again
         </button>
-        <button className="button" onClick={this.handleCloseClick}>
+        <button className="button" role="button" onClick={this.handleCloseClick}>
           Close
         </button>
       </div>

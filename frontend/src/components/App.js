@@ -24,7 +24,6 @@ export default function App(props) {
     }
   } = props;
 
-  console.log(props)
   const onDrop = useCallback(files => {
     let allowedExtension;
     switch (device.model) {

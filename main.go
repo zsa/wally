@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/leaanthony/mewn"
 	"github.com/wailsapp/wails"
+	"github.com/zsa/wally/wally"
 )
 
 func main() {
@@ -18,7 +19,7 @@ func main() {
 		CSS:       css,
 		Colour:    "#131313",
 	})
-	state := NewState(0, "")
+	state := wally.NewState(0, "")
 	app.Bind(state)
 	app.Run()
 }

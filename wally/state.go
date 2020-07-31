@@ -1,4 +1,4 @@
-package main
+package wally
 
 import (
 	"bytes"
@@ -15,14 +15,13 @@ import (
 	"time"
 )
 
-
 func jsonEscape(i string) string {
-    b, err := json.Marshal(i)
-    if err != nil {
-        panic(err)
+	b, err := json.Marshal(i)
+	if err != nil {
+		panic(err)
 	}
 
-    return string(b[1:len(b)-1])
+	return string(b[1 : len(b)-1])
 }
 
 type log struct {

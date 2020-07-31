@@ -1,4 +1,4 @@
-package main
+package wally
 
 import "runtime"
 

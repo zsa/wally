@@ -20,12 +20,14 @@ dist/osx/Wally.app/Contents/_CodeSignature
 dist/osx/*Notarized
 dist/osx/wally-cli
 dist/osx/*dmg
+dist/osx/Wally.app/Contents/libs/libusb-1.0.0.dylib
 dist/linux64/wally
 dist/linux64/wally-cli
+
+
 dist/win64/wally.exe
 dist/win64/wally-cli.exe
 dist/win64/installer/Output
-
 wally.rc
 wally.ico
 wally.exe.manifest

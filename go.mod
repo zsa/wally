@@ -1,4 +1,4 @@
-module wally
+module github.com/zsa/wally
 
 go 1.14
 

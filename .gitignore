@@ -32,3 +32,4 @@ wally.exe.manifest
 wally-res.syso
 ui
 wally-winx64.exe
+*.dll

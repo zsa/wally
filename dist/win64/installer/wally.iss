@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Wally"
-#define MyAppVersion "1.1.4"
+#define MyAppVersion "2.0.0"
 #define MyAppPublisher "ZSA.io"
 #define MyAppURL "https://ergodox-ez.com"
 #define MyAppExeName "wally.exe"
@@ -23,7 +23,7 @@ DisableProgramGroupPage=yes
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
 OutputBaseFilename=wally
-SetupIconFile=D:\dev\go\src\github.com\zsa\wally\dist\win64\Wally.ico
+SetupIconFile=..\Wally.ico
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
@@ -35,10 +35,10 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "D:\dev\go\src\github.com\zsa\wally\dist\win64\wally.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\dev\go\src\github.com\zsa\wally\dist\win64\wally-cli.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\dev\go\src\github.com\zsa\wally\dist\win64\post_install.bat"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\dev\go\src\github.com\zsa\wally\dist\win64\wdi-simple.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\wally.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\libusb-1.0.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\post_install.bat"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\wdi-simple.exe"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

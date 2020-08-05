@@ -12,7 +12,7 @@ body {
   background: url('../images/background.png') no-repeat center center;
   background-size: cover;
   font-family: "lato";
-  font-weight: light;
+  font-weight: lighter;
   width: 100vw;
   height: 100vh;
 }

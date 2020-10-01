@@ -5,7 +5,7 @@ Flash your [ZSA Keyboard](https://ergodox-ez.com) the EZ way.
 ## Getting started
 
 Wally comes in two flavors, a GUI and a CLI app.
-Download the application for your favorite platform from the [release page](https://github.com/zsa/wally/releases).
+Download the application for your favorite platform from the relevant release page: [GUI](https://github.com/zsa/wally/releases) / [CLI](https://github.com/zsa/wally-cli/releases).
 
 Note for Linux users, follow the instructions from our [wiki page](https://github.com/zsa/wally/wiki/Linux-install) before running the application.
 

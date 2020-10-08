@@ -6,12 +6,12 @@ import "runtime"
 func GetAppVersion() string {
 	switch runtime.GOOS {
 	case "darwin":
-		return "2.0.0"
+		return "2.1.0"
 	case "linux":
-		return "2.0.0"
+		return "2.1.0"
 	case "windows":
-		return "2.0.0"
+		return "2.1.0"
 	default:
-		return "2.0.0"
+		return "2.1.0"
 	}
 }

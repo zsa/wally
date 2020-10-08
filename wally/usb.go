@@ -38,6 +38,20 @@ const (
 	eraseFlash         = 2
 )
 
+var vendorIds = []int{0xfeed, 0x3297}                  // legacy - zsa's vendor id
+var ergodoxIds = []int{0x1307, 0x4974, 0x4975, 0x4976} // legacy - standard - shine - glow
+var planckIds = []int{0x6060, 0xc6ce, 0xc6cf}          // legacy - standard - glow
+var moonlanderIds = []int{0x1969}                      // mk1
+
+func contains(s []int, e int) bool {
+	for _, a := range s {
+		if a == e {
+			return true
+		}
+	}
+	return false
+}
+
 func ProbeDevices(s *State) []Device {
 	devices := []Device{}
 	ctx := gousb.NewContext()
@@ -45,16 +59,16 @@ func ProbeDevices(s *State) []Device {
 	s.Log("info", "Probing compatible usb devices")
 
 	_, err := ctx.OpenDevices(func(desc *gousb.DeviceDesc) bool {
-		if desc.Vendor == gousb.ID(vendorID1) || desc.Vendor == gousb.ID(vendorID2) {
-			if desc.Product == gousb.ID(planckID) {
+		if contains(vendorIds, int(desc.Vendor)) {
+			if contains(planckIds, int(desc.Product)) {
 				devices = append(devices, Device{Model: 0, Bus: desc.Bus, Port: desc.Port})
 			}
 
-			if desc.Product == gousb.ID(ergodoxID) {
+			if contains(ergodoxIds, int(desc.Product)) {
 				devices = append(devices, Device{Model: 1, Bus: desc.Bus, Port: desc.Port})
 			}
 
-			if desc.Product == gousb.ID(moonlanderID) {
+			if contains(moonlanderIds, int(desc.Product)) {
 				devices = append(devices, Device{Model: 2, Bus: desc.Bus, Port: desc.Port})
 			}
 		}

@@ -236,6 +236,8 @@ func DFUFlash(s *State) {
 		s.emitUpdate()
 	}
 
+	time.Sleep(1 * time.Second)
+
 	s.Log("info", "Sending the reboot command")
 
 	err = dfuReboot(dev, &dfuStatus)

@@ -114,6 +114,8 @@ func TeensyFlash(s *State) {
 		s.emitUpdate()
 	}
 
+	time.Sleep(1 * time.Second)
+
 	s.Log("info", "Sending the reboot command")
 	buf := make([]byte, ergodoxBlockSize+2)
 	buf[0] = byte(0xFF)

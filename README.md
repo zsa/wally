@@ -33,7 +33,10 @@ Wally is compatible with Windows, Linux, and macOS. Developing using each platfo
 
 #### Linux
 
-Follow the instructions from our [wiki page](https://github.com/zsa/wally/wiki/Linux-install)
+Follow the instructions from our [wiki page](https://github.com/zsa/wally/wiki/Linux-install) or run the `install.linux.sh`.
+`install.linux.sh` should install all needed packages according to your x86 distribution.
+If you try to get wally working on a RaspberryPi, which has an ARM architecture, the script will compile the `wally-cli` for you and set it as alias in your bash.
+Installing should be as easy as running `./install.linux.sh`
 
 #### macOS
 

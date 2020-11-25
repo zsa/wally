@@ -2,6 +2,8 @@
 
 Flash your [ZSA Keyboard](https://ergodox-ez.com) the EZ way.
 
+ℹ️ Windows users: [There's a new version of Wally](https://github.com/zsa/wally-win/) rewritten from the ground up using native tehcnologies
+
 ## Getting started
 
 ⚠️ Warning starting from firmware v19, Wally needs to be updated to v2.1.0 in order to detect your keyboard. Linux users should update their udev rules using the latest version from [the wiki](https://github.com/zsa/wally/wiki/Live-training-on-Linux).

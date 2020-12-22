@@ -19,6 +19,7 @@ func TeensyFlash(s *State) {
 	}
 	defer file.Close()
 
+	s.FlashProgress.Sent = 0
 	s.FlashProgress.Total = ergodoxCodeSize
 
 	firmware := gohex.NewMemory()

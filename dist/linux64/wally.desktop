@@ -7,4 +7,4 @@ Comment=Flash your ZSA keyboard the EZ way
 Exec=wally
 Icon=wally
 Terminal=false
-Categories=Development;
+Categories=Settings;HardwareSettings;

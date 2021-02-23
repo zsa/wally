@@ -19,7 +19,7 @@ func main() {
 		CSS:       css,
 		Colour:    "#131313",
 	})
-	state := wally.NewState(0, "")
+	state := wally.NewState(wally.Probing, "")
 	app.Bind(state)
 	app.Run()
 }

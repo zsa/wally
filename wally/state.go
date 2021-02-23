@@ -36,19 +36,30 @@ type FlashProgress struct {
 	Sent  int `json:"sent"`  // total of bytes sent
 }
 
+type Step int8
+
+const (
+	Probing        Step = iota // probing keyboard
+	SelectKeyboard             // select keyboard
+	FirmwareFile               // select firmware file
+	Waiting                    // waiting for keyboard reset
+	Flashing                   // flashing
+	Complete                   // complete
+)
+
 //State represents the global state of the application
 type State struct {
 	runtime       *wails.Runtime
 	AppVersion    string        `json:"appVersion"`
 	Device        Device        `json:"device"`        // The user selected usb device
 	Devices       []Device      `json:"devices"`       // The list of usb devices connected
-	Step          int8          `json:"step"`          // The current flashing process step. // 0 - Probing keyboard // 1 - Select keyboard // 2 - Select firmware file // 3 - Waiting for keyboard reset // 4 - Flashing // 5 - Complete
+	Step          Step          `json:"step"`          // The current flashing process step
 	FirmwarePath  string        `json:"firmwarePath"`  // The firmware absolute Path selected by the user
 	FlashProgress FlashProgress `json:"flashProgress"` // The Flashing state progress
 	Logs          []log         `json:"logs"`          // Log object
 }
 
-func NewState(step int8, filePath string) *State {
+func NewState(step Step, filePath string) *State {
 	s := State{Step: step}
 	s.AppVersion = GetAppVersion()
 	if filePath != "" && runtime.GOOS != "darwin" {
@@ -97,12 +108,12 @@ func (s *State) ProbeDevices() {
 	for len(s.Devices) == 0 {
 		s.Devices = ProbeDevices(s)
 		if len(s.Devices) > 1 {
-			s.Step = 1
+			s.Step = SelectKeyboard
 			s.emitUpdate()
 		}
 		if len(s.Devices) == 1 {
 			s.Device = s.Devices[0]
-			s.Step = 2
+			s.Step = FirmwareFile
 			s.emitUpdate()
 		}
 		time.Sleep(1 * time.Second)
@@ -110,7 +121,7 @@ func (s *State) ProbeDevices() {
 }
 
 func (s *State) CompleteFlash() {
-	s.Step = 5
+	s.Step = Complete
 }
 
 func (s *State) ResetState() {
@@ -118,7 +129,7 @@ func (s *State) ResetState() {
 	s.Devices = []Device{}
 	s.FirmwarePath = ""
 	s.FlashProgress = FlashProgress{}
-	s.Step = 0
+	s.Step = Probing
 	s.ProbeDevices()
 	s.Log("info", "Application state reset")
 }
@@ -126,7 +137,7 @@ func (s *State) ResetState() {
 func (s *State) SelectDevice(model int, bus int, port int) {
 	device := Device{Model: model, Bus: bus, Port: port}
 	s.Device = device
-	s.Step = 2
+	s.Step = FirmwareFile
 	s.emitUpdate()
 }
 
@@ -142,7 +153,7 @@ func (s *State) SelectFirmware() {
 	s.FirmwarePath = jsonEscape(filePath)
 
 	if s.FirmwarePath != "" {
-		s.Step = 3
+		s.Step = Waiting
 		s.FlashFirmware()
 		s.emitUpdate()
 	}
@@ -165,7 +176,7 @@ func (s *State) SelectFirmwareWithData(data string) {
 		s.Log("error", message)
 	} else {
 		s.FirmwarePath = jsonEscape(filePath)
-		s.Step = 3
+		s.Step = Flashing
 		s.FlashFirmware()
 		s.emitUpdate()
 	}

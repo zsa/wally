@@ -1,14 +1,18 @@
 package main
 
 import (
-	"github.com/leaanthony/mewn"
+	_ "embed"
 	"github.com/wailsapp/wails"
 	"github.com/zsa/wally/wally"
 )
 
+//go:embed frontend/build/static/js/main.js
+var js string
+
+//go:embed frontend/build/static/css/main.css
+var css string
+
 func main() {
-	js := mewn.String("./frontend/build/static/js/main.js")
-	css := mewn.String("./frontend/build/static/css/main.css")
 
 	app := wails.CreateApp(&wails.AppConfig{
 		Width:     630,

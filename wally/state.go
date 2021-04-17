@@ -5,32 +5,22 @@ import (
 	"encoding/binary"
 	"encoding/json"
 	"fmt"
-	"github.com/wailsapp/wails"
-	"io/ioutil"
 	"os"
 	"path/filepath"
-	"runtime"
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/wailsapp/wails"
 )
 
-func jsonEscape(i string) string {
-	b, err := json.Marshal(i)
-	if err != nil {
-		panic(err)
-	}
-
-	return string(b[1 : len(b)-1])
-}
-
-type log struct {
+type stateLog struct {
 	Timestamp int64  `json:"timestamp"`
 	Level     string `json:"level"`
 	Message   string `json:"message"`
 }
 
-//FlashProgress represents the current flashing state, it gets updated by the flashing methods.
+// FlashProgress represents the current flashing state, it gets updated by the flashing methods.
 type FlashProgress struct {
 	Total int `json:"total"` // total of firmware bytes to send
 	Sent  int `json:"sent"`  // total of bytes sent
@@ -47,7 +37,7 @@ const (
 	Complete                   // complete
 )
 
-//State represents the global state of the application
+// State represents the global state of the application
 type State struct {
 	runtime       *wails.Runtime
 	AppVersion    string        `json:"appVersion"`
@@ -56,32 +46,34 @@ type State struct {
 	Step          Step          `json:"step"`          // The current flashing process step
 	FirmwarePath  string        `json:"firmwarePath"`  // The firmware absolute Path selected by the user
 	FlashProgress FlashProgress `json:"flashProgress"` // The Flashing state progress
-	Logs          []log         `json:"logs"`          // Log object
+	Logs          []stateLog    `json:"logs"`          // Log object
 }
 
-func NewState(step Step, filePath string) *State {
-	s := State{Step: step}
+func NewState(step Step, firmwarePath string) (s *State, err error) {
+	s = &State{Step: step}
 	s.AppVersion = GetAppVersion()
-	if filePath != "" && runtime.GOOS != "darwin" {
-		_, err := ioutil.ReadFile(filePath)
-		if err != nil {
-			message := fmt.Sprintf("Error while opening firmware: %s", err)
-			s.Log("error", message)
-		} else {
-			extension := filepath.Ext(filePath)
-			if extension == ".bin" {
-				s.Device = Device{Model: 0, Bus: 0, Port: 0}
-
-			} else if extension == ".hex" {
-				s.Device = Device{Model: 1, Bus: 0, Port: 0}
-			} else {
-				message := fmt.Sprintf("File extension %s is not supported", extension)
-				s.Log("error", message)
-				return &s
-			}
-		}
+	if firmwarePath == "" {
+		err = fmt.Errorf("please provide a valid firmware file: a .hex file (ErgoDox EZ) or a .bin file (Moonlander / Planck EZ)")
+		return
 	}
-	return &s
+	// Ensure the provided file has a valid file extension
+	ext := filepath.Ext(firmwarePath)
+	if ext != ".bin" && ext != ".hex" {
+		err = fmt.Errorf("file extension %s is not supported", ext)
+		return
+	} else if ext == ".bin" {
+		s.Device = Device{Model: Planck, Bus: 0, Port: 0}
+	} else if ext == ".hex" {
+		s.Device = Device{Model: ErgoDox, Bus: 0, Port: 0}
+	}
+	// Ensure the provided file can be read
+	_, err = os.ReadFile(firmwarePath)
+	if err != nil {
+		err = fmt.Errorf("error while opening firmware: %s", err)
+		return
+	}
+	s.FirmwarePath = firmwarePath
+	return
 }
 
 func (s *State) WailsInit(runtime *wails.Runtime) error {
@@ -94,12 +86,16 @@ func (s *State) WailsInit(runtime *wails.Runtime) error {
 }
 
 func (s *State) emitUpdate() {
+	// Don't emit an update if there is no runtime member variable
+	if s.runtime == nil {
+		return
+	}
 	s.runtime.Events.Emit("state_update", s)
 }
 
 func (s *State) Log(level string, message string) {
 	now := time.Now()
-	l := log{Timestamp: now.Unix(), Level: level, Message: jsonEscape(message)}
+	l := stateLog{Timestamp: now.Unix(), Level: level, Message: jsonEscape(message)}
 	s.Logs = append(s.Logs, l)
 	s.emitUpdate()
 }
@@ -134,7 +130,7 @@ func (s *State) ResetState() {
 	s.Log("info", "Application state reset")
 }
 
-func (s *State) SelectDevice(model int, bus int, port int) {
+func (s *State) SelectDevice(model Model, bus int, port int) {
 	device := Device{Model: model, Bus: bus, Port: port}
 	s.Device = device
 	s.Step = FirmwareFile
@@ -170,7 +166,7 @@ func (s *State) SelectFirmwareWithData(data string) {
 		dataInt = append(dataInt, int8(i))
 	}
 	err := binary.Write(buf, binary.LittleEndian, dataInt)
-	err = ioutil.WriteFile(filePath, buf.Bytes(), 0644)
+	err = os.WriteFile(filePath, buf.Bytes(), 0644)
 	if err != nil {
 		message := fmt.Sprintf("Error while creating the temporary firmware file: %s", err)
 		s.Log("error", message)
@@ -187,11 +183,20 @@ func (s *State) Shutdown() {
 }
 
 func (s *State) FlashFirmware() {
-	if s.Device.Model == 1 {
+	if s.Device.Model == ErgoDox {
 		s.Log("info", "Starting Teensy Flash")
 		go TeensyFlash(s)
 	} else {
 		s.Log("info", "Starting DFU Flash")
 		go DFUFlash(s)
 	}
+}
+
+func jsonEscape(i string) string {
+	b, err := json.Marshal(i)
+	if err != nil {
+		panic(err)
+	}
+
+	return string(b[1 : len(b)-1])
 }

@@ -2,14 +2,16 @@ package wally
 
 import (
 	"fmt"
-	"github.com/google/gousb"
-	"github.com/marcinbor85/gohex"
 	"os"
 	"time"
+
+	"github.com/google/gousb"
+	"github.com/marcinbor85/gohex"
 )
 
-// TeensyFlash: Flashes Teensy boards.
-// It opens the firmware file at the provided path, checks it's integrity, wait for the keyboard to be in Flash mode, flashes it and reboots the board.
+// TeensyFlash flashes Teensy boards. It opens the firmware file at the provided
+// path, checks its integrity, wait for the keyboard to be in Flash mode,
+// flashes it, and reboots the board.
 func TeensyFlash(s *State) {
 	file, err := os.Open(s.FirmwarePath)
 	if err != nil {
@@ -129,6 +131,6 @@ func TeensyFlash(s *State) {
 		return
 	}
 
-	s.Step = 5
+	s.Step = Complete
 	s.Log("info", "Flash complete")
 }

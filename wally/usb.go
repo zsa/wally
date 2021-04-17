@@ -2,13 +2,25 @@ package wally
 
 import (
 	"fmt"
+
 	"github.com/google/gousb"
 )
 
+// The Model type encodes which type of keyboard is being flashed. Three
+// associated constants are defined for this type:
+// Planck, ErgoDox, and Moonlander
+type Model int
+
+const (
+	Planck Model = iota
+	ErgoDox
+	Moonlander
+)
+
 type Device struct {
-	Model int `json:"model"` // 0 - planck // 1 - ergodox // 2 - moonlander
-	Bus   int `json:"bus"`
-	Port  int `json:"port"`
+	Model Model `json:"model"` // 0 - planck // 1 - ergodox // 2 - moonlander
+	Bus   int   `json:"bus"`
+	Port  int   `json:"port"`
 }
 
 const (

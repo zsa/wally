@@ -3,9 +3,10 @@ package wally
 import (
 	"errors"
 	"fmt"
-	"github.com/google/gousb"
-	"io/ioutil"
+	"os"
 	"time"
+
+	"github.com/google/gousb"
 )
 
 type status struct {
@@ -112,7 +113,7 @@ func extractSuffix(fileData []byte) (hasSuffix bool, data []byte, err error) {
 
 func DFUFlash(s *State) {
 	dfuStatus := status{}
-	fileData, err := ioutil.ReadFile(s.FirmwarePath)
+	fileData, err := os.ReadFile(s.FirmwarePath)
 	if err != nil {
 		message := fmt.Sprintf("Error while opening firmware: %s", err)
 		s.Log("error", message)
@@ -195,8 +196,7 @@ func DFUFlash(s *State) {
 
 	err = dfuCommand(dev, 0, eraseFlash, &dfuStatus)
 	if err != nil {
-		message := fmt.Sprintf("Error while erasing flash:", err)
-		s.Log("error", message)
+		err = fmt.Errorf("Error while erasing flash:", err)
 		return
 	}
 

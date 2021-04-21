@@ -196,7 +196,8 @@ func DFUFlash(s *State) {
 
 	err = dfuCommand(dev, 0, eraseFlash, &dfuStatus)
 	if err != nil {
-		err = fmt.Errorf("Error while erasing flash:", err)
+		message := fmt.Sprintf("error while erasing flash: %v", err)
+		s.Log("error", message)
 		return
 	}
 

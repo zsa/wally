@@ -2,7 +2,9 @@
 
 Flash your [ZSA Keyboard](https://ergodox-ez.com) the EZ way.
 
-ℹ️ Windows users: [There's a new version of Wally](https://github.com/zsa/wally-win/) rewritten from the ground up using native technologies
+ℹ️ Windows users: [There's a new version of Wally](https://github.com/zsa/wally-win/) rewritten from the ground up using native technologies.
+
+ErgoDox EZ users: [Teensy Loader](https://www.pjrc.com/teensy/loader.html) will still work for flashing your ErgoDox EZ (as will Wally — you've got options!).
 
 ## Getting started
 

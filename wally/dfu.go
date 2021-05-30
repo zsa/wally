@@ -181,6 +181,7 @@ func DFUFlash(s *State) {
 	defer cfg.Close()
 
 	fileSize := len(firmwareData)
+	s.FlashProgress.Sent = 0
 	s.FlashProgress.Total = fileSize
 
 	err = dfuClearStatus(dev)

@@ -5,7 +5,6 @@ import (
 	"encoding/binary"
 	"encoding/json"
 	"fmt"
-	"github.com/wailsapp/wails"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -13,6 +12,8 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/wailsapp/wails"
 )
 
 func jsonEscape(i string) string {
@@ -176,7 +177,7 @@ func (s *State) SelectFirmwareWithData(data string) {
 		s.Log("error", message)
 	} else {
 		s.FirmwarePath = jsonEscape(filePath)
-		s.Step = Flashing
+		s.Step = Waiting
 		s.FlashFirmware()
 		s.emitUpdate()
 	}

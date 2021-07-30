@@ -8,7 +8,7 @@ func GetAppVersion() string {
 	case "darwin":
 		return "2.1.0"
 	case "linux":
-		return "2.1.1"
+		return "2.1.2"
 	case "windows":
 		return "2.1.0"
 	default:

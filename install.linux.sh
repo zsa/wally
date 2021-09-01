@@ -31,8 +31,15 @@ declare -A packageAA=(
         libusb
     '
 )
+
+declare -A commandAA=(
+    ['apt-get']='install -y'
+    ['yum']='install -y'
+    ['pacman']='--noconfirm -S'
+)
+
 for key in ${!packageAA[@]}; do
-    which $key && sudo $key install -y ${packageAA[$key]}
+    which $key && sudo $key ${commandAA[$key]} ${packageAA[$key]}
 done
 
 # UDEV RULES

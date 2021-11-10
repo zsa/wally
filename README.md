@@ -59,3 +59,7 @@ brew install libusb
 Note: the GUI app won't include libusb so it needs to be installed on the computer running it. To embed libusb into the binary, install [dylibbundler](https://github.com/auriamg/macdylibbundler/) and run:
 
 `dylibbundler -of -b -x ./dist/osx/Wally.app/Contents/MacOS/Wally -d ./dist/osx/Wally.app/Contents/libs/`
+
+### Sending feedback
+
+As you may have noticed, we do not have GitHub Issues enabled for this project. Instead, please submit all feedback via email to contact@zsa.io — you will find us very responsive. Thank you for your help with Wally!

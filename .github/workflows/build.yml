@@ -16,7 +16,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          sudo apt install -y build-essential libgtk-3-dev libwebkit2gtk-4.0-dev nodejs npm
+          sudo apt install -y build-essential libgtk-3-dev libwebkit2gtk-4.0-dev nodejs npm libusb-1.0-0-dev
           go install github.com/wailsapp/wails/cmd/wails@latest
 
       - name: Checkout code

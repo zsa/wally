@@ -25,7 +25,7 @@ jobs:
       - name: Wails build
         run: |
           go mod download github.com/wailsapp/wails
-          wails build
+          CI= wails build
 
       - uses: actions/upload-artifact@v2
         with:
@@ -53,7 +53,7 @@ jobs:
       - name: Wails build
         run: |
           go mod download github.com/wailsapp/wails
-          ./build.osx.sh
+          CI= ./build.osx.sh
           cd ./dist/osx
           appdmg dmj.json Wally-Intel.dmg
 

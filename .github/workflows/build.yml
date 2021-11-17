@@ -55,7 +55,7 @@ jobs:
           go mod download github.com/wailsapp/wails
           CI= ./build.osx.sh
           cd ./dist/osx
-          appdmg dmj.json Wally-Intel.dmg
+          appdmg dmg.json Wally-Intel.dmg
 
       - uses: actions/upload-artifact@v2
         with:

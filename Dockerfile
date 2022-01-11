@@ -17,7 +17,7 @@ ENV PATH=$PATH:/usr/local/bin/go/bin
 ENV GOPATH=/usr/local/bin/go
 
 RUN npm i -g yarn
-RUN go get -u github.com/wailsapp/wails/cmd/wails
+RUN go get -u github.com/wailsapp/wails/cmd/wails@v1.16.7
 
 WORKDIR project
 COPY /*.go ./

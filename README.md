@@ -8,12 +8,12 @@ ErgoDox EZ users: [Teensy Loader](https://www.pjrc.com/teensy/loader.html) will 
 
 ## Getting started
 
-⚠️ Warning starting from firmware v19, Wally needs to be updated to v2.1.0 in order to detect your keyboard. Linux users should update their udev rules using the latest version [from the wiki](https://github.com/zsa/wally/wiki/Linux-install).
+⚠️ Warning starting from firmware v19, Wally needs to be updated to v2.1.0 in order to detect your keyboard.
 
 Wally comes in two flavors, a GUI and a CLI app.
 Download the application for your favorite platform from the relevant release page: [GUI](https://github.com/zsa/wally/releases) / [CLI](https://github.com/zsa/wally-cli/releases).
 
-Note for Linux users, follow the instructions from our [wiki page](https://github.com/zsa/wally/wiki/Linux-install) before running the application.
+Note for Linux users, make sure your udev rules match the latest version [from the wiki](https://github.com/zsa/wally/wiki/Linux-install).
 
 Note for Mac OS users, the CLI requires libusb to be installed: `brew install libusb`
 

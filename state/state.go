@@ -346,6 +346,11 @@ func (s *State) Reset() {
 	s.SetStep(Probing)
 }
 
+func (s *State) Quit() {
+	s.Teardown()
+	wails.Quit(s.ctx)
+}
+
 func (s *State) Teardown() {
 	//usb.DeleteEnumerator(s.enumerator)
 }

@@ -15,6 +15,8 @@ export function Log(arg1:string,arg2:string):Promise<void>;
 
 export function Open(arg1:number):Promise<boolean>;
 
+export function Quit():Promise<void>;
+
 export function Reset():Promise<void>;
 
 export function SelectDevice(arg1:number):Promise<void>;

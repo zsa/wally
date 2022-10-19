@@ -26,6 +26,10 @@ export function Open(arg1) {
   return window['go']['state']['State']['Open'](arg1);
 }
 
+export function Quit() {
+  return window['go']['state']['State']['Quit']();
+}
+
 export function Reset() {
   return window['go']['state']['State']['Reset']();
 }

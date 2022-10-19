@@ -1,0 +1,12 @@
+{
+  "name": "wally",
+  "outputfilename": "wally",
+  "frontend:install": "npm install",
+  "frontend:build": "npm run build",
+  "frontend:dev:watcher": "npm run dev",
+  "frontend:dev:serverUrl": "auto",
+  "author": {
+    "name": "Florian Didron",
+    "email": "0x6664@hey.com"
+  }
+}

@@ -2,7 +2,6 @@
   import state, { Step } from "../lib/state";
   import ZSALogo from "../img/zsa-logo.png";
   import { Reset } from "../../wailsjs/go/state/State";
-  import FirmwareFlashing from "./steps/FirmwareFlashing.svelte";
   function toggleConsole() {
     $state.showConsole = !$state.showConsole;
     $state.showAbout = false;

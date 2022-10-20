@@ -22,10 +22,6 @@ export function Log(arg1, arg2) {
   return window['go']['state']['State']['Log'](arg1, arg2);
 }
 
-export function Open(arg1) {
-  return window['go']['state']['State']['Open'](arg1);
-}
-
 export function Quit() {
   return window['go']['state']['State']['Quit']();
 }

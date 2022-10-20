@@ -105,7 +105,10 @@ func (s *State) StateStart() {
 
 	go func() {
 		s.Log("info", "UI started, listening to usb events")
-		enumerator.Listen()
+		enumerator.ListenDevices()
+	}()
+	go func() {
+		enumerator.HandleEvents()
 	}()
 
 }
@@ -177,6 +180,8 @@ func (s *State) SelectFirmware() {
 }
 
 func (s *State) StartFlashing() {
+	s.enumerator.StopListenDevices()
+	time.Sleep(1 * time.Second)
 	s.SetStep(FirmwareFlashing)
 	err := s.SelectedDevice.Flash(*s.FirmwarePath, func(message usb.FlashCallback) {
 		if message.Type == usb.Log {
@@ -193,6 +198,7 @@ func (s *State) StartFlashing() {
 		s.Log("info", "flash complete")
 		s.SetStep(FlashComplete)
 	}
+	s.enumerator.ListenDevices()
 }
 
 func (s *State) HandleUSBConnectionEvent(connect bool, dev usb.Device) {
@@ -200,15 +206,16 @@ func (s *State) HandleUSBConnectionEvent(connect bool, dev usb.Device) {
 		s.Devices = make(map[int]usb.USBDevice)
 	}
 
-	fingerprint := dev.GetFingerprint()
-	name := dev.GetFriendly_name()
 	bootloader := dev.GetBootloader()
+	fingerprint := dev.GetFingerprint()
 	firmwareFormat := dev.GetFile_format()
-	protocol := dev.GetProtocol()
+	model := dev.GetModel()
+	name := dev.GetFriendly_name()
 	portNumber := dev.GetPort_number()
+	protocol := dev.GetProtocol()
 
 	if connect {
-		device := usb.USBDevice{FriendlyName: name, Fingerprint: fingerprint, PortNumber: portNumber, Bootloader: bootloader, FirmwareFormat: firmwareFormat, Protocol: protocol, Handle: dev}
+		device := usb.USBDevice{FriendlyName: name, Model: model, Fingerprint: fingerprint, PortNumber: portNumber, Bootloader: bootloader, FirmwareFormat: firmwareFormat, Protocol: protocol, Handle: dev}
 		s.Devices[fingerprint] = device
 		uiEvent.Emit("deviceConnected", &DeviceConnectionEvent{Device: device})
 		s.Log("info", "New device detected:")
@@ -334,10 +341,12 @@ func (s *State) InstallUpdate() {
 	wails.Quit(s.ctx)
 }
 
+/*
 func (s *State) Open(fingerprint int) bool {
 	dev := s.Devices[fingerprint]
 	return dev.Open()
 }
+*/
 
 func (s *State) Reset() {
 	s.SelectedDevice = nil

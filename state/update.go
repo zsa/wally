@@ -3,7 +3,7 @@ package state
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"runtime"
 )
@@ -19,10 +19,7 @@ type Update struct {
 }
 
 func (u *Update) required(currentVersion string) bool {
-	if currentVersion != u.Version {
-		return true
-	}
-	return false
+	return currentVersion != u.Version
 }
 
 func getUpdateUrl() string {
@@ -57,7 +54,7 @@ func checkForUpdate() (Update, error) {
 		defer res.Body.Close()
 	}
 
-	body, err := ioutil.ReadAll(res.Body)
+	body, err := io.ReadAll(res.Body)
 	if err != nil {
 		return update, err
 	}
@@ -65,5 +62,5 @@ func checkForUpdate() (Update, error) {
 	err = json.Unmarshal(body, &update)
 	fmt.Println(string(body[:]))
 
-	return update, nil
+	return update, err
 }

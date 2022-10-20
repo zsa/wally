@@ -672,26 +672,101 @@ intgo _wrap_BIN_Device_usb_4f19f1d7d83a7073() {
 }
 
 
-void _wrap_Device_vid_set_usb_4f19f1d7d83a7073(Device *_swig_go_0, intgo _swig_go_1) {
+void _wrap_Device_file_format_set_usb_4f19f1d7d83a7073(Device *_swig_go_0, intgo _swig_go_1) {
   Device *arg1 = (Device *) 0 ;
-  int arg2 ;
+  Device::firmware_format arg2 ;
   
   arg1 = *(Device **)&_swig_go_0; 
-  arg2 = (int)_swig_go_1; 
+  arg2 = (Device::firmware_format)_swig_go_1; 
   
-  if (arg1) (arg1)->vid = arg2;
+  if (arg1) (arg1)->file_format = arg2;
   
 }
 
 
-intgo _wrap_Device_vid_get_usb_4f19f1d7d83a7073(Device *_swig_go_0) {
+intgo _wrap_Device_file_format_get_usb_4f19f1d7d83a7073(Device *_swig_go_0) {
   Device *arg1 = (Device *) 0 ;
-  int result;
+  Device::firmware_format result;
   intgo _swig_go_result;
   
   arg1 = *(Device **)&_swig_go_0; 
   
-  result = (int) ((arg1)->vid);
+  result = (Device::firmware_format) ((arg1)->file_format);
+  _swig_go_result = (intgo)result; 
+  return _swig_go_result;
+}
+
+
+void _wrap_Device_protocol_set_usb_4f19f1d7d83a7073(Device *_swig_go_0, intgo _swig_go_1) {
+  Device *arg1 = (Device *) 0 ;
+  Device::flash_protocol arg2 ;
+  
+  arg1 = *(Device **)&_swig_go_0; 
+  arg2 = (Device::flash_protocol)_swig_go_1; 
+  
+  if (arg1) (arg1)->protocol = arg2;
+  
+}
+
+
+intgo _wrap_Device_protocol_get_usb_4f19f1d7d83a7073(Device *_swig_go_0) {
+  Device *arg1 = (Device *) 0 ;
+  Device::flash_protocol result;
+  intgo _swig_go_result;
+  
+  arg1 = *(Device **)&_swig_go_0; 
+  
+  result = (Device::flash_protocol) ((arg1)->protocol);
+  _swig_go_result = (intgo)result; 
+  return _swig_go_result;
+}
+
+
+void _wrap_Device_packet_handler_set_usb_4f19f1d7d83a7073(Device *_swig_go_0, HIDPacketHandler *_swig_go_1) {
+  Device *arg1 = (Device *) 0 ;
+  HIDPacketHandler *arg2 = (HIDPacketHandler *) 0 ;
+  
+  arg1 = *(Device **)&_swig_go_0; 
+  arg2 = *(HIDPacketHandler **)&_swig_go_1; 
+  
+  if (arg1) (arg1)->packet_handler = arg2;
+  
+}
+
+
+HIDPacketHandler *_wrap_Device_packet_handler_get_usb_4f19f1d7d83a7073(Device *_swig_go_0) {
+  Device *arg1 = (Device *) 0 ;
+  HIDPacketHandler *result = 0 ;
+  HIDPacketHandler *_swig_go_result;
+  
+  arg1 = *(Device **)&_swig_go_0; 
+  
+  result = (HIDPacketHandler *) ((arg1)->packet_handler);
+  *(HIDPacketHandler **)&_swig_go_result = (HIDPacketHandler *)result; 
+  return _swig_go_result;
+}
+
+
+void _wrap_Device_bootloader_set_usb_4f19f1d7d83a7073(Device *_swig_go_0, bool _swig_go_1) {
+  Device *arg1 = (Device *) 0 ;
+  bool arg2 ;
+  
+  arg1 = *(Device **)&_swig_go_0; 
+  arg2 = (bool)_swig_go_1; 
+  
+  if (arg1) (arg1)->bootloader = arg2;
+  
+}
+
+
+bool _wrap_Device_bootloader_get_usb_4f19f1d7d83a7073(Device *_swig_go_0) {
+  Device *arg1 = (Device *) 0 ;
+  bool result;
+  bool _swig_go_result;
+  
+  arg1 = *(Device **)&_swig_go_0; 
+  
+  result = (bool) ((arg1)->bootloader);
   _swig_go_result = result; 
   return _swig_go_result;
 }
@@ -722,31 +797,6 @@ intgo _wrap_Device_pid_get_usb_4f19f1d7d83a7073(Device *_swig_go_0) {
 }
 
 
-void _wrap_Device_fingerprint_set_usb_4f19f1d7d83a7073(Device *_swig_go_0, intgo _swig_go_1) {
-  Device *arg1 = (Device *) 0 ;
-  std::intptr_t arg2 ;
-  
-  arg1 = *(Device **)&_swig_go_0; 
-  arg2 = (std::intptr_t)_swig_go_1; 
-  
-  if (arg1) (arg1)->fingerprint = arg2;
-  
-}
-
-
-intgo _wrap_Device_fingerprint_get_usb_4f19f1d7d83a7073(Device *_swig_go_0) {
-  Device *arg1 = (Device *) 0 ;
-  std::intptr_t result;
-  intgo _swig_go_result;
-  
-  arg1 = *(Device **)&_swig_go_0; 
-  
-  result = (std::intptr_t) ((arg1)->fingerprint);
-  _swig_go_result = result; 
-  return _swig_go_result;
-}
-
-
 void _wrap_Device_port_number_set_usb_4f19f1d7d83a7073(Device *_swig_go_0, intgo _swig_go_1) {
   Device *arg1 = (Device *) 0 ;
   int arg2 ;
@@ -767,6 +817,56 @@ intgo _wrap_Device_port_number_get_usb_4f19f1d7d83a7073(Device *_swig_go_0) {
   arg1 = *(Device **)&_swig_go_0; 
   
   result = (int) ((arg1)->port_number);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+void _wrap_Device_vid_set_usb_4f19f1d7d83a7073(Device *_swig_go_0, intgo _swig_go_1) {
+  Device *arg1 = (Device *) 0 ;
+  int arg2 ;
+  
+  arg1 = *(Device **)&_swig_go_0; 
+  arg2 = (int)_swig_go_1; 
+  
+  if (arg1) (arg1)->vid = arg2;
+  
+}
+
+
+intgo _wrap_Device_vid_get_usb_4f19f1d7d83a7073(Device *_swig_go_0) {
+  Device *arg1 = (Device *) 0 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(Device **)&_swig_go_0; 
+  
+  result = (int) ((arg1)->vid);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+void _wrap_Device_fingerprint_set_usb_4f19f1d7d83a7073(Device *_swig_go_0, intgo _swig_go_1) {
+  Device *arg1 = (Device *) 0 ;
+  std::intptr_t arg2 ;
+  
+  arg1 = *(Device **)&_swig_go_0; 
+  arg2 = (std::intptr_t)_swig_go_1; 
+  
+  if (arg1) (arg1)->fingerprint = arg2;
+  
+}
+
+
+intgo _wrap_Device_fingerprint_get_usb_4f19f1d7d83a7073(Device *_swig_go_0) {
+  Device *arg1 = (Device *) 0 ;
+  std::intptr_t result;
+  intgo _swig_go_result;
+  
+  arg1 = *(Device **)&_swig_go_0; 
+  
+  result = (std::intptr_t) ((arg1)->fingerprint);
   _swig_go_result = result; 
   return _swig_go_result;
 }
@@ -800,183 +900,30 @@ _gostring_ _wrap_Device_friendly_name_get_usb_4f19f1d7d83a7073(Device *_swig_go_
 }
 
 
-void _wrap_Device_protocol_set_usb_4f19f1d7d83a7073(Device *_swig_go_0, intgo _swig_go_1) {
+void _wrap_Device_model_set_usb_4f19f1d7d83a7073(Device *_swig_go_0, _gostring_ _swig_go_1) {
   Device *arg1 = (Device *) 0 ;
-  Device::flash_protocol arg2 ;
+  std::string *arg2 = 0 ;
   
   arg1 = *(Device **)&_swig_go_0; 
-  arg2 = (Device::flash_protocol)_swig_go_1; 
   
-  if (arg1) (arg1)->protocol = arg2;
+  std::string arg2_str(_swig_go_1.p, _swig_go_1.n);
+  arg2 = &arg2_str;
+  
+  
+  if (arg1) (arg1)->model = *arg2;
   
 }
 
 
-intgo _wrap_Device_protocol_get_usb_4f19f1d7d83a7073(Device *_swig_go_0) {
+_gostring_ _wrap_Device_model_get_usb_4f19f1d7d83a7073(Device *_swig_go_0) {
   Device *arg1 = (Device *) 0 ;
-  Device::flash_protocol result;
-  intgo _swig_go_result;
+  std::string *result = 0 ;
+  _gostring_ _swig_go_result;
   
   arg1 = *(Device **)&_swig_go_0; 
   
-  result = (Device::flash_protocol) ((arg1)->protocol);
-  _swig_go_result = (intgo)result; 
-  return _swig_go_result;
-}
-
-
-void _wrap_Device_file_format_set_usb_4f19f1d7d83a7073(Device *_swig_go_0, intgo _swig_go_1) {
-  Device *arg1 = (Device *) 0 ;
-  Device::firmware_format arg2 ;
-  
-  arg1 = *(Device **)&_swig_go_0; 
-  arg2 = (Device::firmware_format)_swig_go_1; 
-  
-  if (arg1) (arg1)->file_format = arg2;
-  
-}
-
-
-intgo _wrap_Device_file_format_get_usb_4f19f1d7d83a7073(Device *_swig_go_0) {
-  Device *arg1 = (Device *) 0 ;
-  Device::firmware_format result;
-  intgo _swig_go_result;
-  
-  arg1 = *(Device **)&_swig_go_0; 
-  
-  result = (Device::firmware_format) ((arg1)->file_format);
-  _swig_go_result = (intgo)result; 
-  return _swig_go_result;
-}
-
-
-void _wrap_Device_bootloader_set_usb_4f19f1d7d83a7073(Device *_swig_go_0, bool _swig_go_1) {
-  Device *arg1 = (Device *) 0 ;
-  bool arg2 ;
-  
-  arg1 = *(Device **)&_swig_go_0; 
-  arg2 = (bool)_swig_go_1; 
-  
-  if (arg1) (arg1)->bootloader = arg2;
-  
-}
-
-
-bool _wrap_Device_bootloader_get_usb_4f19f1d7d83a7073(Device *_swig_go_0) {
-  Device *arg1 = (Device *) 0 ;
-  bool result;
-  bool _swig_go_result;
-  
-  arg1 = *(Device **)&_swig_go_0; 
-  
-  result = (bool) ((arg1)->bootloader);
-  _swig_go_result = result; 
-  return _swig_go_result;
-}
-
-
-void _wrap_Device_packet_handler_set_usb_4f19f1d7d83a7073(Device *_swig_go_0, HIDPacketHandler *_swig_go_1) {
-  Device *arg1 = (Device *) 0 ;
-  HIDPacketHandler *arg2 = (HIDPacketHandler *) 0 ;
-  
-  arg1 = *(Device **)&_swig_go_0; 
-  arg2 = *(HIDPacketHandler **)&_swig_go_1; 
-  
-  if (arg1) (arg1)->packet_handler = arg2;
-  
-}
-
-
-HIDPacketHandler *_wrap_Device_packet_handler_get_usb_4f19f1d7d83a7073(Device *_swig_go_0) {
-  Device *arg1 = (Device *) 0 ;
-  HIDPacketHandler *result = 0 ;
-  HIDPacketHandler *_swig_go_result;
-  
-  arg1 = *(Device **)&_swig_go_0; 
-  
-  result = (HIDPacketHandler *) ((arg1)->packet_handler);
-  *(HIDPacketHandler **)&_swig_go_result = (HIDPacketHandler *)result; 
-  return _swig_go_result;
-}
-
-
-bool _wrap_Device_hid_open_usb_4f19f1d7d83a7073(Device *_swig_go_0, intgo _swig_go_1) {
-  Device *arg1 = (Device *) 0 ;
-  int arg2 ;
-  bool result;
-  bool _swig_go_result;
-  
-  arg1 = *(Device **)&_swig_go_0; 
-  arg2 = (int)_swig_go_1; 
-  
-  result = (bool)(arg1)->hid_open(arg2);
-  _swig_go_result = result; 
-  return _swig_go_result;
-}
-
-
-bool _wrap_Device_hid_listen_usb_4f19f1d7d83a7073(Device *_swig_go_0) {
-  Device *arg1 = (Device *) 0 ;
-  bool result;
-  bool _swig_go_result;
-  
-  arg1 = *(Device **)&_swig_go_0; 
-  
-  result = (bool)(arg1)->hid_listen();
-  _swig_go_result = result; 
-  return _swig_go_result;
-}
-
-
-intgo _wrap_Device_send_hid_packet_usb_4f19f1d7d83a7073(Device *_swig_go_0, char *_swig_go_1, intgo _swig_go_2) {
-  Device *arg1 = (Device *) 0 ;
-  unsigned char *arg2 = (unsigned char *) 0 ;
-  int arg3 ;
-  int result;
-  intgo _swig_go_result;
-  
-  arg1 = *(Device **)&_swig_go_0; 
-  arg2 = *(unsigned char **)&_swig_go_1; 
-  arg3 = (int)_swig_go_2; 
-  
-  result = (int)(arg1)->send_hid_packet(arg2,arg3);
-  _swig_go_result = result; 
-  return _swig_go_result;
-}
-
-
-void _wrap_Device_close_hid_usb_4f19f1d7d83a7073(Device *_swig_go_0) {
-  Device *arg1 = (Device *) 0 ;
-  
-  arg1 = *(Device **)&_swig_go_0; 
-  
-  (arg1)->close_hid();
-  
-}
-
-
-bool _wrap_Device_usb_claim_usb_4f19f1d7d83a7073(Device *_swig_go_0) {
-  Device *arg1 = (Device *) 0 ;
-  bool result;
-  bool _swig_go_result;
-  
-  arg1 = *(Device **)&_swig_go_0; 
-  
-  result = (bool)(arg1)->usb_claim();
-  _swig_go_result = result; 
-  return _swig_go_result;
-}
-
-
-intgo _wrap_Device_usb_auto_detach_usb_4f19f1d7d83a7073(Device *_swig_go_0) {
-  Device *arg1 = (Device *) 0 ;
-  int result;
-  intgo _swig_go_result;
-  
-  arg1 = *(Device **)&_swig_go_0; 
-  
-  result = (int)(arg1)->usb_auto_detach();
-  _swig_go_result = result; 
+  result = (std::string *) & ((arg1)->model);
+  _swig_go_result = Swig_AllocateString((*result).data(), (*result).length()); 
   return _swig_go_result;
 }
 
@@ -1008,16 +955,85 @@ TransferStatus *_wrap_Device_usb_transfer_usb_4f19f1d7d83a7073(Device *_swig_go_
 }
 
 
-intgo _wrap_Device_usb_set_configuration_usb_4f19f1d7d83a7073(Device *_swig_go_0, intgo _swig_go_1) {
+bool _wrap_Device_hid_listen_usb_4f19f1d7d83a7073(Device *_swig_go_0) {
+  Device *arg1 = (Device *) 0 ;
+  bool result;
+  bool _swig_go_result;
+  
+  arg1 = *(Device **)&_swig_go_0; 
+  
+  result = (bool)(arg1)->hid_listen();
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+bool _wrap_Device_hid_open_usb_4f19f1d7d83a7073(Device *_swig_go_0, intgo _swig_go_1) {
   Device *arg1 = (Device *) 0 ;
   int arg2 ;
-  int result;
-  intgo _swig_go_result;
+  bool result;
+  bool _swig_go_result;
   
   arg1 = *(Device **)&_swig_go_0; 
   arg2 = (int)_swig_go_1; 
   
-  result = (int)(arg1)->usb_set_configuration(arg2);
+  result = (bool)(arg1)->hid_open(arg2);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+bool _wrap_Device_usb_claim_usb_4f19f1d7d83a7073(Device *_swig_go_0) {
+  Device *arg1 = (Device *) 0 ;
+  bool result;
+  bool _swig_go_result;
+  
+  arg1 = *(Device **)&_swig_go_0; 
+  
+  result = (bool)(arg1)->usb_claim();
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_Device_check_connected_usb_4f19f1d7d83a7073(Device *_swig_go_0) {
+  Device *arg1 = (Device *) 0 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(Device **)&_swig_go_0; 
+  
+  result = (int)(arg1)->check_connected();
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_Device_send_hid_packet_usb_4f19f1d7d83a7073(Device *_swig_go_0, char *_swig_go_1, intgo _swig_go_2) {
+  Device *arg1 = (Device *) 0 ;
+  unsigned char *arg2 = (unsigned char *) 0 ;
+  int arg3 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(Device **)&_swig_go_0; 
+  arg2 = *(unsigned char **)&_swig_go_1; 
+  arg3 = (int)_swig_go_2; 
+  
+  result = (int)(arg1)->send_hid_packet(arg2,arg3);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_Device_usb_auto_detach_usb_4f19f1d7d83a7073(Device *_swig_go_0) {
+  Device *arg1 = (Device *) 0 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(Device **)&_swig_go_0; 
+  
+  result = (int)(arg1)->usb_auto_detach();
   _swig_go_result = result; 
   return _swig_go_result;
 }
@@ -1038,28 +1054,57 @@ intgo _wrap_Device_usb_claim_interface_usb_4f19f1d7d83a7073(Device *_swig_go_0, 
 }
 
 
-_gostring_ _wrap_Device_get_dfu_string_usb_4f19f1d7d83a7073(Device *_swig_go_0, intgo _swig_go_1) {
+intgo _wrap_Device_usb_set_configuration_usb_4f19f1d7d83a7073(Device *_swig_go_0, intgo _swig_go_1) {
   Device *arg1 = (Device *) 0 ;
   int arg2 ;
-  std::string result;
-  _gostring_ _swig_go_result;
+  int result;
+  intgo _swig_go_result;
   
   arg1 = *(Device **)&_swig_go_0; 
   arg2 = (int)_swig_go_1; 
   
-  result = (arg1)->get_dfu_string(arg2);
-  _swig_go_result = Swig_AllocateString((&result)->data(), (&result)->length()); 
+  result = (int)(arg1)->usb_set_configuration(arg2);
+  _swig_go_result = result; 
   return _swig_go_result;
 }
 
 
-void _wrap_Device_usb_close_usb_4f19f1d7d83a7073(Device *_swig_go_0) {
-  Device *arg1 = (Device *) 0 ;
+intgo _wrap_Device_get_firmware_format_usb_4f19f1d7d83a7073(intgo _swig_go_0) {
+  Device::flash_protocol arg1 ;
+  Device::firmware_format result;
+  intgo _swig_go_result;
   
-  arg1 = *(Device **)&_swig_go_0; 
+  arg1 = (Device::flash_protocol)_swig_go_0; 
   
-  (arg1)->usb_close();
+  result = (Device::firmware_format)Device::get_firmware_format(arg1);
+  _swig_go_result = (intgo)result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_Device_get_flashing_protocol_usb_4f19f1d7d83a7073(intgo _swig_go_0) {
+  int arg1 ;
+  Device::flash_protocol result;
+  intgo _swig_go_result;
   
+  arg1 = (int)_swig_go_0; 
+  
+  result = (Device::flash_protocol)Device::get_flashing_protocol(arg1);
+  _swig_go_result = (intgo)result; 
+  return _swig_go_result;
+}
+
+
+bool _wrap_Device_is_bootloader_usb_4f19f1d7d83a7073(intgo _swig_go_0) {
+  int arg1 ;
+  bool result;
+  bool _swig_go_result;
+  
+  arg1 = (int)_swig_go_0; 
+  
+  result = (bool)Device::is_bootloader(arg1);
+  _swig_go_result = result; 
+  return _swig_go_result;
 }
 
 
@@ -1091,42 +1136,51 @@ _gostring_ _wrap_Device_get_friendly_name_usb_4f19f1d7d83a7073(intgo _swig_go_0)
 }
 
 
-intgo _wrap_Device_get_flashing_protocol_usb_4f19f1d7d83a7073(intgo _swig_go_0) {
+_gostring_ _wrap_Device_get_model_usb_4f19f1d7d83a7073(intgo _swig_go_0) {
   int arg1 ;
-  Device::flash_protocol result;
-  intgo _swig_go_result;
+  std::string result;
+  _gostring_ _swig_go_result;
   
   arg1 = (int)_swig_go_0; 
   
-  result = (Device::flash_protocol)Device::get_flashing_protocol(arg1);
-  _swig_go_result = (intgo)result; 
+  result = Device::get_model(arg1);
+  _swig_go_result = Swig_AllocateString((&result)->data(), (&result)->length()); 
   return _swig_go_result;
 }
 
 
-intgo _wrap_Device_get_firmware_format_usb_4f19f1d7d83a7073(intgo _swig_go_0) {
-  Device::flash_protocol arg1 ;
-  Device::firmware_format result;
-  intgo _swig_go_result;
+_gostring_ _wrap_Device_get_dfu_string_usb_4f19f1d7d83a7073(Device *_swig_go_0, intgo _swig_go_1) {
+  Device *arg1 = (Device *) 0 ;
+  int arg2 ;
+  std::string result;
+  _gostring_ _swig_go_result;
   
-  arg1 = (Device::flash_protocol)_swig_go_0; 
+  arg1 = *(Device **)&_swig_go_0; 
+  arg2 = (int)_swig_go_1; 
   
-  result = (Device::firmware_format)Device::get_firmware_format(arg1);
-  _swig_go_result = (intgo)result; 
+  result = (arg1)->get_dfu_string(arg2);
+  _swig_go_result = Swig_AllocateString((&result)->data(), (&result)->length()); 
   return _swig_go_result;
 }
 
 
-bool _wrap_Device_is_bootloader_usb_4f19f1d7d83a7073(intgo _swig_go_0) {
-  int arg1 ;
-  bool result;
-  bool _swig_go_result;
+void _wrap_Device_close_hid_usb_4f19f1d7d83a7073(Device *_swig_go_0) {
+  Device *arg1 = (Device *) 0 ;
   
-  arg1 = (int)_swig_go_0; 
+  arg1 = *(Device **)&_swig_go_0; 
   
-  result = (bool)Device::is_bootloader(arg1);
-  _swig_go_result = result; 
-  return _swig_go_result;
+  (arg1)->close_hid();
+  
+}
+
+
+void _wrap_Device_usb_close_usb_4f19f1d7d83a7073(Device *_swig_go_0) {
+  Device *arg1 = (Device *) 0 ;
+  
+  arg1 = *(Device **)&_swig_go_0; 
+  
+  (arg1)->usb_close();
+  
 }
 
 
@@ -1257,12 +1311,32 @@ void _wrap_delete_Enumerator_usb_4f19f1d7d83a7073(Enumerator *_swig_go_0) {
 }
 
 
-void _wrap_Enumerator_Listen_usb_4f19f1d7d83a7073(Enumerator *_swig_go_0) {
+void _wrap_Enumerator_ListenDevices_usb_4f19f1d7d83a7073(Enumerator *_swig_go_0) {
   Enumerator *arg1 = (Enumerator *) 0 ;
   
   arg1 = *(Enumerator **)&_swig_go_0; 
   
-  (arg1)->Listen();
+  (arg1)->ListenDevices();
+  
+}
+
+
+void _wrap_Enumerator_StopListenDevices_usb_4f19f1d7d83a7073(Enumerator *_swig_go_0) {
+  Enumerator *arg1 = (Enumerator *) 0 ;
+  
+  arg1 = *(Enumerator **)&_swig_go_0; 
+  
+  (arg1)->StopListenDevices();
+  
+}
+
+
+void _wrap_Enumerator_HandleEvents_usb_4f19f1d7d83a7073(Enumerator *_swig_go_0) {
+  Enumerator *arg1 = (Enumerator *) 0 ;
+  
+  arg1 = *(Enumerator **)&_swig_go_0; 
+  
+  (arg1)->HandleEvents();
   
 }
 

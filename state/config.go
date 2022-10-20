@@ -38,10 +38,10 @@ func createConfigFile() (string, bool, error) {
 
 	if _, err := os.Stat(filePath); os.IsNotExist(err) {
 		f, err := os.Create(filePath)
-		defer f.Close()
 		if err != nil {
 			return "", created, err
 		}
+		defer f.Close()
 		created = true
 	}
 	return filePath, created, err

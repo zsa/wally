@@ -1,0 +1,30 @@
+<svg
+    width="120"
+    height="120"
+    viewBox="0 0 120 120"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <style>
+        .spinner_7NYg {
+        animation: spinner_0KQs 1.2s cubic-bezier(0.52, 0.6, 0.25, 0.99)
+            infinite;
+        }
+        @keyframes spinner_0KQs {
+        0% {
+            r: 20px;
+            opacity: 1;
+        }
+        100% {
+            r: 40px;
+            opacity: 0;
+        }
+        }
+    </style>
+    <circle
+        class="spinner_7NYg"
+        fill="white"
+        cx="60"
+        cy="60"
+        r="10"
+    />
+</svg>

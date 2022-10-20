@@ -20,18 +20,17 @@ const EVT_KEY_PRESSED byte = 0x06
 const EVT_KEY_RELEASED byte = 0x07
 
 type USBDevice struct {
-	FriendlyName   string `json:"friendlyName"`
-	Fingerprint    int    `json:"fingerprint"`
-	PortNumber     int
+	Bootloader     bool                  `json:"bootloader"`
+	Fingerprint    int                   `json:"fingerprint"`
 	FirmwareFormat DeviceFirmware_format `json:"firmwareFormat"`
-	Protocol       DeviceFlash_protocol
-	Bootloader     bool `json:"bootloader"`
+	FriendlyName   string                `json:"friendlyName"`
 	Handle         Device
+	Model          string `json:"model"`
+	PortNumber     int
+	Protocol       DeviceFlash_protocol
 	cb             func(message FlashCallback)
 	flashStatus    dfuStatus
 }
-
-func validUSBStatus(str string)
 
 func (d *USBDevice) Open() bool {
 	connected := d.Handle.Hid_open(ORYX_USAGE_PAGE)

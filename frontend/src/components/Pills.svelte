@@ -1,8 +1,12 @@
+<script type="ts">
+  import state, { Step } from "../lib/state";
+</script>
+
 <section class="pills">
-  <div class="pill active" />
-  <div class="pill" />
-  <div class="pill" />
-  <div class="pill" />
+  <div class={$state.step == Step.FIRMWARE_SELECT ? "pill active" : "pill"} />
+  <div class={$state.step == Step.KEYBOARD_RESET ? "pill active" : "pill"} />
+  <div class={$state.step == Step.FIRMWARE_FLASHING ? "pill active" : "pill"} />
+  <div class={$state.step == Step.FLASH_COMPLETE ? "pill active" : "pill"} />
 </section>
 
 <style>

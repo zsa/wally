@@ -25,11 +25,11 @@ type TProgress = {
 };
 
 type Device = {
+  bootloader: boolean; // is the device currently in bootloader mode.
+  fingerprint: number; // unique id equals to the libusb handle pointer casted to an int
   firmwareFormat: number;
   friendlyName: string; // Friendly name ex: Moonlander MK1
-  fingerprint: number; // unique id equals to the libusb handle pointer casted to an int
-  kind: string; // a model identifier used to identify the keyboard ex: moonlander, ergodox, planck, stm32, halfkay, gd32
-  bootloader: boolean; // is the device currently in bootloader mode.
+  model: string; // a model identifier used to identify the keyboard ex: moonlander, ergodox, planck, stm32, halfkay, gd32
 };
 
 export type TLog = {
@@ -41,27 +41,27 @@ export type TLog = {
 type TState = {
   appVersion: string;
   devices: Map<number, Device>;
+  flashProgress: number;
   hasError: boolean;
   logs: TLog[];
-  step: Step;
   selectedDevice: Device | null;
-  updateProgress: number;
-  flashProgress: number;
   showAbout: boolean;
   showConsole: boolean;
+  step: Step;
+  updateProgress: number;
 };
 
 const state = writable<TState>({
   appVersion: "",
-  selectedDevice: null,
   devices: new Map(),
+  flashProgress: 0,
   hasError: false,
   logs: [],
-  updateProgress: 0,
-  flashProgress: 0,
+  selectedDevice: null,
   showAbout: false,
   showConsole: false,
   step: Step.PROBING,
+  updateProgress: 0,
 });
 
 //Attaches the events from the Go process to the UI state
@@ -101,6 +101,7 @@ function attachToEvents(state: Writable<TState>) {
   });
 
   EventsOn("deviceSelected", ({ device }: { device: Device }) => {
+    console.log(device);
     state.update((_state) => {
       _state.selectedDevice = device;
       return _state;

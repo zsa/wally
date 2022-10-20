@@ -87,13 +87,13 @@ func (d *USBDevice) HALFKAYFlash(firmwarePath string, cb func(message FlashCallb
 		} else {
 			time.Sleep(100 * time.Millisecond)
 		}
+		d.cb(FlashCallback{Type: Progress, Sent: int(addr), Total: ERGODOX_MEM_SIZE})
 	}
 
 	// send reboot packet
 	buf := make([]byte, ERGODOX_SECTOR_SIZE+2)
 	buf[0] = byte(0xFF)
 	buf[1] = byte(0xFF)
-	buf[2] = byte(0xFF)
 	err = d.SendWithRetries(buf, true)
 
 	if err != nil {

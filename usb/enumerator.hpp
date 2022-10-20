@@ -17,7 +17,10 @@ public:
 
   Enumerator();
   ~Enumerator();
-  void Listen();
+  void ListenDevices();
+  void StopListenDevices();
+
+  void HandleEvents();
 
   std::vector<Device> Devices;
 
@@ -25,5 +28,6 @@ private:
   libusb_context *ctx;
   pthread_t event_thread;
   libusb_hotplug_callback_handle callback_handle;
-  bool listening;
+  bool listening_devices;
+  bool handle_events;
 };

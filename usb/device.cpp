@@ -48,6 +48,30 @@ std::string Device::get_friendly_name(int pid)
     };
 }
 
+std::string Device::get_model(int pid)
+{
+    switch (pid)
+    {
+    // Add new keyboard models in here
+    case 0x1307:
+    case 0x4974:
+    case 0x4975:
+    case 0x4976:
+    case 0x0478:
+        return "ergodox";
+    case 0x6060:
+    case 0xC6CE:
+    case 0xC6CF:
+        return "planck";
+    case 0x1969:
+        return "moonlander";
+    case 0xDF11:
+        return "stm32";
+    default:
+        return "unknown";
+    };
+}
+
 Device::flash_protocol Device::get_flashing_protocol(int pid)
 {
     switch (pid)
@@ -99,12 +123,12 @@ Device::Device(libusb_device *dev, int vid, int pid) : usb_device(dev), vid(vid)
     friendly_name = Device::get_friendly_name(pid);
     bootloader = Device::is_bootloader(pid);
     protocol = Device::get_flashing_protocol(pid);
+    model = get_model(pid);
     file_format = Device::get_firmware_format(protocol);
     port_number = libusb_get_port_number(dev);
 
-    // Using the libusb device pointer address as a unique indentifier to the device
-    // This is useful to find the device within the context of a disconnection event
-    // to remove it from the enumerator's list of devices.
+    // Using the libusb device pointer address as a unique indentifier to the device.
+    // This is useful to find the device within the context of a disconnection event to remove it from the enumerator's list of devices.
     fingerprint = reinterpret_cast<std::intptr_t>(dev);
 }
 
@@ -174,6 +198,16 @@ TransferStatus Device::usb_transfer(uint8_t bmRequestType, uint8_t bRequest, uin
 
     free(buf);
     return transfer_status;
+}
+
+int Device::check_connected()
+{
+    int res = libusb_open(usb_device, &usb_handle);
+    if (res == LIBUSB_SUCCESS)
+    {
+        // libusb_close(usb_handle);
+    }
+    return res;
 }
 
 int Device::usb_auto_detach()

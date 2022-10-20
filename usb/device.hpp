@@ -38,34 +38,35 @@ public:
         BIN
     };
 
-    int vid;
-    int pid;
-    std::intptr_t fingerprint;
-    int port_number;
-    std::string friendly_name;
-    Device::flash_protocol protocol;
     Device::firmware_format file_format;
-    bool bootloader;
+    Device::flash_protocol protocol;
     HIDPacketHandler *packet_handler;
+    bool bootloader;
+    int pid;
+    int port_number;
+    int vid;
+    std::intptr_t fingerprint;
+    std::string friendly_name;
+    std::string model;
 
-    bool hid_open(int usage_page);
-    bool hid_listen();
-    int send_hid_packet(unsigned char *packet, int len);
-    void close_hid();
-
-    bool usb_claim();
-    int usb_auto_detach();
     TransferStatus usb_transfer(uint8_t bmRequestType, uint8_t bRequest, uint16_t wValue, uint16_t wIndex, unsigned char *data, uint16_t wLength, int timeout);
-    int usb_set_configuration(int config);
+    bool hid_listen();
+    bool hid_open(int usage_page);
+    bool usb_claim();
+    int check_connected();
+    int send_hid_packet(unsigned char *packet, int len);
+    int usb_auto_detach();
     int usb_claim_interface(int interface);
-    std::string get_dfu_string(int cfg_idx);
-    void usb_close();
-
+    int usb_set_configuration(int config);
+    static Device::firmware_format get_firmware_format(Device::flash_protocol protocol);
+    static Device::flash_protocol get_flashing_protocol(int pid);
+    static bool is_bootloader(int pid);
     static bool is_interesting(int vid, int pid);
     static std::string get_friendly_name(int pid);
-    static Device::flash_protocol get_flashing_protocol(int pid);
-    static Device::firmware_format get_firmware_format(Device::flash_protocol protocol);
-    static bool is_bootloader(int pid);
+    static std::string get_model(int pid);
+    std::string get_dfu_string(int cfg_idx);
+    void close_hid();
+    void usb_close();
 
     Device(libusb_device *dev, int vid, int pid);
     ~Device();

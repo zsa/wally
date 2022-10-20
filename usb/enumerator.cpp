@@ -1,5 +1,7 @@
 #include <iostream>
 #include <libusb.h>
+#include <chrono>
+#include <thread>
 
 #include "enumerator.hpp"
 
@@ -9,50 +11,71 @@ Enumerator::Enumerator()
 }
 
 // This is blocking but it is ran within a go routine in the main thread, don't need to implement threading here.
-void Enumerator::Listen()
+void Enumerator::ListenDevices()
 {
-    listening = true;
+    listening_devices = true;
 
-    auto on_device_event = [](struct libusb_context *ctx, struct libusb_device *dev, libusb_hotplug_event event, void *user_data) -> int
+    while (listening_devices == true)
     {
-        Enumerator *that = static_cast<Enumerator *>(user_data);
-        struct libusb_device_descriptor desc;
-        int res = libusb_get_device_descriptor(dev, &desc);
-
-        // That device doesn't interest us, ignoring the event
-        if (res < 0 || !Device::is_interesting(desc.idVendor, desc.idProduct))
+        libusb_device **list;
+        ssize_t count = libusb_get_device_list(NULL, &list);
+        for (int i = 0; i < count; i++)
         {
-            return LIBUSB_SUCCESS;
-        }
+            libusb_device *dev = list[i];
+            struct libusb_device_descriptor desc;
+            int res = libusb_get_device_descriptor(dev, &desc);
 
-        if (event == LIBUSB_HOTPLUG_EVENT_DEVICE_ARRIVED)
-        {
-            auto device = Device(dev, desc.idVendor, desc.idProduct);
-            that->Devices.push_back(device);
-            that->EventObject->handleUSBConnectionEvent(true, device);
-        }
+            // That device doesn't interest us, ignoring the event
+            if (res < 0 || !Device::is_interesting(desc.idVendor, desc.idProduct))
+                continue;
 
-        if (event == LIBUSB_HOTPLUG_EVENT_DEVICE_LEFT)
-        {
             auto fingerprint = reinterpret_cast<std::intptr_t>(dev);
-            for (int i = 0; i < that->Devices.size(); i++)
+            bool registered = false;
+            for (int i = 0; i < this->Devices.size(); i++)
             {
-                if (fingerprint == that->Devices[i].fingerprint)
+                // Check if we already registered that device
+                if (fingerprint == this->Devices[i].fingerprint)
                 {
-                    auto device = that->Devices[i];
-                    //                    device.close();
-                    that->EventObject->handleUSBConnectionEvent(false, device);
-                    that->Devices.erase(that->Devices.begin() + i);
+                    registered = true;
+                    break;
                 }
             }
+
+            // Register the device if it wasn't previously registered
+            if (registered == false)
+            {
+                std::cout << "Registering" << fingerprint << std::endl;
+                auto device = Device(dev, desc.idVendor, desc.idProduct);
+                this->Devices.push_back(device);
+                this->EventObject->handleUSBConnectionEvent(true, device);
+            }
         }
+        libusb_free_device_list(list, 1);
 
-        return LIBUSB_SUCCESS;
-    };
+        // Loop on the registered device list to check for disconnections
+        for (int i = 0; i < this->Devices.size(); i++)
+        {
+            auto device = this->Devices[i];
+            int connected = device.check_connected();
+            if (connected != LIBUSB_SUCCESS)
+            {
+                this->EventObject->handleUSBConnectionEvent(false, device);
+                this->Devices.erase(this->Devices.begin() + i);
+            }
+        }
+        std::this_thread::sleep_for(std::chrono::milliseconds(500));
+    }
+}
 
-    libusb_hotplug_register_callback(NULL, static_cast<libusb_hotplug_event>(LIBUSB_HOTPLUG_EVENT_DEVICE_ARRIVED | LIBUSB_HOTPLUG_EVENT_DEVICE_LEFT), LIBUSB_HOTPLUG_ENUMERATE, LIBUSB_HOTPLUG_MATCH_ANY, LIBUSB_HOTPLUG_MATCH_ANY, LIBUSB_HOTPLUG_MATCH_ANY, on_device_event, this, &callback_handle);
+void Enumerator::StopListenDevices()
+{
+    listening_devices = false;
+}
 
-    while (listening == true)
+void Enumerator::HandleEvents()
+{
+    handle_events = true;
+    while (handle_events == true)
     {
         libusb_handle_events(NULL);
     }
@@ -60,7 +83,8 @@ void Enumerator::Listen()
 
 Enumerator::~Enumerator()
 {
-    listening = false;
-    libusb_hotplug_deregister_callback(NULL, callback_handle);
+    listening_devices = false;
+    handle_events = false;
+    // libusb_hotplug_deregister_callback(NULL, callback_handle);
     libusb_exit(NULL);
 }

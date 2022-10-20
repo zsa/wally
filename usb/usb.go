@@ -34,6 +34,9 @@ typedef _gostring_ swig_type_3;
 typedef _gostring_ swig_type_4;
 typedef _gostring_ swig_type_5;
 typedef _gostring_ swig_type_6;
+typedef _gostring_ swig_type_7;
+typedef _gostring_ swig_type_8;
+typedef _gostring_ swig_type_9;
 extern void _wrap_Swig_free_usb_4f19f1d7d83a7073(uintptr_t arg1);
 extern uintptr_t _wrap_Swig_malloc_usb_4f19f1d7d83a7073(swig_intgo arg1);
 
@@ -61,40 +64,44 @@ extern swig_intgo _wrap_DFU_Device_usb_4f19f1d7d83a7073(void);
 extern swig_intgo _wrap_FORMAT_UNKNOWN_Device_usb_4f19f1d7d83a7073(void);
 extern swig_intgo _wrap_HEX_Device_usb_4f19f1d7d83a7073(void);
 extern swig_intgo _wrap_BIN_Device_usb_4f19f1d7d83a7073(void);
-extern void _wrap_Device_vid_set_usb_4f19f1d7d83a7073(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_Device_vid_get_usb_4f19f1d7d83a7073(uintptr_t arg1);
-extern void _wrap_Device_pid_set_usb_4f19f1d7d83a7073(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_Device_pid_get_usb_4f19f1d7d83a7073(uintptr_t arg1);
-extern void _wrap_Device_fingerprint_set_usb_4f19f1d7d83a7073(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_Device_fingerprint_get_usb_4f19f1d7d83a7073(uintptr_t arg1);
-extern void _wrap_Device_port_number_set_usb_4f19f1d7d83a7073(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_Device_port_number_get_usb_4f19f1d7d83a7073(uintptr_t arg1);
-extern void _wrap_Device_friendly_name_set_usb_4f19f1d7d83a7073(uintptr_t arg1, swig_type_3 arg2);
-extern swig_type_4 _wrap_Device_friendly_name_get_usb_4f19f1d7d83a7073(uintptr_t arg1);
-extern void _wrap_Device_protocol_set_usb_4f19f1d7d83a7073(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_Device_protocol_get_usb_4f19f1d7d83a7073(uintptr_t arg1);
 extern void _wrap_Device_file_format_set_usb_4f19f1d7d83a7073(uintptr_t arg1, swig_intgo arg2);
 extern swig_intgo _wrap_Device_file_format_get_usb_4f19f1d7d83a7073(uintptr_t arg1);
-extern void _wrap_Device_bootloader_set_usb_4f19f1d7d83a7073(uintptr_t arg1, _Bool arg2);
-extern _Bool _wrap_Device_bootloader_get_usb_4f19f1d7d83a7073(uintptr_t arg1);
+extern void _wrap_Device_protocol_set_usb_4f19f1d7d83a7073(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_Device_protocol_get_usb_4f19f1d7d83a7073(uintptr_t arg1);
 extern void _wrap_Device_packet_handler_set_usb_4f19f1d7d83a7073(uintptr_t arg1, uintptr_t arg2);
 extern uintptr_t _wrap_Device_packet_handler_get_usb_4f19f1d7d83a7073(uintptr_t arg1);
-extern _Bool _wrap_Device_hid_open_usb_4f19f1d7d83a7073(uintptr_t arg1, swig_intgo arg2);
-extern _Bool _wrap_Device_hid_listen_usb_4f19f1d7d83a7073(uintptr_t arg1);
-extern swig_intgo _wrap_Device_send_hid_packet_usb_4f19f1d7d83a7073(uintptr_t arg1, swig_voidp arg2, swig_intgo arg3);
-extern void _wrap_Device_close_hid_usb_4f19f1d7d83a7073(uintptr_t arg1);
-extern _Bool _wrap_Device_usb_claim_usb_4f19f1d7d83a7073(uintptr_t arg1);
-extern swig_intgo _wrap_Device_usb_auto_detach_usb_4f19f1d7d83a7073(uintptr_t arg1);
+extern void _wrap_Device_bootloader_set_usb_4f19f1d7d83a7073(uintptr_t arg1, _Bool arg2);
+extern _Bool _wrap_Device_bootloader_get_usb_4f19f1d7d83a7073(uintptr_t arg1);
+extern void _wrap_Device_pid_set_usb_4f19f1d7d83a7073(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_Device_pid_get_usb_4f19f1d7d83a7073(uintptr_t arg1);
+extern void _wrap_Device_port_number_set_usb_4f19f1d7d83a7073(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_Device_port_number_get_usb_4f19f1d7d83a7073(uintptr_t arg1);
+extern void _wrap_Device_vid_set_usb_4f19f1d7d83a7073(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_Device_vid_get_usb_4f19f1d7d83a7073(uintptr_t arg1);
+extern void _wrap_Device_fingerprint_set_usb_4f19f1d7d83a7073(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_Device_fingerprint_get_usb_4f19f1d7d83a7073(uintptr_t arg1);
+extern void _wrap_Device_friendly_name_set_usb_4f19f1d7d83a7073(uintptr_t arg1, swig_type_3 arg2);
+extern swig_type_4 _wrap_Device_friendly_name_get_usb_4f19f1d7d83a7073(uintptr_t arg1);
+extern void _wrap_Device_model_set_usb_4f19f1d7d83a7073(uintptr_t arg1, swig_type_5 arg2);
+extern swig_type_6 _wrap_Device_model_get_usb_4f19f1d7d83a7073(uintptr_t arg1);
 extern uintptr_t _wrap_Device_usb_transfer_usb_4f19f1d7d83a7073(uintptr_t arg1, char arg2, char arg3, short arg4, short arg5, swig_voidp arg6, short arg7, swig_intgo arg8);
-extern swig_intgo _wrap_Device_usb_set_configuration_usb_4f19f1d7d83a7073(uintptr_t arg1, swig_intgo arg2);
+extern _Bool _wrap_Device_hid_listen_usb_4f19f1d7d83a7073(uintptr_t arg1);
+extern _Bool _wrap_Device_hid_open_usb_4f19f1d7d83a7073(uintptr_t arg1, swig_intgo arg2);
+extern _Bool _wrap_Device_usb_claim_usb_4f19f1d7d83a7073(uintptr_t arg1);
+extern swig_intgo _wrap_Device_check_connected_usb_4f19f1d7d83a7073(uintptr_t arg1);
+extern swig_intgo _wrap_Device_send_hid_packet_usb_4f19f1d7d83a7073(uintptr_t arg1, swig_voidp arg2, swig_intgo arg3);
+extern swig_intgo _wrap_Device_usb_auto_detach_usb_4f19f1d7d83a7073(uintptr_t arg1);
 extern swig_intgo _wrap_Device_usb_claim_interface_usb_4f19f1d7d83a7073(uintptr_t arg1, swig_intgo arg2);
-extern swig_type_5 _wrap_Device_get_dfu_string_usb_4f19f1d7d83a7073(uintptr_t arg1, swig_intgo arg2);
-extern void _wrap_Device_usb_close_usb_4f19f1d7d83a7073(uintptr_t arg1);
-extern _Bool _wrap_Device_is_interesting_usb_4f19f1d7d83a7073(swig_intgo arg1, swig_intgo arg2);
-extern swig_type_6 _wrap_Device_get_friendly_name_usb_4f19f1d7d83a7073(swig_intgo arg1);
-extern swig_intgo _wrap_Device_get_flashing_protocol_usb_4f19f1d7d83a7073(swig_intgo arg1);
+extern swig_intgo _wrap_Device_usb_set_configuration_usb_4f19f1d7d83a7073(uintptr_t arg1, swig_intgo arg2);
 extern swig_intgo _wrap_Device_get_firmware_format_usb_4f19f1d7d83a7073(swig_intgo arg1);
+extern swig_intgo _wrap_Device_get_flashing_protocol_usb_4f19f1d7d83a7073(swig_intgo arg1);
 extern _Bool _wrap_Device_is_bootloader_usb_4f19f1d7d83a7073(swig_intgo arg1);
+extern _Bool _wrap_Device_is_interesting_usb_4f19f1d7d83a7073(swig_intgo arg1, swig_intgo arg2);
+extern swig_type_7 _wrap_Device_get_friendly_name_usb_4f19f1d7d83a7073(swig_intgo arg1);
+extern swig_type_8 _wrap_Device_get_model_usb_4f19f1d7d83a7073(swig_intgo arg1);
+extern swig_type_9 _wrap_Device_get_dfu_string_usb_4f19f1d7d83a7073(uintptr_t arg1, swig_intgo arg2);
+extern void _wrap_Device_close_hid_usb_4f19f1d7d83a7073(uintptr_t arg1);
+extern void _wrap_Device_usb_close_usb_4f19f1d7d83a7073(uintptr_t arg1);
 extern uintptr_t _wrap_new_Device_usb_4f19f1d7d83a7073(uintptr_t arg1, swig_intgo arg2, swig_intgo arg3);
 extern void _wrap_delete_Device_usb_4f19f1d7d83a7073(uintptr_t arg1);
 extern uintptr_t _wrap__swig_NewDirectorEventHandlerEventHandler_usb_4f19f1d7d83a7073(int);
@@ -105,7 +112,9 @@ extern void _wrap_Enumerator_EventObject_set_usb_4f19f1d7d83a7073(uintptr_t arg1
 extern uintptr_t _wrap_Enumerator_EventObject_get_usb_4f19f1d7d83a7073(uintptr_t arg1);
 extern uintptr_t _wrap_new_Enumerator_usb_4f19f1d7d83a7073(void);
 extern void _wrap_delete_Enumerator_usb_4f19f1d7d83a7073(uintptr_t arg1);
-extern void _wrap_Enumerator_Listen_usb_4f19f1d7d83a7073(uintptr_t arg1);
+extern void _wrap_Enumerator_ListenDevices_usb_4f19f1d7d83a7073(uintptr_t arg1);
+extern void _wrap_Enumerator_StopListenDevices_usb_4f19f1d7d83a7073(uintptr_t arg1);
+extern void _wrap_Enumerator_HandleEvents_usb_4f19f1d7d83a7073(uintptr_t arg1);
 extern void _wrap_Enumerator_Devices_set_usb_4f19f1d7d83a7073(uintptr_t arg1, uintptr_t arg2);
 extern uintptr_t _wrap_Enumerator_Devices_get_usb_4f19f1d7d83a7073(uintptr_t arg1);
 #undef intgo
@@ -380,16 +389,55 @@ func _swig_getDevice_BIN_Device() (_swig_ret DeviceFirmware_format) {
 }
 
 var DeviceBIN DeviceFirmware_format = _swig_getDevice_BIN_Device()
-func (arg1 SwigcptrDevice) SetVid(arg2 int) {
+func (arg1 SwigcptrDevice) SetFile_format(arg2 DeviceFirmware_format) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_Device_vid_set_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_Device_file_format_set_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
-func (arg1 SwigcptrDevice) GetVid() (_swig_ret int) {
-	var swig_r int
+func (arg1 SwigcptrDevice) GetFile_format() (_swig_ret DeviceFirmware_format) {
+	var swig_r DeviceFirmware_format
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_Device_vid_get_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0)))
+	swig_r = (DeviceFirmware_format)(C._wrap_Device_file_format_get_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0)))
+	return swig_r
+}
+
+func (arg1 SwigcptrDevice) SetProtocol(arg2 DeviceFlash_protocol) {
+	_swig_i_0 := arg1
+	_swig_i_1 := arg2
+	C._wrap_Device_protocol_set_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+}
+
+func (arg1 SwigcptrDevice) GetProtocol() (_swig_ret DeviceFlash_protocol) {
+	var swig_r DeviceFlash_protocol
+	_swig_i_0 := arg1
+	swig_r = (DeviceFlash_protocol)(C._wrap_Device_protocol_get_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0)))
+	return swig_r
+}
+
+func (arg1 SwigcptrDevice) SetPacket_handler(arg2 HIDPacketHandler) {
+	_swig_i_0 := arg1
+	_swig_i_1 := arg2.Swigcptr()
+	C._wrap_Device_packet_handler_set_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+}
+
+func (arg1 SwigcptrDevice) GetPacket_handler() (_swig_ret HIDPacketHandler) {
+	var swig_r HIDPacketHandler
+	_swig_i_0 := arg1
+	swig_r = (HIDPacketHandler)(SwigcptrHIDPacketHandler(C._wrap_Device_packet_handler_get_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0))))
+	return swig_r
+}
+
+func (arg1 SwigcptrDevice) SetBootloader(arg2 bool) {
+	_swig_i_0 := arg1
+	_swig_i_1 := arg2
+	C._wrap_Device_bootloader_set_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+}
+
+func (arg1 SwigcptrDevice) GetBootloader() (_swig_ret bool) {
+	var swig_r bool
+	_swig_i_0 := arg1
+	swig_r = (bool)(C._wrap_Device_bootloader_get_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -406,19 +454,6 @@ func (arg1 SwigcptrDevice) GetPid() (_swig_ret int) {
 	return swig_r
 }
 
-func (arg1 SwigcptrDevice) SetFingerprint(arg2 int) {
-	_swig_i_0 := arg1
-	_swig_i_1 := arg2
-	C._wrap_Device_fingerprint_set_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
-}
-
-func (arg1 SwigcptrDevice) GetFingerprint() (_swig_ret int) {
-	var swig_r int
-	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_Device_fingerprint_get_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0)))
-	return swig_r
-}
-
 func (arg1 SwigcptrDevice) SetPort_number(arg2 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -429,6 +464,32 @@ func (arg1 SwigcptrDevice) GetPort_number() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_Device_port_number_get_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0)))
+	return swig_r
+}
+
+func (arg1 SwigcptrDevice) SetVid(arg2 int) {
+	_swig_i_0 := arg1
+	_swig_i_1 := arg2
+	C._wrap_Device_vid_set_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+}
+
+func (arg1 SwigcptrDevice) GetVid() (_swig_ret int) {
+	var swig_r int
+	_swig_i_0 := arg1
+	swig_r = (int)(C._wrap_Device_vid_get_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0)))
+	return swig_r
+}
+
+func (arg1 SwigcptrDevice) SetFingerprint(arg2 int) {
+	_swig_i_0 := arg1
+	_swig_i_1 := arg2
+	C._wrap_Device_fingerprint_set_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+}
+
+func (arg1 SwigcptrDevice) GetFingerprint() (_swig_ret int) {
+	var swig_r int
+	_swig_i_0 := arg1
+	swig_r = (int)(C._wrap_Device_fingerprint_get_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -451,99 +512,23 @@ func (arg1 SwigcptrDevice) GetFriendly_name() (_swig_ret string) {
 	return swig_r_1
 }
 
-func (arg1 SwigcptrDevice) SetProtocol(arg2 DeviceFlash_protocol) {
+func (arg1 SwigcptrDevice) SetModel(arg2 string) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_Device_protocol_set_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_Device_model_set_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0), *(*C.swig_type_5)(unsafe.Pointer(&_swig_i_1)))
+	if Swig_escape_always_false {
+		Swig_escape_val = arg2
+	}
 }
 
-func (arg1 SwigcptrDevice) GetProtocol() (_swig_ret DeviceFlash_protocol) {
-	var swig_r DeviceFlash_protocol
+func (arg1 SwigcptrDevice) GetModel() (_swig_ret string) {
+	var swig_r string
 	_swig_i_0 := arg1
-	swig_r = (DeviceFlash_protocol)(C._wrap_Device_protocol_get_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0)))
-	return swig_r
-}
-
-func (arg1 SwigcptrDevice) SetFile_format(arg2 DeviceFirmware_format) {
-	_swig_i_0 := arg1
-	_swig_i_1 := arg2
-	C._wrap_Device_file_format_set_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
-}
-
-func (arg1 SwigcptrDevice) GetFile_format() (_swig_ret DeviceFirmware_format) {
-	var swig_r DeviceFirmware_format
-	_swig_i_0 := arg1
-	swig_r = (DeviceFirmware_format)(C._wrap_Device_file_format_get_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0)))
-	return swig_r
-}
-
-func (arg1 SwigcptrDevice) SetBootloader(arg2 bool) {
-	_swig_i_0 := arg1
-	_swig_i_1 := arg2
-	C._wrap_Device_bootloader_set_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
-}
-
-func (arg1 SwigcptrDevice) GetBootloader() (_swig_ret bool) {
-	var swig_r bool
-	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_Device_bootloader_get_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0)))
-	return swig_r
-}
-
-func (arg1 SwigcptrDevice) SetPacket_handler(arg2 HIDPacketHandler) {
-	_swig_i_0 := arg1
-	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_Device_packet_handler_set_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
-}
-
-func (arg1 SwigcptrDevice) GetPacket_handler() (_swig_ret HIDPacketHandler) {
-	var swig_r HIDPacketHandler
-	_swig_i_0 := arg1
-	swig_r = (HIDPacketHandler)(SwigcptrHIDPacketHandler(C._wrap_Device_packet_handler_get_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0))))
-	return swig_r
-}
-
-func (arg1 SwigcptrDevice) Hid_open(arg2 int) (_swig_ret bool) {
-	var swig_r bool
-	_swig_i_0 := arg1
-	_swig_i_1 := arg2
-	swig_r = (bool)(C._wrap_Device_hid_open_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
-	return swig_r
-}
-
-func (arg1 SwigcptrDevice) Hid_listen() (_swig_ret bool) {
-	var swig_r bool
-	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_Device_hid_listen_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0)))
-	return swig_r
-}
-
-func (arg1 SwigcptrDevice) Send_hid_packet(arg2 *byte, arg3 int) (_swig_ret int) {
-	var swig_r int
-	_swig_i_0 := arg1
-	_swig_i_1 := arg2
-	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_Device_send_hid_packet_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_intgo(_swig_i_2)))
-	return swig_r
-}
-
-func (arg1 SwigcptrDevice) Close_hid() {
-	_swig_i_0 := arg1
-	C._wrap_Device_close_hid_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0))
-}
-
-func (arg1 SwigcptrDevice) Usb_claim() (_swig_ret bool) {
-	var swig_r bool
-	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_Device_usb_claim_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0)))
-	return swig_r
-}
-
-func (arg1 SwigcptrDevice) Usb_auto_detach() (_swig_ret int) {
-	var swig_r int
-	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_Device_usb_auto_detach_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	swig_r_p := C._wrap_Device_model_get_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0))
+	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
+	var swig_r_1 string
+ swig_r_1 = swigCopyString(swig_r) 
+	return swig_r_1
 }
 
 func (arg1 SwigcptrDevice) Usb_transfer(arg2 byte, arg3 byte, arg4 uint16, arg5 uint16, arg6 *byte, arg7 uint16, arg8 int) (_swig_ret TransferStatus) {
@@ -560,11 +545,48 @@ func (arg1 SwigcptrDevice) Usb_transfer(arg2 byte, arg3 byte, arg4 uint16, arg5 
 	return swig_r
 }
 
-func (arg1 SwigcptrDevice) Usb_set_configuration(arg2 int) (_swig_ret int) {
+func (arg1 SwigcptrDevice) Hid_listen() (_swig_ret bool) {
+	var swig_r bool
+	_swig_i_0 := arg1
+	swig_r = (bool)(C._wrap_Device_hid_listen_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0)))
+	return swig_r
+}
+
+func (arg1 SwigcptrDevice) Hid_open(arg2 int) (_swig_ret bool) {
+	var swig_r bool
+	_swig_i_0 := arg1
+	_swig_i_1 := arg2
+	swig_r = (bool)(C._wrap_Device_hid_open_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
+	return swig_r
+}
+
+func (arg1 SwigcptrDevice) Usb_claim() (_swig_ret bool) {
+	var swig_r bool
+	_swig_i_0 := arg1
+	swig_r = (bool)(C._wrap_Device_usb_claim_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0)))
+	return swig_r
+}
+
+func (arg1 SwigcptrDevice) Check_connected() (_swig_ret int) {
+	var swig_r int
+	_swig_i_0 := arg1
+	swig_r = (int)(C._wrap_Device_check_connected_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0)))
+	return swig_r
+}
+
+func (arg1 SwigcptrDevice) Send_hid_packet(arg2 *byte, arg3 int) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_Device_usb_set_configuration_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
+	_swig_i_2 := arg3
+	swig_r = (int)(C._wrap_Device_send_hid_packet_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_intgo(_swig_i_2)))
+	return swig_r
+}
+
+func (arg1 SwigcptrDevice) Usb_auto_detach() (_swig_ret int) {
+	var swig_r int
+	_swig_i_0 := arg1
+	swig_r = (int)(C._wrap_Device_usb_auto_detach_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -576,20 +598,33 @@ func (arg1 SwigcptrDevice) Usb_claim_interface(arg2 int) (_swig_ret int) {
 	return swig_r
 }
 
-func (arg1 SwigcptrDevice) Get_dfu_string(arg2 int) (_swig_ret string) {
-	var swig_r string
+func (arg1 SwigcptrDevice) Usb_set_configuration(arg2 int) (_swig_ret int) {
+	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r_p := C._wrap_Device_get_dfu_string_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
-	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
-	var swig_r_1 string
- swig_r_1 = swigCopyString(swig_r) 
-	return swig_r_1
+	swig_r = (int)(C._wrap_Device_usb_set_configuration_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
+	return swig_r
 }
 
-func (arg1 SwigcptrDevice) Usb_close() {
+func DeviceGet_firmware_format(arg1 DeviceFlash_protocol) (_swig_ret DeviceFirmware_format) {
+	var swig_r DeviceFirmware_format
 	_swig_i_0 := arg1
-	C._wrap_Device_usb_close_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0))
+	swig_r = (DeviceFirmware_format)(C._wrap_Device_get_firmware_format_usb_4f19f1d7d83a7073(C.swig_intgo(_swig_i_0)))
+	return swig_r
+}
+
+func DeviceGet_flashing_protocol(arg1 int) (_swig_ret DeviceFlash_protocol) {
+	var swig_r DeviceFlash_protocol
+	_swig_i_0 := arg1
+	swig_r = (DeviceFlash_protocol)(C._wrap_Device_get_flashing_protocol_usb_4f19f1d7d83a7073(C.swig_intgo(_swig_i_0)))
+	return swig_r
+}
+
+func DeviceIs_bootloader(arg1 int) (_swig_ret bool) {
+	var swig_r bool
+	_swig_i_0 := arg1
+	swig_r = (bool)(C._wrap_Device_is_bootloader_usb_4f19f1d7d83a7073(C.swig_intgo(_swig_i_0)))
+	return swig_r
 }
 
 func DeviceIs_interesting(arg1 int, arg2 int) (_swig_ret bool) {
@@ -610,25 +645,35 @@ func DeviceGet_friendly_name(arg1 int) (_swig_ret string) {
 	return swig_r_1
 }
 
-func DeviceGet_flashing_protocol(arg1 int) (_swig_ret DeviceFlash_protocol) {
-	var swig_r DeviceFlash_protocol
+func DeviceGet_model(arg1 int) (_swig_ret string) {
+	var swig_r string
 	_swig_i_0 := arg1
-	swig_r = (DeviceFlash_protocol)(C._wrap_Device_get_flashing_protocol_usb_4f19f1d7d83a7073(C.swig_intgo(_swig_i_0)))
-	return swig_r
+	swig_r_p := C._wrap_Device_get_model_usb_4f19f1d7d83a7073(C.swig_intgo(_swig_i_0))
+	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
+	var swig_r_1 string
+ swig_r_1 = swigCopyString(swig_r) 
+	return swig_r_1
 }
 
-func DeviceGet_firmware_format(arg1 DeviceFlash_protocol) (_swig_ret DeviceFirmware_format) {
-	var swig_r DeviceFirmware_format
+func (arg1 SwigcptrDevice) Get_dfu_string(arg2 int) (_swig_ret string) {
+	var swig_r string
 	_swig_i_0 := arg1
-	swig_r = (DeviceFirmware_format)(C._wrap_Device_get_firmware_format_usb_4f19f1d7d83a7073(C.swig_intgo(_swig_i_0)))
-	return swig_r
+	_swig_i_1 := arg2
+	swig_r_p := C._wrap_Device_get_dfu_string_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
+	var swig_r_1 string
+ swig_r_1 = swigCopyString(swig_r) 
+	return swig_r_1
 }
 
-func DeviceIs_bootloader(arg1 int) (_swig_ret bool) {
-	var swig_r bool
+func (arg1 SwigcptrDevice) Close_hid() {
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_Device_is_bootloader_usb_4f19f1d7d83a7073(C.swig_intgo(_swig_i_0)))
-	return swig_r
+	C._wrap_Device_close_hid_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0))
+}
+
+func (arg1 SwigcptrDevice) Usb_close() {
+	_swig_i_0 := arg1
+	C._wrap_Device_usb_close_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0))
 }
 
 func NewDevice(arg1 Libusb_device, arg2 int, arg3 int) (_swig_ret Device) {
@@ -648,34 +693,37 @@ func DeleteDevice(arg1 Device) {
 type Device interface {
 	Swigcptr() uintptr
 	SwigIsDevice()
-	SetVid(arg2 int)
-	GetVid() (_swig_ret int)
-	SetPid(arg2 int)
-	GetPid() (_swig_ret int)
-	SetFingerprint(arg2 int)
-	GetFingerprint() (_swig_ret int)
-	SetPort_number(arg2 int)
-	GetPort_number() (_swig_ret int)
-	SetFriendly_name(arg2 string)
-	GetFriendly_name() (_swig_ret string)
-	SetProtocol(arg2 DeviceFlash_protocol)
-	GetProtocol() (_swig_ret DeviceFlash_protocol)
 	SetFile_format(arg2 DeviceFirmware_format)
 	GetFile_format() (_swig_ret DeviceFirmware_format)
-	SetBootloader(arg2 bool)
-	GetBootloader() (_swig_ret bool)
+	SetProtocol(arg2 DeviceFlash_protocol)
+	GetProtocol() (_swig_ret DeviceFlash_protocol)
 	SetPacket_handler(arg2 HIDPacketHandler)
 	GetPacket_handler() (_swig_ret HIDPacketHandler)
-	Hid_open(arg2 int) (_swig_ret bool)
-	Hid_listen() (_swig_ret bool)
-	Send_hid_packet(arg2 *byte, arg3 int) (_swig_ret int)
-	Close_hid()
-	Usb_claim() (_swig_ret bool)
-	Usb_auto_detach() (_swig_ret int)
+	SetBootloader(arg2 bool)
+	GetBootloader() (_swig_ret bool)
+	SetPid(arg2 int)
+	GetPid() (_swig_ret int)
+	SetPort_number(arg2 int)
+	GetPort_number() (_swig_ret int)
+	SetVid(arg2 int)
+	GetVid() (_swig_ret int)
+	SetFingerprint(arg2 int)
+	GetFingerprint() (_swig_ret int)
+	SetFriendly_name(arg2 string)
+	GetFriendly_name() (_swig_ret string)
+	SetModel(arg2 string)
+	GetModel() (_swig_ret string)
 	Usb_transfer(arg2 byte, arg3 byte, arg4 uint16, arg5 uint16, arg6 *byte, arg7 uint16, arg8 int) (_swig_ret TransferStatus)
-	Usb_set_configuration(arg2 int) (_swig_ret int)
+	Hid_listen() (_swig_ret bool)
+	Hid_open(arg2 int) (_swig_ret bool)
+	Usb_claim() (_swig_ret bool)
+	Check_connected() (_swig_ret int)
+	Send_hid_packet(arg2 *byte, arg3 int) (_swig_ret int)
+	Usb_auto_detach() (_swig_ret int)
 	Usb_claim_interface(arg2 int) (_swig_ret int)
+	Usb_set_configuration(arg2 int) (_swig_ret int)
 	Get_dfu_string(arg2 int) (_swig_ret string)
+	Close_hid()
 	Usb_close()
 }
 
@@ -795,9 +843,19 @@ func DeleteEnumerator(arg1 Enumerator) {
 	C._wrap_delete_Enumerator_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0))
 }
 
-func (arg1 SwigcptrEnumerator) Listen() {
+func (arg1 SwigcptrEnumerator) ListenDevices() {
 	_swig_i_0 := arg1
-	C._wrap_Enumerator_Listen_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0))
+	C._wrap_Enumerator_ListenDevices_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0))
+}
+
+func (arg1 SwigcptrEnumerator) StopListenDevices() {
+	_swig_i_0 := arg1
+	C._wrap_Enumerator_StopListenDevices_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0))
+}
+
+func (arg1 SwigcptrEnumerator) HandleEvents() {
+	_swig_i_0 := arg1
+	C._wrap_Enumerator_HandleEvents_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0))
 }
 
 func (arg1 SwigcptrEnumerator) SetDevices(arg2 Std_vector_Sl_Device_Sg_) {
@@ -818,7 +876,9 @@ type Enumerator interface {
 	SwigIsEnumerator()
 	SetEventObject(arg2 EventHandler)
 	GetEventObject() (_swig_ret EventHandler)
-	Listen()
+	ListenDevices()
+	StopListenDevices()
+	HandleEvents()
 	SetDevices(arg2 Std_vector_Sl_Device_Sg_)
 	GetDevices() (_swig_ret Std_vector_Sl_Device_Sg_)
 }

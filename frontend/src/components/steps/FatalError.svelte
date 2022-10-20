@@ -1,6 +1,7 @@
 <script type="ts">
   import state from "../../lib/state";
   import { logsToString } from "../../lib/utils";
+  import A from "../BrowserLink.svelte";
   const COPY_INITIAL_TEXT = "copy the logs";
   let copyText = COPY_INITIAL_TEXT;
 
@@ -25,7 +26,7 @@
     href="#logcopy"
     on:click|preventDefault={handleCopy}>{copyText}</a
   >
-  and send them to: <a href="mailto:contact@zsa.io">contact@zsa.io</a>
+  and send them to <A href="mailto:contact@zsa.io">contact@zsa.io</A>
 </p>
 
 <style>

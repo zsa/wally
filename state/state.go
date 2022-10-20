@@ -43,23 +43,31 @@ type State struct {
 	updatePath     string
 }
 
-func (s *State) Init(ctx context.Context) {
-	s.ctx = ctx
-	s.version = GetAppVersion()
-	s.config = NewConfiguration()
+func (s *State) InitUSB() {
+
+	InitUIEventEmitter(s.ctx)
+	enumerator := usb.NewEnumerator()
+	cb := usb.NewDirectorEventHandler(s)
+	enumerator.SetEventObject(cb)
+	s.enumerator = enumerator
+
+	go func() {
+		s.Log("info", "UI started, listening to usb events")
+		s.enumerator.ListenDevices()
+	}()
+	go func() {
+		s.enumerator.HandleEvents()
+	}()
 }
 
 func (s *State) GetAppVersion() string {
 	return s.version
 }
 
-func (s *State) StateStart() {
-	InitUIEventEmitter(s.ctx)
-	enumerator := usb.NewEnumerator()
-	cb := usb.NewDirectorEventHandler(s)
-	enumerator.SetEventObject(cb)
-
-	s.enumerator = enumerator
+func (s *State) StateStart(ctx context.Context) {
+	s.ctx = ctx
+	s.version = GetAppVersion()
+	s.config = NewConfiguration()
 
 	if s.config.firstrun {
 		res, err := wails.MessageDialog(s.ctx, wails.MessageDialogOptions{
@@ -103,14 +111,6 @@ func (s *State) StateStart() {
 
 	}
 
-	go func() {
-		s.Log("info", "UI started, listening to usb events")
-		enumerator.ListenDevices()
-	}()
-	go func() {
-		enumerator.HandleEvents()
-	}()
-
 }
 
 func (s *State) Log(level string, message string) {
@@ -129,6 +129,7 @@ func (s *State) SelectDevice(fingerprint int) {
 	if device, ok := s.Devices[fingerprint]; ok {
 		s.SelectedDevice = &device
 		uiEvent.Emit("deviceSelected", &DeviceSelectedEvent{Device: *s.SelectedDevice})
+		s.SetStep(FirmwareSelect)
 	}
 }
 

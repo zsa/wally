@@ -44,7 +44,6 @@ void Enumerator::ListenDevices()
             // Register the device if it wasn't previously registered
             if (registered == false)
             {
-                std::cout << "Registering" << fingerprint << std::endl;
                 auto device = Device(dev, desc.idVendor, desc.idProduct);
                 this->Devices.push_back(device);
                 this->EventObject->handleUSBConnectionEvent(true, device);
@@ -85,6 +84,5 @@ Enumerator::~Enumerator()
 {
     listening_devices = false;
     handle_events = false;
-    // libusb_hotplug_deregister_callback(NULL, callback_handle);
     libusb_exit(NULL);
 }

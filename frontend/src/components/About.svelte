@@ -1,5 +1,6 @@
 <script lang="ts">
   import state from "../lib/state";
+  import A from "./BrowserLink.svelte";
   function toggleAbout() {
     $state.showAbout = !$state.showAbout;
     $state.showConsole = false;
@@ -10,17 +11,18 @@
   <h1>Wally</h1>
   <p class="version">Version {$state.appVersion}</p>
   <p>
-    The official flashing tool for <a href="https://zsa.io" target="_blank"
-      >ZSA</a
-    > keyboards.
+    The official flashing tool for <A href="https://zsa.io">ZSA</A> keyboards.
   </p>
   <p>
-    This software is licensed under the <a href="">MIT Licence</a>.<br />Source
-    code is available on <a href="">Github</a>.
+    This software is licensed under the <A
+      href="https://github.com/zsa/wally/blob/master/license.md">MIT Licence</A
+    >.<br />Source code is available on <A href="https://github.com/zsa/wally"
+      >Github</A
+    >.
   </p>
   <p>
-    Visit <a href="https://zsa.io">zsa.io</a> for more info, and email
-    <a href="mailto:contact@zsa.io">contact@zsa.io</a> with any questions.
+    Visit <A href="https://zsa.io">zsa.io</A> for more info, and email
+    <A href="mailto:contact@zsa.io">contact@zsa.io</A> with any questions.
   </p>
   <p class="check">
     <input type="checkbox" name="check" /> Automatically check for updates.

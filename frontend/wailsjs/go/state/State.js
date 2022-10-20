@@ -14,6 +14,10 @@ export function HandleUSBConnectionEvent(arg1, arg2) {
   return window['go']['state']['State']['HandleUSBConnectionEvent'](arg1, arg2);
 }
 
+export function InitUSB() {
+  return window['go']['state']['State']['InitUSB']();
+}
+
 export function InstallUpdate() {
   return window['go']['state']['State']['InstallUpdate']();
 }
@@ -44,10 +48,6 @@ export function SetStep(arg1) {
 
 export function StartFlashing() {
   return window['go']['state']['State']['StartFlashing']();
-}
-
-export function StateStart() {
-  return window['go']['state']['State']['StateStart']();
 }
 
 export function Teardown() {

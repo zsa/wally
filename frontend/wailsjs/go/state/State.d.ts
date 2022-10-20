@@ -9,6 +9,8 @@ export function GetAppVersion():Promise<string>;
 
 export function HandleUSBConnectionEvent(arg1:boolean,arg2:usb.Device):Promise<void>;
 
+export function InitUSB():Promise<void>;
+
 export function InstallUpdate():Promise<void>;
 
 export function Log(arg1:string,arg2:string):Promise<void>;
@@ -24,7 +26,5 @@ export function SelectFirmware():Promise<void>;
 export function SetStep(arg1:state.Step):Promise<void>;
 
 export function StartFlashing():Promise<void>;
-
-export function StateStart():Promise<void>;
 
 export function Teardown():Promise<void>;

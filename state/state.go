@@ -64,7 +64,7 @@ func (s *State) GetAppVersion() string {
 	return s.version
 }
 
-func (s *State) StateStart(ctx context.Context) {
+func (s *State) Init(ctx context.Context) {
 	s.ctx = ctx
 	s.version = GetAppVersion()
 	s.config = NewConfiguration()

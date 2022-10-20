@@ -136,9 +136,11 @@ Device::~Device() {}
 
 bool Device::usb_claim()
 {
+    std::cout << "before" << std::endl;
     if (libusb_open(usb_device, &usb_handle))
         return false;
 
+    std::cout << "after" << std::endl;
     if (usb_auto_detach())
         return false;
 
@@ -202,12 +204,17 @@ TransferStatus Device::usb_transfer(uint8_t bmRequestType, uint8_t bRequest, uin
 
 int Device::check_connected()
 {
-    int res = libusb_open(usb_device, &usb_handle);
-    if (res == LIBUSB_SUCCESS)
-    {
-        // libusb_close(usb_handle);
+    try {
+        int res = libusb_open(usb_device, &usb_handle);
+        if (res == LIBUSB_SUCCESS)
+        {
+            // libusb_close(usb_handle);
+        }
+        return res;
     }
-    return res;
+    catch(const std::exception&) {
+        return 1;
+    }
 }
 
 int Device::usb_auto_detach()

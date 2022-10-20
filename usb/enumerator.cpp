@@ -34,7 +34,10 @@ void Enumerator::ListenDevices()
             for (int i = 0; i < this->Devices.size(); i++)
             {
                 // Check if we already registered that device
-                if (fingerprint == this->Devices[i].fingerprint)
+                Device registered_dev = this->Devices[i];
+
+                int port_number = libusb_get_port_number(dev);
+                if (port_number = registered_dev.port_number && desc.idVendor == registered_dev.vid && desc.idProduct == registered_dev.pid)
                 {
                     registered = true;
                     break;
@@ -44,24 +47,44 @@ void Enumerator::ListenDevices()
             // Register the device if it wasn't previously registered
             if (registered == false)
             {
+                std::cout << "register" << std::endl;
+                libusb_ref_device(dev);
                 auto device = Device(dev, desc.idVendor, desc.idProduct);
                 this->Devices.push_back(device);
                 this->EventObject->handleUSBConnectionEvent(true, device);
             }
         }
-        libusb_free_device_list(list, 1);
 
         // Loop on the registered device list to check for disconnections
         for (int i = 0; i < this->Devices.size(); i++)
         {
-            auto device = this->Devices[i];
-            int connected = device.check_connected();
-            if (connected != LIBUSB_SUCCESS)
+            bool connected = false;
+            Device registered_dev = this->Devices[i];
+            for (int j = 0; j < count; j++)
             {
-                this->EventObject->handleUSBConnectionEvent(false, device);
+                libusb_device *dev = list[i];
+                struct libusb_device_descriptor desc;
+                int res = libusb_get_device_descriptor(dev, &desc);
+
+                // That device doesn't interest us, ignoring
+                if (res < 0 || !Device::is_interesting(desc.idVendor, desc.idProduct))
+                    continue;
+
+                int port_number = libusb_get_port_number(dev);
+                if (port_number = registered_dev.port_number && desc.idVendor == registered_dev.vid && desc.idProduct == registered_dev.pid)
+                {
+                    connected = true;
+                    break;
+                }
+            }
+
+            if(connected == false) {
+                std::cout << "unregister" << std::endl;
+                this->EventObject->handleUSBConnectionEvent(false, registered_dev);
                 this->Devices.erase(this->Devices.begin() + i);
             }
         }
+        libusb_free_device_list(list, 1);
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
     }
 }

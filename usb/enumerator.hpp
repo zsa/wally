@@ -22,7 +22,7 @@ public:
 
   void HandleEvents();
 
-  std::vector<Device> Devices;
+  std::vector<Device *> Devices;
 
 private:
   libusb_context *ctx;

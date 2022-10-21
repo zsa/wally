@@ -126,23 +126,26 @@ Device::Device(libusb_device *dev, int vid, int pid) : usb_device(dev), vid(vid)
     model = get_model(pid);
     file_format = Device::get_firmware_format(protocol);
     port_number = libusb_get_port_number(dev);
+    address = libusb_get_device_address(dev);
 
     // Using the libusb device pointer address as a unique indentifier to the device.
     // This is useful to find the device within the context of a disconnection event to remove it from the enumerator's list of devices.
     fingerprint = reinterpret_cast<std::intptr_t>(dev);
 }
 
-Device::~Device() {}
+Device::~Device() {
+    std::cout << "the great destroyer" << std::endl;
+}
 
 bool Device::usb_claim()
 {
-    std::cout << "before" << std::endl;
     if (libusb_open(usb_device, &usb_handle))
         return false;
 
-    std::cout << "after" << std::endl;
+    /*
     if (usb_auto_detach())
         return false;
+    */
 
     claimed = true;
     return true;
@@ -152,7 +155,6 @@ TransferStatus Device::usb_transfer(uint8_t bmRequestType, uint8_t bRequest, uin
 {
     int ret = 0;
     unsigned char *buf;
-    struct libusb_transfer *transfer;
     transfer = libusb_alloc_transfer(0);
     TransferStatus transfer_status;
 
@@ -188,6 +190,8 @@ TransferStatus Device::usb_transfer(uint8_t bmRequestType, uint8_t bRequest, uin
     while (res == LIBUSB_SUCCESS && transfer_status.transferring)
     {
     }
+    //transfer_status.status_code = 1;
+    //return transfer_status;
 
     if (res != LIBUSB_SUCCESS)
     {
@@ -196,7 +200,7 @@ TransferStatus Device::usb_transfer(uint8_t bmRequestType, uint8_t bRequest, uin
         transfer_status.status_code = res;
     }
 
-    libusb_free_transfer(transfer);
+    //libusb_free_transfer(transfer);
 
     free(buf);
     return transfer_status;
@@ -221,7 +225,9 @@ int Device::usb_auto_detach()
 {
     if (LIBUSB_CAP_SUPPORTS_DETACH_KERNEL_DRIVER)
     {
-        return libusb_set_auto_detach_kernel_driver(usb_handle, true);
+        int res = libusb_set_auto_detach_kernel_driver(usb_handle, true);
+        std::string status_error(libusb_error_name(res));
+        return res;
     }
     return 0;
 }

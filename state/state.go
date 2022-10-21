@@ -115,6 +115,7 @@ func (s *State) Init(ctx context.Context) {
 
 func (s *State) Log(level string, message string) {
 	now := time.Now()
+	fmt.Println(level, ": ", message)
 	l := log{Timestamp: now.Unix(), Level: level, Message: message}
 	s.Logs = append(s.Logs, l)
 	uiEvent.Emit("log", &LogEvent{Log: l})

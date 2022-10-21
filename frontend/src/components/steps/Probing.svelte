@@ -15,6 +15,7 @@
       if ($state.devices.size == 1) {
         const [fingerprint] = $state.devices.keys();
         SelectDevice(fingerprint);
+        SetStep(Step.FIRMWARE_SELECT);
       }
       if ($state.devices.size > 1) {
         SetStep(Step.KEYBOARD_SELECT);

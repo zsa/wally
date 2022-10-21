@@ -71,53 +71,56 @@ func (s *State) Init(ctx context.Context) {
 	s.version = GetAppVersion()
 	s.config = NewConfiguration()
 
-	if s.config.firstrun {
-		res, err := wails.MessageDialog(s.ctx, wails.MessageDialogOptions{
-			Buttons:       []string{"No", "Yes"},
-			Type:          wails.QuestionDialog,
-			Title:         "Wally updates",
-			DefaultButton: "Yes",
-			Message:       "Would you like Wally to check for updates on startup?",
-		})
-		if err != nil {
-			res = "No"
-		}
-		fmt.Println(res)
-
-	} else {
-		update, err := checkForUpdate()
-		if err != nil {
-			s.Log("warning", fmt.Sprintf("failed to check for update: %s", err))
-		}
-		if update.required(s.version) {
+	/*
+		if s.config.firstrun {
 			res, err := wails.MessageDialog(s.ctx, wails.MessageDialogOptions{
 				Buttons:       []string{"No", "Yes"},
 				Type:          wails.QuestionDialog,
-				Title:         fmt.Sprintf("Version %s of Wally is available", update.Version),
+				Title:         "Wally updates",
 				DefaultButton: "Yes",
-				Message:       "Would you like to update now?",
+				Message:       "Would you like Wally to check for updates on startup?",
 			})
 			if err != nil {
 				res = "No"
 			}
-
 			if res == "Yes" {
-				destination, err := s.DownloadUpdate(update)
-				if err != nil {
-					s.Log("fatal", err.Error())
-				}
-				s.updatePath = destination
-				s.SetStep(WallyUpdateComplete)
+				s.config.SetUpdateCheck(true)
 			}
-		}
 
-	}
+		} else {
+			update, err := checkForUpdate()
+			if err != nil {
+				s.Log("warning", fmt.Sprintf("failed to check for update: %s", err))
+			}
+			if update.required(s.version) {
+				res, err := wails.MessageDialog(s.ctx, wails.MessageDialogOptions{
+					Buttons:       []string{"No", "Yes"},
+					Type:          wails.QuestionDialog,
+					Title:         fmt.Sprintf("Version %s of Wally is available", update.Version),
+					DefaultButton: "Yes",
+					Message:       "Would you like to update now?",
+				})
+				if err != nil {
+					res = "No"
+				}
+
+				if res == "Yes" {
+					destination, err := s.DownloadUpdate(update)
+					if err != nil {
+						s.Log("fatal", err.Error())
+					}
+					s.updatePath = destination
+					s.SetStep(WallyUpdateComplete)
+				}
+			}
+
+		}
+	*/
 
 }
 
 func (s *State) Log(level string, message string) {
 	now := time.Now()
-	fmt.Println(level, ": ", message)
 	l := log{Timestamp: now.Unix(), Level: level, Message: message}
 	s.Logs = append(s.Logs, l)
 	uiEvent.Emit("log", &LogEvent{Log: l})
@@ -128,11 +131,14 @@ func (s *State) SetStep(step Step) {
 	uiEvent.Emit("stepChanged", &StepChangeEvent{Step: step})
 }
 
+func (s *State) SetUpdateCheck(val bool) {
+	s.config.SetUpdateCheck(val)
+}
+
 func (s *State) SelectDevice(fingerprint int) {
 	if device, ok := s.Devices[fingerprint]; ok {
 		s.SelectedDevice = &device
 		uiEvent.Emit("deviceSelected", &DeviceSelectedEvent{Device: *s.SelectedDevice})
-		s.SetStep(FirmwareSelect)
 	}
 }
 

@@ -1,10 +1,11 @@
 package state
 
 import (
+	"fmt"
 	"os"
 	"path"
 
-	"github.com/spf13/viper"
+	"gopkg.in/yaml.v3"
 )
 
 const (
@@ -18,6 +19,14 @@ func getConfigPath() (string, error) {
 	}
 	configPath := path.Join(homeDir, "wally")
 	return configPath, nil
+}
+
+func getFilePath() (string, error) {
+	configPath, err := getConfigPath()
+	if err != nil {
+		return "", err
+	}
+	return path.Join(configPath, FILE_NAME+".yml"), nil
 }
 
 func createConfigFile() (string, bool, error) {
@@ -34,7 +43,11 @@ func createConfigFile() (string, bool, error) {
 		}
 	}
 
-	filePath := path.Join(configPath, FILE_NAME+".yml")
+	filePath, err := getFilePath()
+
+	if err != nil {
+		return "", created, err
+	}
 
 	if _, err := os.Stat(filePath); os.IsNotExist(err) {
 		f, err := os.Create(filePath)
@@ -47,26 +60,33 @@ func createConfigFile() (string, bool, error) {
 	return filePath, created, err
 }
 
-type Parameters struct {
-	updates bool
-}
-
 type Configuration struct {
-	new      bool
 	firstrun bool
-	params   Parameters
+
+	updateCheck bool `yaml:"update_check"`
 }
 
-func (c *Configuration) PrompToCheckUpdates() bool {
-	return c.new
+func (c *Configuration) SetUpdateCheck(val bool) {
+	c.updateCheck = val
+	err := c.saveConfig()
+	if err != nil {
+		fmt.Println(err)
+	}
+}
+
+func (c *Configuration) saveConfig() error {
+	bytes, err := yaml.Marshal(c)
+	if err != nil {
+		return err
+	}
+	filepath, err := getFilePath()
+	if err != nil {
+		return err
+	}
+	return os.WriteFile(filepath, bytes, 0644)
 }
 
 func NewConfiguration() Configuration {
 	_, firstrun, _ := createConfigFile()
-	viper.SetConfigName(FILE_NAME)
-	configPath, err := getConfigPath()
-	if err != nil {
-		viper.AddConfigPath(configPath)
-	}
 	return Configuration{firstrun: firstrun}
 }

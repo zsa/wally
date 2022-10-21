@@ -1,9 +1,17 @@
 <script lang="ts">
   import state from "../lib/state";
+  import { SetUpdateCheck } from "../../wailsjs/go/state/State";
   import A from "./BrowserLink.svelte";
+
+  let checked = false;
   function toggleAbout() {
     $state.showAbout = !$state.showAbout;
     $state.showConsole = false;
+  }
+
+  function toggleCheck() {
+    checked = !checked;
+    SetUpdateCheck(checked);
   }
 </script>
 
@@ -25,10 +33,20 @@
     <A href="mailto:contact@zsa.io">contact@zsa.io</A> with any questions.
   </p>
   <p class="check">
-    <input type="checkbox" name="check" /> Automatically check for updates.
+    <input
+      type="checkbox"
+      name="check"
+      {checked}
+      on:click|preventDefault={toggleCheck}
+    /> Automatically check for updates.
   </p>
   <div class="close">
-    <button class="btn small" on:click={toggleAbout}>Close</button>
+    <button
+      class="btn small"
+      name="update_check"
+      value={1}
+      on:click={toggleAbout}>Close</button
+    >
   </div>
 </div>
 

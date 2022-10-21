@@ -1,12 +1,14 @@
 <script type="ts">
-  import state from "../../lib/state";
-  import { SelectDevice } from "../../../wailsjs/go/state/State";
+  import state, { Step } from "../../lib/state";
+  import { SetStep, SelectDevice } from "../../../wailsjs/go/state/State";
   import Planck from "../../img/planck-logo.png";
   import Ergodox from "../../img/ergodox-logo.png";
   import Moonlander from "../../img/moonlander-logo.png";
+  import Reset from "../../img/flash.svg";
 
   function handleDeviceClick(fingerprint: number) {
     SelectDevice(fingerprint);
+    SetStep(Step.FIRMWARE_SELECT);
   }
 </script>
 
@@ -29,6 +31,10 @@
           {#if device.model == "moonlander"}
             <img src={Moonlander} alt={device.friendlyName} />
           {/if}
+          {#if device.model == "unknown" || device.model == "stm32"}
+            <img src={Reset} alt={device.friendlyName} />
+          {/if}
+          <p>{device.friendlyName}</p>
         </button>
       {/each}
     </div>

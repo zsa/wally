@@ -25,6 +25,8 @@ export function SelectFirmware():Promise<void>;
 
 export function SetStep(arg1:state.Step):Promise<void>;
 
+export function SetUpdateCheck(arg1:boolean):Promise<void>;
+
 export function StartFlashing():Promise<void>;
 
 export function Teardown():Promise<void>;

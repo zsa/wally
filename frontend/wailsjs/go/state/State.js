@@ -46,6 +46,10 @@ export function SetStep(arg1) {
   return window['go']['state']['State']['SetStep'](arg1);
 }
 
+export function SetUpdateCheck(arg1) {
+  return window['go']['state']['State']['SetUpdateCheck'](arg1);
+}
+
 export function StartFlashing() {
   return window['go']['state']['State']['StartFlashing']();
 }

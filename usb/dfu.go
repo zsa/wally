@@ -286,7 +286,7 @@ func (d *USBDevice) DFUFlash(firmwarePath string, cb func(message FlashCallback)
 
 	fileData, err := os.ReadFile(firmwarePath)
 	if err != nil {
-		return fmt.Errorf("Error while opening firmware: %s", err)
+		return fmt.Errorf("error while opening firmware: %s", err)
 	}
 
 	hasSuffix, firmwareData, err := d.extractSuffix(fileData)

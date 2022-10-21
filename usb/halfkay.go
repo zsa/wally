@@ -35,6 +35,7 @@ func (d *USBDevice) SendWithRetries(buf []byte, silent bool) (err error) {
 func (d *USBDevice) HALFKAYFlash(firmwarePath string, cb func(message FlashCallback)) error {
 	d.cb = cb
 	d.cb(FlashCallback{Type: Log, Message: "[HALFKAY] flashing process"})
+
 	file, err := os.Open(firmwarePath)
 	if err != nil {
 		return fmt.Errorf("Error while opening firmware: %s", err)
@@ -63,7 +64,11 @@ func (d *USBDevice) HALFKAYFlash(firmwarePath string, cb func(message FlashCallb
 	}
 
 	var addr uint32
-	for addr = 0; addr < ERGODOX_MEM_SIZE; addr += ERGODOX_SECTOR_SIZE {
+	sectors := firmwareData.GetDataSegments()
+
+	data := sectors[0]
+	dataLength := len(data.Data)
+	for addr = 0; addr < uint32(dataLength); addr += ERGODOX_SECTOR_SIZE {
 		// Prepare and write a firmware block
 		// https://www.pjrc.com/teensy/halfkay_protocol.html
 		buf := make([]byte, ERGODOX_SECTOR_SIZE+2)
@@ -85,9 +90,9 @@ func (d *USBDevice) HALFKAYFlash(firmwarePath string, cb func(message FlashCallb
 		if addr == 0 {
 			time.Sleep(3 * time.Second)
 		} else {
-			time.Sleep(300 * time.Millisecond)
+			time.Sleep(200 * time.Millisecond)
 		}
-		d.cb(FlashCallback{Type: Progress, Sent: int(addr), Total: ERGODOX_MEM_SIZE})
+		d.cb(FlashCallback{Type: Progress, Sent: int(addr), Total: dataLength})
 	}
 
 	// send reboot packet

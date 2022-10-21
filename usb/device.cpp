@@ -143,10 +143,8 @@ bool Device::usb_claim()
     if (libusb_open(usb_device, &usb_handle))
         return false;
 
-    /*
     if (usb_auto_detach())
         return false;
-    */
 
     claimed = true;
     return true;
@@ -158,9 +156,9 @@ TransferStatus Device::usb_transfer(uint8_t bmRequestType, uint8_t bRequest, uin
     unsigned char *buf;
     struct libusb_transfer *transfer;
     transfer = libusb_alloc_transfer(0);
-    TransferStatus transfer_status;
+    struct TransferStatus *transfer_status;
 
-    transfer_status.transferring = true;
+    transfer_status->transferring = true;
 
     auto transfer_callback = [](struct libusb_transfer *control_transfer)
     {
@@ -186,23 +184,33 @@ TransferStatus Device::usb_transfer(uint8_t bmRequestType, uint8_t bRequest, uin
     buf = (unsigned char *)malloc(LIBUSB_CONTROL_SETUP_SIZE + wLength);
     libusb_fill_control_setup(buf, bmRequestType, bRequest, wValue, wIndex, wLength);
     memcpy(buf + LIBUSB_CONTROL_SETUP_SIZE, data, wLength);
-    libusb_fill_control_transfer(transfer, usb_handle, buf, transfer_callback, &transfer_status, timeout);
+    libusb_fill_control_transfer(transfer, usb_handle, buf, transfer_callback, transfer_status, timeout);
 
     int res = libusb_submit_transfer(transfer);
-    while (res == LIBUSB_SUCCESS && transfer_status.transferring)
+
+    //Submission failed, returning the error
+    if (res != LIBUSB_SUCCESS)
+    {
+        std::string status(libusb_error_name(res));
+        transfer_status->status_error = status;
+        transfer_status->status_code = res;
+
+        return transfer_status;
+    }
+
+    while (transfer_status->transferring)
     {
     }
     // transfer_status.status_code = 1;
     // return transfer_status;
 
-    if (res != LIBUSB_SUCCESS)
-    {
-        std::string status(libusb_error_name(res));
-        transfer_status.status_error = status;
-        transfer_status.status_code = res;
-    }
+if(wLength = 6) {
 
-    libusb_free_transfer(transfer);
+    std::cout << "Getting status" << std::endl;
+    std::cout << transfer_status 
+}
+
+    //libusb_free_transfer(transfer);
 
     free(buf);
     return transfer_status;
@@ -227,13 +235,12 @@ int Device::check_connected()
 
 int Device::usb_auto_detach()
 {
-    if (LIBUSB_CAP_SUPPORTS_DETACH_KERNEL_DRIVER)
-    {
-        int res = libusb_set_auto_detach_kernel_driver(usb_handle, true);
-        std::string status_error(libusb_error_name(res));
-        return res;
+    int res = libusb_set_auto_detach_kernel_driver(usb_handle, true);
+    //Current os auto detach not supported, ignoring.
+    if( res == LIBUSB_ERROR_NOT_SUPPORTED) {
+        return 0;
     }
-    return 0;
+    return res;
 }
 
 int Device::usb_set_configuration(int config)
@@ -248,7 +255,7 @@ int Device::usb_claim_interface(int interface)
 
 void Device::usb_close()
 {
-    libusb_close(usb_handle);
+    //libusb_close(usb_handle);
     claimed = false;
 }
 

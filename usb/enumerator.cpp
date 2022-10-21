@@ -12,7 +12,8 @@ Enumerator::Enumerator()
 
 // This is blocking but it is ran within a go routine by the main go thread, don't need to implement threading here.
 
-struct device_attributes {
+struct device_attributes
+{
     int port_number;
     int vid;
     int pid;
@@ -40,7 +41,7 @@ void Enumerator::ListenDevices()
             int port_number = libusb_get_port_number(dev);
 
             // Save device attributes to check disconnections later
-            interesting_devices[devices_found] = device_attributes{port_number: port_number, vid: desc.idVendor, pid: desc.idProduct};
+            interesting_devices[devices_found] = device_attributes{.port_number = port_number, .vid = desc.idVendor, .pid = desc.idProduct};
             devices_found++;
 
             bool registered = false;
@@ -49,7 +50,7 @@ void Enumerator::ListenDevices()
                 // Check if we already registered that device
                 Device *registered_dev = this->Devices[i];
 
-                if (port_number = registered_dev->port_number && desc.idVendor == registered_dev->vid && desc.idProduct == registered_dev->pid)
+                if (port_number == registered_dev->port_number && desc.idVendor == registered_dev->vid && desc.idProduct == registered_dev->pid)
                 {
                     registered = true;
                     break;
@@ -62,7 +63,7 @@ void Enumerator::ListenDevices()
                 libusb_ref_device(dev);
                 auto device = new Device(dev, desc.idVendor, desc.idProduct);
                 this->Devices.push_back(device);
-                this->EventObject->handleUSBConnectionEvent(true, *device);
+                this->EventObject->handleUSBConnectionEvent(true, device);
             }
         }
 
@@ -74,7 +75,7 @@ void Enumerator::ListenDevices()
             for (int j = 0; j < devices_found; j++)
             {
                 device_attributes dev = interesting_devices[j];
-                
+
                 if (dev.port_number == registered_dev->port_number && dev.vid == registered_dev->vid && dev.pid == registered_dev->pid)
                 {
                     connected = true;
@@ -82,9 +83,10 @@ void Enumerator::ListenDevices()
                 }
             }
 
-            if(connected == false) {
-                this->EventObject->handleUSBConnectionEvent(false, *registered_dev);
-                //this->Devices.erase(this->Devices.begin() + i);
+            if (connected == false)
+            {
+                this->EventObject->handleUSBConnectionEvent(false, registered_dev);
+                this->Devices.erase(this->Devices.begin() + i);
             }
         }
         libusb_free_device_list(list, 0);

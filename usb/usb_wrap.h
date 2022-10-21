@@ -31,7 +31,7 @@ class SwigDirector_EventHandler : public EventHandler
  public:
   SwigDirector_EventHandler(int swig_p);
   virtual ~SwigDirector_EventHandler();
-  virtual void handleUSBConnectionEvent(bool connected, Device dev);
+  virtual void handleUSBConnectionEvent(bool connected, Device *dev);
  private:
   intgo go_val;
   Swig_memory *swig_mem;

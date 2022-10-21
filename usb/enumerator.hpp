@@ -7,7 +7,7 @@ class EventHandler
 {
 public:
   virtual ~EventHandler(){};
-  virtual void handleUSBConnectionEvent(bool connected, Device dev) = 0;
+  virtual void handleUSBConnectionEvent(bool connected, Device *dev) = 0;
 };
 
 class Enumerator

@@ -76,6 +76,8 @@ extern void _wrap_Device_pid_set_usb_4f19f1d7d83a7073(uintptr_t arg1, swig_intgo
 extern swig_intgo _wrap_Device_pid_get_usb_4f19f1d7d83a7073(uintptr_t arg1);
 extern void _wrap_Device_port_number_set_usb_4f19f1d7d83a7073(uintptr_t arg1, swig_intgo arg2);
 extern swig_intgo _wrap_Device_port_number_get_usb_4f19f1d7d83a7073(uintptr_t arg1);
+extern void _wrap_Device_address_set_usb_4f19f1d7d83a7073(uintptr_t arg1, char arg2);
+extern char _wrap_Device_address_get_usb_4f19f1d7d83a7073(uintptr_t arg1);
 extern void _wrap_Device_vid_set_usb_4f19f1d7d83a7073(uintptr_t arg1, swig_intgo arg2);
 extern swig_intgo _wrap_Device_vid_get_usb_4f19f1d7d83a7073(uintptr_t arg1);
 extern void _wrap_Device_fingerprint_set_usb_4f19f1d7d83a7073(uintptr_t arg1, swig_intgo arg2);
@@ -467,6 +469,19 @@ func (arg1 SwigcptrDevice) GetPort_number() (_swig_ret int) {
 	return swig_r
 }
 
+func (arg1 SwigcptrDevice) SetAddress(arg2 byte) {
+	_swig_i_0 := arg1
+	_swig_i_1 := arg2
+	C._wrap_Device_address_set_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0), C.char(_swig_i_1))
+}
+
+func (arg1 SwigcptrDevice) GetAddress() (_swig_ret byte) {
+	var swig_r byte
+	_swig_i_0 := arg1
+	swig_r = (byte)(C._wrap_Device_address_get_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0)))
+	return swig_r
+}
+
 func (arg1 SwigcptrDevice) SetVid(arg2 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -705,6 +720,8 @@ type Device interface {
 	GetPid() (_swig_ret int)
 	SetPort_number(arg2 int)
 	GetPort_number() (_swig_ret int)
+	SetAddress(arg2 byte)
+	GetAddress() (_swig_ret byte)
 	SetVid(arg2 int)
 	GetVid() (_swig_ret int)
 	SetFingerprint(arg2 int)
@@ -858,16 +875,16 @@ func (arg1 SwigcptrEnumerator) HandleEvents() {
 	C._wrap_Enumerator_HandleEvents_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0))
 }
 
-func (arg1 SwigcptrEnumerator) SetDevices(arg2 Std_vector_Sl_Device_Sg_) {
+func (arg1 SwigcptrEnumerator) SetDevices(arg2 Std_vector_Sl_Device_Sm__Sg_) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	C._wrap_Enumerator_Devices_set_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
-func (arg1 SwigcptrEnumerator) GetDevices() (_swig_ret Std_vector_Sl_Device_Sg_) {
-	var swig_r Std_vector_Sl_Device_Sg_
+func (arg1 SwigcptrEnumerator) GetDevices() (_swig_ret Std_vector_Sl_Device_Sm__Sg_) {
+	var swig_r Std_vector_Sl_Device_Sm__Sg_
 	_swig_i_0 := arg1
-	swig_r = (Std_vector_Sl_Device_Sg_)(SwigcptrStd_vector_Sl_Device_Sg_(C._wrap_Enumerator_Devices_get_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0))))
+	swig_r = (Std_vector_Sl_Device_Sm__Sg_)(SwigcptrStd_vector_Sl_Device_Sm__Sg_(C._wrap_Enumerator_Devices_get_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -879,16 +896,16 @@ type Enumerator interface {
 	ListenDevices()
 	StopListenDevices()
 	HandleEvents()
-	SetDevices(arg2 Std_vector_Sl_Device_Sg_)
-	GetDevices() (_swig_ret Std_vector_Sl_Device_Sg_)
+	SetDevices(arg2 Std_vector_Sl_Device_Sm__Sg_)
+	GetDevices() (_swig_ret Std_vector_Sl_Device_Sm__Sg_)
 }
 
 
-type SwigcptrStd_vector_Sl_Device_Sg_ uintptr
-type Std_vector_Sl_Device_Sg_ interface {
+type SwigcptrStd_vector_Sl_Device_Sm__Sg_ uintptr
+type Std_vector_Sl_Device_Sm__Sg_ interface {
 	Swigcptr() uintptr;
 }
-func (p SwigcptrStd_vector_Sl_Device_Sg_) Swigcptr() uintptr {
+func (p SwigcptrStd_vector_Sl_Device_Sm__Sg_) Swigcptr() uintptr {
 	return uintptr(p)
 }
 

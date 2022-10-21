@@ -75,7 +75,6 @@ public:
 private:
     libusb_device *usb_device;
     libusb_device_handle *usb_handle;
-    struct libusb_transfer *transfer;
     hid_device *hid_handle;
     bool hid_opened = false;
     bool claimed = false;

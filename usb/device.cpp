@@ -133,7 +133,8 @@ Device::Device(libusb_device *dev, int vid, int pid) : usb_device(dev), vid(vid)
     fingerprint = reinterpret_cast<std::intptr_t>(dev);
 }
 
-Device::~Device() {
+Device::~Device()
+{
     std::cout << "the great destroyer" << std::endl;
 }
 
@@ -155,6 +156,7 @@ TransferStatus Device::usb_transfer(uint8_t bmRequestType, uint8_t bRequest, uin
 {
     int ret = 0;
     unsigned char *buf;
+    struct libusb_transfer *transfer;
     transfer = libusb_alloc_transfer(0);
     TransferStatus transfer_status;
 
@@ -190,8 +192,8 @@ TransferStatus Device::usb_transfer(uint8_t bmRequestType, uint8_t bRequest, uin
     while (res == LIBUSB_SUCCESS && transfer_status.transferring)
     {
     }
-    //transfer_status.status_code = 1;
-    //return transfer_status;
+    // transfer_status.status_code = 1;
+    // return transfer_status;
 
     if (res != LIBUSB_SUCCESS)
     {
@@ -200,7 +202,7 @@ TransferStatus Device::usb_transfer(uint8_t bmRequestType, uint8_t bRequest, uin
         transfer_status.status_code = res;
     }
 
-    //libusb_free_transfer(transfer);
+    libusb_free_transfer(transfer);
 
     free(buf);
     return transfer_status;
@@ -208,7 +210,8 @@ TransferStatus Device::usb_transfer(uint8_t bmRequestType, uint8_t bRequest, uin
 
 int Device::check_connected()
 {
-    try {
+    try
+    {
         int res = libusb_open(usb_device, &usb_handle);
         if (res == LIBUSB_SUCCESS)
         {
@@ -216,7 +219,8 @@ int Device::check_connected()
         }
         return res;
     }
-    catch(const std::exception&) {
+    catch (const std::exception &)
+    {
         return 1;
     }
 }

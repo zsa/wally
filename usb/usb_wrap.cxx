@@ -391,12 +391,12 @@ SwigDirector_EventHandler::~SwigDirector_EventHandler()
 }
 
 extern "C" void Swig_DirectorEventHandler_callback_handleUSBConnectionEvent_usb_4f19f1d7d83a7073(int, bool connected, Device *dev);
-void SwigDirector_EventHandler::handleUSBConnectionEvent(bool connected, Device dev) {
+void SwigDirector_EventHandler::handleUSBConnectionEvent(bool connected, Device *dev) {
   bool swig_connected;
   Device *swig_dev;
   
   swig_connected = (bool)connected; 
-  swig_dev = new Device((const Device &)dev); 
+  *(Device **)&swig_dev = (Device *)dev; 
   Swig_DirectorEventHandler_callback_handleUSBConnectionEvent_usb_4f19f1d7d83a7073(go_val, swig_connected, swig_dev);
 }
 
@@ -817,6 +817,31 @@ intgo _wrap_Device_port_number_get_usb_4f19f1d7d83a7073(Device *_swig_go_0) {
   arg1 = *(Device **)&_swig_go_0; 
   
   result = (int) ((arg1)->port_number);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+void _wrap_Device_address_set_usb_4f19f1d7d83a7073(Device *_swig_go_0, char _swig_go_1) {
+  Device *arg1 = (Device *) 0 ;
+  uint8_t arg2 ;
+  
+  arg1 = *(Device **)&_swig_go_0; 
+  arg2 = (uint8_t)_swig_go_1; 
+  
+  if (arg1) (arg1)->address = arg2;
+  
+}
+
+
+char _wrap_Device_address_get_usb_4f19f1d7d83a7073(Device *_swig_go_0) {
+  Device *arg1 = (Device *) 0 ;
+  uint8_t result;
+  char _swig_go_result;
+  
+  arg1 = *(Device **)&_swig_go_0; 
+  
+  result = (uint8_t) ((arg1)->address);
   _swig_go_result = result; 
   return _swig_go_result;
 }
@@ -1247,18 +1272,11 @@ void _wrap_delete_EventHandler_usb_4f19f1d7d83a7073(EventHandler *_swig_go_0) {
 void _wrap_EventHandler_handleUSBConnectionEvent_usb_4f19f1d7d83a7073(EventHandler *_swig_go_0, bool _swig_go_1, Device *_swig_go_2) {
   EventHandler *arg1 = (EventHandler *) 0 ;
   bool arg2 ;
-  SwigValueWrapper< Device > arg3 ;
-  Device *argp3 ;
+  Device *arg3 = (Device *) 0 ;
   
   arg1 = *(EventHandler **)&_swig_go_0; 
   arg2 = (bool)_swig_go_1; 
-  
-  argp3 = (Device *)_swig_go_2;
-  if (argp3 == NULL) {
-    _swig_gopanic("Attempt to dereference null Device");
-  }
-  arg3 = (Device)*argp3;
-  
+  arg3 = *(Device **)&_swig_go_2; 
   
   (arg1)->handleUSBConnectionEvent(arg2,arg3);
   
@@ -1341,27 +1359,27 @@ void _wrap_Enumerator_HandleEvents_usb_4f19f1d7d83a7073(Enumerator *_swig_go_0) 
 }
 
 
-void _wrap_Enumerator_Devices_set_usb_4f19f1d7d83a7073(Enumerator *_swig_go_0, std::vector< Device > *_swig_go_1) {
+void _wrap_Enumerator_Devices_set_usb_4f19f1d7d83a7073(Enumerator *_swig_go_0, std::vector< Device * > *_swig_go_1) {
   Enumerator *arg1 = (Enumerator *) 0 ;
-  std::vector< Device > *arg2 = (std::vector< Device > *) 0 ;
+  std::vector< Device * > *arg2 = (std::vector< Device * > *) 0 ;
   
   arg1 = *(Enumerator **)&_swig_go_0; 
-  arg2 = *(std::vector< Device > **)&_swig_go_1; 
+  arg2 = *(std::vector< Device * > **)&_swig_go_1; 
   
   if (arg1) (arg1)->Devices = *arg2;
   
 }
 
 
-std::vector< Device > *_wrap_Enumerator_Devices_get_usb_4f19f1d7d83a7073(Enumerator *_swig_go_0) {
+std::vector< Device * > *_wrap_Enumerator_Devices_get_usb_4f19f1d7d83a7073(Enumerator *_swig_go_0) {
   Enumerator *arg1 = (Enumerator *) 0 ;
-  std::vector< Device > *result = 0 ;
-  std::vector< Device > *_swig_go_result;
+  std::vector< Device * > *result = 0 ;
+  std::vector< Device * > *_swig_go_result;
   
   arg1 = *(Enumerator **)&_swig_go_0; 
   
-  result = (std::vector< Device > *)& ((arg1)->Devices);
-  *(std::vector< Device > **)&_swig_go_result = (std::vector< Device > *)result; 
+  result = (std::vector< Device * > *)& ((arg1)->Devices);
+  *(std::vector< Device * > **)&_swig_go_result = (std::vector< Device * > *)result; 
   return _swig_go_result;
 }
 

@@ -44,14 +44,10 @@ extern uintptr_t _wrap_Swig_malloc_usb_4f19f1d7d83a7073(swig_intgo arg1);
 #cgo pkg-config: hidapi
 #include <libusb.h>
 #include <hidapi.h> 
-extern void _wrap_TransferStatus_transferring_set_usb_4f19f1d7d83a7073(uintptr_t arg1, _Bool arg2);
-extern _Bool _wrap_TransferStatus_transferring_get_usb_4f19f1d7d83a7073(uintptr_t arg1);
 extern void _wrap_TransferStatus_status_code_set_usb_4f19f1d7d83a7073(uintptr_t arg1, swig_intgo arg2);
 extern swig_intgo _wrap_TransferStatus_status_code_get_usb_4f19f1d7d83a7073(uintptr_t arg1);
 extern void _wrap_TransferStatus_status_error_set_usb_4f19f1d7d83a7073(uintptr_t arg1, swig_type_1 arg2);
 extern swig_type_2 _wrap_TransferStatus_status_error_get_usb_4f19f1d7d83a7073(uintptr_t arg1);
-extern void _wrap_TransferStatus_buf_set_usb_4f19f1d7d83a7073(uintptr_t arg1, swig_voidp arg2);
-extern swig_voidp _wrap_TransferStatus_buf_get_usb_4f19f1d7d83a7073(uintptr_t arg1);
 extern uintptr_t _wrap_new_TransferStatus_usb_4f19f1d7d83a7073(void);
 extern void _wrap_delete_TransferStatus_usb_4f19f1d7d83a7073(uintptr_t arg1);
 extern uintptr_t _wrap__swig_NewDirectorHIDPacketHandlerHIDPacketHandler_usb_4f19f1d7d83a7073(int);
@@ -164,7 +160,6 @@ func Swig_malloc(arg1 int) (_swig_ret uintptr) {
 }
 
 const HID_PACKET_SIZE int = 33
-const USB_BUFFER_SIZE int = 2048
 type SwigcptrTransferStatus uintptr
 
 func (p SwigcptrTransferStatus) Swigcptr() uintptr {
@@ -172,19 +167,6 @@ func (p SwigcptrTransferStatus) Swigcptr() uintptr {
 }
 
 func (p SwigcptrTransferStatus) SwigIsTransferStatus() {
-}
-
-func (arg1 SwigcptrTransferStatus) SetTransferring(arg2 bool) {
-	_swig_i_0 := arg1
-	_swig_i_1 := arg2
-	C._wrap_TransferStatus_transferring_set_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
-}
-
-func (arg1 SwigcptrTransferStatus) GetTransferring() (_swig_ret bool) {
-	var swig_r bool
-	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_TransferStatus_transferring_get_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0)))
-	return swig_r
 }
 
 func (arg1 SwigcptrTransferStatus) SetStatus_code(arg2 int) {
@@ -219,19 +201,6 @@ func (arg1 SwigcptrTransferStatus) GetStatus_error() (_swig_ret string) {
 	return swig_r_1
 }
 
-func (arg1 SwigcptrTransferStatus) SetBuf(arg2 *byte) {
-	_swig_i_0 := arg1
-	_swig_i_1 := arg2
-	C._wrap_TransferStatus_buf_set_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1))
-}
-
-func (arg1 SwigcptrTransferStatus) GetBuf() (_swig_ret *byte) {
-	var swig_r *byte
-	_swig_i_0 := arg1
-	swig_r = (*byte)(C._wrap_TransferStatus_buf_get_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0)))
-	return swig_r
-}
-
 func NewTransferStatus() (_swig_ret TransferStatus) {
 	var swig_r TransferStatus
 	swig_r = (TransferStatus)(SwigcptrTransferStatus(C._wrap_new_TransferStatus_usb_4f19f1d7d83a7073()))
@@ -246,14 +215,10 @@ func DeleteTransferStatus(arg1 TransferStatus) {
 type TransferStatus interface {
 	Swigcptr() uintptr
 	SwigIsTransferStatus()
-	SetTransferring(arg2 bool)
-	GetTransferring() (_swig_ret bool)
 	SetStatus_code(arg2 int)
 	GetStatus_code() (_swig_ret int)
 	SetStatus_error(arg2 string)
 	GetStatus_error() (_swig_ret string)
-	SetBuf(arg2 *byte)
-	GetBuf() (_swig_ret *byte)
 }
 
 type _swig_DirectorHIDPacketHandler struct {

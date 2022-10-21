@@ -75,10 +75,13 @@ func (d *USBDevice) Control(bmRequestType, bRequest uint8, wValue, wIndex uint16
 		return nil, fmt.Errorf("USB Transfer error: %s", status_error)
 	}
 
-	buffer := res.GetBuf()
-	buffer_slice := unsafe.Slice(buffer, size)
+	if data != nil {
+		buffer_slice := unsafe.Slice(&data[0], size)
+		return buffer_slice, nil
+	} else {
+		return nil, nil
+	}
 
-	return buffer_slice, nil
 }
 
 func (d *USBDevice) Info() string {

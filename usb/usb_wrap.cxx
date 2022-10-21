@@ -427,31 +427,6 @@ void *_wrap_Swig_malloc_usb_4f19f1d7d83a7073(intgo _swig_go_0) {
 }
 
 
-void _wrap_TransferStatus_transferring_set_usb_4f19f1d7d83a7073(TransferStatus *_swig_go_0, bool _swig_go_1) {
-  TransferStatus *arg1 = (TransferStatus *) 0 ;
-  bool arg2 ;
-  
-  arg1 = *(TransferStatus **)&_swig_go_0; 
-  arg2 = (bool)_swig_go_1; 
-  
-  if (arg1) (arg1)->transferring = arg2;
-  
-}
-
-
-bool _wrap_TransferStatus_transferring_get_usb_4f19f1d7d83a7073(TransferStatus *_swig_go_0) {
-  TransferStatus *arg1 = (TransferStatus *) 0 ;
-  bool result;
-  bool _swig_go_result;
-  
-  arg1 = *(TransferStatus **)&_swig_go_0; 
-  
-  result = (bool) ((arg1)->transferring);
-  _swig_go_result = result; 
-  return _swig_go_result;
-}
-
-
 void _wrap_TransferStatus_status_code_set_usb_4f19f1d7d83a7073(TransferStatus *_swig_go_0, intgo _swig_go_1) {
   TransferStatus *arg1 = (TransferStatus *) 0 ;
   int arg2 ;
@@ -501,35 +476,6 @@ _gostring_ _wrap_TransferStatus_status_error_get_usb_4f19f1d7d83a7073(TransferSt
   
   result = (std::string *) & ((arg1)->status_error);
   _swig_go_result = Swig_AllocateString((*result).data(), (*result).length()); 
-  return _swig_go_result;
-}
-
-
-void _wrap_TransferStatus_buf_set_usb_4f19f1d7d83a7073(TransferStatus *_swig_go_0, char *_swig_go_1) {
-  TransferStatus *arg1 = (TransferStatus *) 0 ;
-  unsigned char *arg2 ;
-  
-  arg1 = *(TransferStatus **)&_swig_go_0; 
-  arg2 = *(unsigned char **)&_swig_go_1; 
-  
-  {
-    size_t ii;
-    unsigned char *b = (unsigned char *) arg1->buf;
-    for (ii = 0; ii < (size_t)2048; ii++) b[ii] = *((unsigned char *) arg2 + ii);
-  }
-  
-}
-
-
-char *_wrap_TransferStatus_buf_get_usb_4f19f1d7d83a7073(TransferStatus *_swig_go_0) {
-  TransferStatus *arg1 = (TransferStatus *) 0 ;
-  unsigned char *result = 0 ;
-  char *_swig_go_result;
-  
-  arg1 = *(TransferStatus **)&_swig_go_0; 
-  
-  result = (unsigned char *)(unsigned char *) ((arg1)->buf);
-  *(unsigned char **)&_swig_go_result = result; 
   return _swig_go_result;
 }
 

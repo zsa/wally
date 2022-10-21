@@ -102,6 +102,7 @@ void Enumerator::StopListenDevices()
 
 void Enumerator::HandleEvents()
 {
+
     handle_events = true;
     while (handle_events == true)
     {

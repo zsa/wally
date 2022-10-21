@@ -85,7 +85,7 @@ func (d *USBDevice) HALFKAYFlash(firmwarePath string, cb func(message FlashCallb
 		if addr == 0 {
 			time.Sleep(3 * time.Second)
 		} else {
-			time.Sleep(100 * time.Millisecond)
+			time.Sleep(300 * time.Millisecond)
 		}
 		d.cb(FlashCallback{Type: Progress, Sent: int(addr), Total: ERGODOX_MEM_SIZE})
 	}

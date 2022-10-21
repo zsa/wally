@@ -4,14 +4,11 @@
 #include <string>
 
 #define HID_PACKET_SIZE 33
-#define USB_BUFFER_SIZE 2048
 
 struct TransferStatus
 {
-    bool transferring = false;
     int status_code;
     std::string status_error;
-    unsigned char buf[USB_BUFFER_SIZE];
 };
 
 class HIDPacketHandler

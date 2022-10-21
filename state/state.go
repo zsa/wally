@@ -55,9 +55,11 @@ func (s *State) InitUSB() {
 		s.Log("info", "UI started, listening to usb events")
 		s.enumerator.ListenDevices()
 	}()
-	go func() {
-		s.enumerator.HandleEvents()
-	}()
+	/*
+		go func() {
+			s.enumerator.HandleEvents()
+		}()
+	*/
 }
 
 func (s *State) GetAppVersion() string {

@@ -8,5 +8,15 @@
   "author": {
     "name": "Florian Didron",
     "email": "0x6664@hey.com"
+  },
+  "preBuildHooks": {
+    "darwin/*": "../../hooks/pre_darwin_universal.sh"
+  },
+  "info": {
+    "companyName": "ZSA Technology Labs",
+    "productName": "Wally",
+    "productVersion": "3.0.0β",
+    "copyright": "MIT Licence",
+    "comments": "Flash your ZSA Keyboard the EZ way."
   }
 }

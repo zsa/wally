@@ -1,0 +1,15 @@
+{
+  "title": "Wally",
+  "icon": "../bin/wally.app/Contents/Resources/iconfile.icns",
+  "background-color": "#01b3ca",
+  "contents": [
+    { "x": 50, "y": 85, "type": "file", "path": "../bin/wally.app" },
+    { "x": 242, "y": 85, "type": "link", "path": "/Applications" }
+  ],
+  "window": {
+    "size": {
+      "width": 400,
+      "height": 200
+    }
+  }
+}

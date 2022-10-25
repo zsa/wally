@@ -12,6 +12,9 @@
   "preBuildHooks": {
     "darwin/*": "../../hooks/pre_darwin_universal.sh"
   },
+  "postBuildHooks": {
+    "darwin/*": "../../hooks/post_darwin_universal.sh"
+  },
   "info": {
     "companyName": "ZSA Technology Labs",
     "productName": "Wally",

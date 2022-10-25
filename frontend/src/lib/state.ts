@@ -40,6 +40,7 @@ export type TLog = {
 
 type TState = {
   appVersion: string;
+  checkUpdates: boolean;
   devices: Map<number, Device>;
   flashProgress: number;
   hasError: boolean;
@@ -53,6 +54,7 @@ type TState = {
 
 const state = writable<TState>({
   appVersion: "",
+  checkUpdates: false,
   devices: new Map(),
   flashProgress: 0,
   hasError: false,

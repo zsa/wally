@@ -16,13 +16,6 @@
     box-sizing: border-box;
 }
 
-body {
-    color: rgba(53, 53, 53, 0.64);
-    width: 100vw;
-    height: 100vh;
-    background: radial-gradient(ellipse at center top, rgba(237,223,138,1) 0%, rgba(221,107,127,1) 65%);
-}
-
 #app {
     display: flex;
     flex-direction: column;

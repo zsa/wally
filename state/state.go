@@ -3,13 +3,8 @@ package state
 import (
 	"context"
 	"fmt"
-	"io"
-	"net/http"
-	"os"
 	"os/exec"
-	"path"
 	"runtime"
-	"strconv"
 	"time"
 
 	wails "github.com/wailsapp/wails/v2/pkg/runtime"
@@ -70,53 +65,6 @@ func (s *State) Init(ctx context.Context) {
 	s.ctx = ctx
 	s.version = GetAppVersion()
 	s.config = NewConfiguration()
-
-	/*
-		if s.config.firstrun {
-			res, err := wails.MessageDialog(s.ctx, wails.MessageDialogOptions{
-				Buttons:       []string{"No", "Yes"},
-				Type:          wails.QuestionDialog,
-				Title:         "Wally updates",
-				DefaultButton: "Yes",
-				Message:       "Would you like Wally to check for updates on startup?",
-			})
-			if err != nil {
-				res = "No"
-			}
-			if res == "Yes" {
-				s.config.SetUpdateCheck(true)
-			}
-
-		} else {
-			update, err := checkForUpdate()
-			if err != nil {
-				s.Log("warning", fmt.Sprintf("failed to check for update: %s", err))
-			}
-			if update.required(s.version) {
-				res, err := wails.MessageDialog(s.ctx, wails.MessageDialogOptions{
-					Buttons:       []string{"No", "Yes"},
-					Type:          wails.QuestionDialog,
-					Title:         fmt.Sprintf("Version %s of Wally is available", update.Version),
-					DefaultButton: "Yes",
-					Message:       "Would you like to update now?",
-				})
-				if err != nil {
-					res = "No"
-				}
-
-				if res == "Yes" {
-					destination, err := s.DownloadUpdate(update)
-					if err != nil {
-						s.Log("fatal", err.Error())
-					}
-					s.updatePath = destination
-					s.SetStep(WallyUpdateComplete)
-				}
-			}
-
-		}
-	*/
-
 }
 
 func (s *State) Log(level string, message string) {
@@ -133,6 +81,10 @@ func (s *State) SetStep(step Step) {
 
 func (s *State) SetUpdateCheck(val bool) {
 	s.config.SetUpdateCheck(val)
+}
+
+func (s *State) GetUpdateCheck() bool {
+	return s.config.UpdateCheck
 }
 
 func (s *State) SelectDevice(fingerprint int) {
@@ -245,91 +197,6 @@ func (s *State) HandleUSBConnectionEvent(connect bool, dev usb.Device) {
 	} else {
 		uiEvent.Emit("deviceDisconnected", &DeviceDisconnectionEvent{Fingerprint: fingerprint})
 	}
-}
-
-func (s *State) DownloadUpdate(update Update) (string, error) {
-	s.SetStep(WallyUpdate)
-	file := "wally-v" + update.Version
-	switch runtime.GOOS {
-	case "darwin":
-		file += ".dmg"
-	case "windows":
-		file += "-installer.exe"
-	}
-	destination := path.Join(os.TempDir(), file)
-
-	out, err := os.Create(destination)
-	if err != nil {
-		return "", fmt.Errorf("unable to create destination file, please try to download the update manually from: %s", update.URL)
-	}
-
-	defer out.Close()
-
-	headRes, err := http.Head(update.URL)
-	if err != nil {
-		return "", fmt.Errorf("unable to contact download server, please try to download the update manually from: %s", update.URL)
-	}
-	defer headRes.Body.Close()
-
-	fileSize, err := strconv.Atoi(headRes.Header.Get("Content-Length"))
-	if err != nil {
-		return "", fmt.Errorf("invalid response from download server, please try to download the update manually from: %s", update.URL)
-	}
-
-	done := make(chan int64)
-
-	go func() {
-		stop := false
-		f, err := os.Open(destination)
-		if err != nil {
-			return
-		}
-		defer f.Close()
-
-		for {
-			select {
-			case <-done:
-				stop = true
-			default:
-
-				fi, err := f.Stat()
-				if err != nil {
-					stop = true
-					break
-				}
-
-				size := fi.Size()
-
-				if size == 0 {
-					size = 1
-				}
-
-				uiEvent.Emit("updateProgress", &ProgressEvent{Current: int(size), Total: fileSize})
-			}
-			if stop {
-				break
-			}
-			time.Sleep(100 * time.Millisecond)
-		}
-	}()
-
-	res, err := http.Get(update.URL)
-	if err != nil {
-		done <- 0
-		return "", err
-	}
-	defer res.Body.Close()
-
-	n, err := io.Copy(out, res.Body)
-
-	if err != nil {
-		done <- 0
-		return "", fmt.Errorf("error while transfering download to local file, please try to download the update manually from: %s", update.URL)
-	}
-
-	done <- n
-	uiEvent.Emit("updateProgress", &ProgressEvent{Current: fileSize, Total: fileSize})
-	return destination, nil
 }
 
 func (s *State) InstallUpdate() {

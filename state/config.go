@@ -63,11 +63,11 @@ func createConfigFile() (string, bool, error) {
 type Configuration struct {
 	firstrun bool
 
-	updateCheck bool `yaml:"update_check"`
+	UpdateCheck bool `yaml:"update_check"`
 }
 
 func (c *Configuration) SetUpdateCheck(val bool) {
-	c.updateCheck = val
+	c.UpdateCheck = val
 	err := c.saveConfig()
 	if err != nil {
 		fmt.Println(err)
@@ -86,7 +86,25 @@ func (c *Configuration) saveConfig() error {
 	return os.WriteFile(filepath, bytes, 0644)
 }
 
+func (c *Configuration) readConfig() error {
+	filepath, err := getFilePath()
+	if err != nil {
+		return err
+	}
+	f, err := os.ReadFile(filepath)
+	if err != nil {
+		return err
+	}
+	return yaml.Unmarshal(f, c)
+}
+
 func NewConfiguration() Configuration {
 	_, firstrun, _ := createConfigFile()
-	return Configuration{firstrun: firstrun}
+	if firstrun {
+		return Configuration{firstrun: firstrun, UpdateCheck: false}
+	} else {
+		config := Configuration{firstrun: false, UpdateCheck: false}
+		config.readConfig()
+		return config
+	}
 }

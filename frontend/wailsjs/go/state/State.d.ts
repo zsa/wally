@@ -3,9 +3,13 @@
 import {state} from '../models';
 import {usb} from '../models';
 
+export function CheckUpdate():Promise<void>;
+
 export function DownloadUpdate(arg1:state.Update):Promise<string>;
 
 export function GetAppVersion():Promise<string>;
+
+export function GetUpdateCheck():Promise<boolean>;
 
 export function HandleUSBConnectionEvent(arg1:boolean,arg2:usb.Device):Promise<void>;
 
@@ -14,6 +18,8 @@ export function InitUSB():Promise<void>;
 export function InstallUpdate():Promise<void>;
 
 export function Log(arg1:string,arg2:string):Promise<void>;
+
+export function PromptUpdates():Promise<void>;
 
 export function Quit():Promise<void>;
 

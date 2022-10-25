@@ -1,7 +1,13 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import state, { Step } from "./lib/state";
-  import { GetAppVersion, InitUSB } from "../wailsjs/go/state/State";
+  import {
+    CheckUpdate,
+    GetUpdateCheck,
+    GetAppVersion,
+    InitUSB,
+    PromptUpdates,
+  } from "../wailsjs/go/state/State";
   import Header from "./components/Header.svelte";
   import Steps from "./components/Steps.svelte";
   import Pills from "./components/Pills.svelte";
@@ -20,6 +26,11 @@
   onMount(async () => {
     InitUSB();
     $state.appVersion = await GetAppVersion();
+    await PromptUpdates();
+    $state.checkUpdates = await GetUpdateCheck();
+    if ($state.checkUpdates) {
+      CheckUpdate();
+    }
   });
 </script>
 

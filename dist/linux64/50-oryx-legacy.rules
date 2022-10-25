@@ -1,0 +1,9 @@
+# Legacy rules for live training over webusb (not needed for firmware v21+)
+# Rule for all ZSA keyboards
+SUBSYSTEM=="usb", ATTR{idVendor}=="3297", TAG+="uaccess"
+# Rule for the Moonlander
+SUBSYSTEM=="usb", ATTR{idVendor}=="3297", ATTR{idProduct}=="1969", TAG+="uaccess"
+# Rule for the Ergodox EZ Original / Shine / Glow
+SUBSYSTEM=="usb", ATTR{idVendor}=="feed", ATTR{idProduct}=="1307", TAG+="uaccess"
+# Rule for the Planck EZ Standard / Glow
+SUBSYSTEM=="usb", ATTR{idVendor}=="feed", ATTR{idProduct}=="6060", TAG+="uaccess"

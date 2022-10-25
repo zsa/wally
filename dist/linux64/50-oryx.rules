@@ -1,6 +1,3 @@
-# Rule for the Moonlander
-SUBSYSTEM=="usb", ATTR{idVendor}=="3297", ATTR{idProduct}=="1969", TAG+="uaccess"
-# Rule for the Ergodox EZ Original / Shine / Glow
-SUBSYSTEM=="usb", ATTR{idVendor}=="feed", ATTR{idProduct}=="1307", TAG+="uaccess"
-# Rule for the Planck EZ Standard / Glow
-SUBSYSTEM=="usb", ATTR{idVendor}=="feed", ATTR{idProduct}=="6060", TAG+="uaccess"
+# Rules for Oryx web flashing and live training
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="16c0", TAG+="uaccess"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3297", TAG+="uaccess"

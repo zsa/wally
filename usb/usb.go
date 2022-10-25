@@ -43,7 +43,7 @@ extern uintptr_t _wrap_Swig_malloc_usb_4f19f1d7d83a7073(swig_intgo arg1);
 #cgo pkg-config: libusb-1.0
 #cgo pkg-config: hidapi
 #include <libusb.h>
-#include <hidapi.h> 
+#include <hidapi.h>
 extern void _wrap_TransferStatus_status_code_set_usb_4f19f1d7d83a7073(uintptr_t arg1, swig_intgo arg2);
 extern swig_intgo _wrap_TransferStatus_status_code_get_usb_4f19f1d7d83a7073(uintptr_t arg1);
 extern void _wrap_TransferStatus_status_error_set_usb_4f19f1d7d83a7073(uintptr_t arg1, swig_type_1 arg2);
@@ -119,32 +119,32 @@ extern uintptr_t _wrap_Enumerator_Devices_get_usb_4f19f1d7d83a7073(uintptr_t arg
 */
 import "C"
 
-import "unsafe"
-import _ "runtime/cgo"
-import "sync"
-
+import (
+	_ "runtime/cgo"
+	"sync"
+	"unsafe"
+)
 
 type _ unsafe.Pointer
-
-
 
 var Swig_escape_always_false bool
 var Swig_escape_val interface{}
 
-
 type _swig_fnptr *byte
 type _swig_memberptr *byte
 
-
 type _ sync.Mutex
 
+type swig_gostring struct {
+	p uintptr
+	n int
+}
 
-type swig_gostring struct { p uintptr; n int }
 func swigCopyString(s string) string {
-  p := *(*swig_gostring)(unsafe.Pointer(&s))
-  r := string((*[0x7fffffff]byte)(unsafe.Pointer(p.p))[:p.n])
-  Swig_free(p.p)
-  return r
+	p := *(*swig_gostring)(unsafe.Pointer(&s))
+	r := string((*[0x7fffffff]byte)(unsafe.Pointer(p.p))[:p.n])
+	Swig_free(p.p)
+	return r
 }
 
 func Swig_free(arg1 uintptr) {
@@ -160,6 +160,7 @@ func Swig_malloc(arg1 int) (_swig_ret uintptr) {
 }
 
 const HID_PACKET_SIZE int = 33
+
 type SwigcptrTransferStatus uintptr
 
 func (p SwigcptrTransferStatus) Swigcptr() uintptr {
@@ -197,7 +198,7 @@ func (arg1 SwigcptrTransferStatus) GetStatus_error() (_swig_ret string) {
 	swig_r_p := C._wrap_TransferStatus_status_error_get_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
- swig_r_1 = swigCopyString(swig_r) 
+	swig_r_1 = swigCopyString(swig_r)
 	return swig_r_1
 }
 
@@ -313,6 +314,7 @@ func (p SwigcptrDevice) SwigIsDevice() {
 }
 
 type DeviceFlash_protocol int
+
 func _swig_getDevice_PROTOCOL_UNKNOWN_Device() (_swig_ret DeviceFlash_protocol) {
 	var swig_r DeviceFlash_protocol
 	swig_r = (DeviceFlash_protocol)(C._wrap_PROTOCOL_UNKNOWN_Device_usb_4f19f1d7d83a7073())
@@ -320,6 +322,7 @@ func _swig_getDevice_PROTOCOL_UNKNOWN_Device() (_swig_ret DeviceFlash_protocol) 
 }
 
 var DevicePROTOCOL_UNKNOWN DeviceFlash_protocol = _swig_getDevice_PROTOCOL_UNKNOWN_Device()
+
 func _swig_getDevice_HALFKAY_Device() (_swig_ret DeviceFlash_protocol) {
 	var swig_r DeviceFlash_protocol
 	swig_r = (DeviceFlash_protocol)(C._wrap_HALFKAY_Device_usb_4f19f1d7d83a7073())
@@ -327,6 +330,7 @@ func _swig_getDevice_HALFKAY_Device() (_swig_ret DeviceFlash_protocol) {
 }
 
 var DeviceHALFKAY DeviceFlash_protocol = _swig_getDevice_HALFKAY_Device()
+
 func _swig_getDevice_DFU_Device() (_swig_ret DeviceFlash_protocol) {
 	var swig_r DeviceFlash_protocol
 	swig_r = (DeviceFlash_protocol)(C._wrap_DFU_Device_usb_4f19f1d7d83a7073())
@@ -334,7 +338,9 @@ func _swig_getDevice_DFU_Device() (_swig_ret DeviceFlash_protocol) {
 }
 
 var DeviceDFU DeviceFlash_protocol = _swig_getDevice_DFU_Device()
+
 type DeviceFirmware_format int
+
 func _swig_getDevice_FORMAT_UNKNOWN_Device() (_swig_ret DeviceFirmware_format) {
 	var swig_r DeviceFirmware_format
 	swig_r = (DeviceFirmware_format)(C._wrap_FORMAT_UNKNOWN_Device_usb_4f19f1d7d83a7073())
@@ -342,6 +348,7 @@ func _swig_getDevice_FORMAT_UNKNOWN_Device() (_swig_ret DeviceFirmware_format) {
 }
 
 var DeviceFORMAT_UNKNOWN DeviceFirmware_format = _swig_getDevice_FORMAT_UNKNOWN_Device()
+
 func _swig_getDevice_HEX_Device() (_swig_ret DeviceFirmware_format) {
 	var swig_r DeviceFirmware_format
 	swig_r = (DeviceFirmware_format)(C._wrap_HEX_Device_usb_4f19f1d7d83a7073())
@@ -349,6 +356,7 @@ func _swig_getDevice_HEX_Device() (_swig_ret DeviceFirmware_format) {
 }
 
 var DeviceHEX DeviceFirmware_format = _swig_getDevice_HEX_Device()
+
 func _swig_getDevice_BIN_Device() (_swig_ret DeviceFirmware_format) {
 	var swig_r DeviceFirmware_format
 	swig_r = (DeviceFirmware_format)(C._wrap_BIN_Device_usb_4f19f1d7d83a7073())
@@ -356,6 +364,7 @@ func _swig_getDevice_BIN_Device() (_swig_ret DeviceFirmware_format) {
 }
 
 var DeviceBIN DeviceFirmware_format = _swig_getDevice_BIN_Device()
+
 func (arg1 SwigcptrDevice) SetFile_format(arg2 DeviceFirmware_format) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -488,7 +497,7 @@ func (arg1 SwigcptrDevice) GetFriendly_name() (_swig_ret string) {
 	swig_r_p := C._wrap_Device_friendly_name_get_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
- swig_r_1 = swigCopyString(swig_r) 
+	swig_r_1 = swigCopyString(swig_r)
 	return swig_r_1
 }
 
@@ -507,7 +516,7 @@ func (arg1 SwigcptrDevice) GetModel() (_swig_ret string) {
 	swig_r_p := C._wrap_Device_model_get_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
- swig_r_1 = swigCopyString(swig_r) 
+	swig_r_1 = swigCopyString(swig_r)
 	return swig_r_1
 }
 
@@ -621,7 +630,7 @@ func DeviceGet_friendly_name(arg1 int) (_swig_ret string) {
 	swig_r_p := C._wrap_Device_get_friendly_name_usb_4f19f1d7d83a7073(C.swig_intgo(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
- swig_r_1 = swigCopyString(swig_r) 
+	swig_r_1 = swigCopyString(swig_r)
 	return swig_r_1
 }
 
@@ -631,7 +640,7 @@ func DeviceGet_model(arg1 int) (_swig_ret string) {
 	swig_r_p := C._wrap_Device_get_model_usb_4f19f1d7d83a7073(C.swig_intgo(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
- swig_r_1 = swigCopyString(swig_r) 
+	swig_r_1 = swigCopyString(swig_r)
 	return swig_r_1
 }
 
@@ -642,7 +651,7 @@ func (arg1 SwigcptrDevice) Get_dfu_string(arg2 int) (_swig_ret string) {
 	swig_r_p := C._wrap_Device_get_dfu_string_usb_4f19f1d7d83a7073(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
- swig_r_1 = swigCopyString(swig_r) 
+	swig_r_1 = swigCopyString(swig_r)
 	return swig_r_1
 }
 
@@ -865,24 +874,23 @@ type Enumerator interface {
 	GetDevices() (_swig_ret Std_vector_Sl_Device_Sm__Sg_)
 }
 
-
 type SwigcptrStd_vector_Sl_Device_Sm__Sg_ uintptr
 type Std_vector_Sl_Device_Sm__Sg_ interface {
-	Swigcptr() uintptr;
+	Swigcptr() uintptr
 }
+
 func (p SwigcptrStd_vector_Sl_Device_Sm__Sg_) Swigcptr() uintptr {
 	return uintptr(p)
 }
 
 type SwigcptrLibusb_device uintptr
 type Libusb_device interface {
-	Swigcptr() uintptr;
+	Swigcptr() uintptr
 }
+
 func (p SwigcptrLibusb_device) Swigcptr() uintptr {
 	return uintptr(p)
 }
-
-
 
 var swigDirectorTrack struct {
 	sync.Mutex
@@ -924,5 +932,3 @@ func swigDirectorDelete(c int) {
 	}
 	delete(swigDirectorTrack.m, c)
 }
-
-

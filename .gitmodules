@@ -1,0 +1,6 @@
+[submodule "usb/libusb"]
+	path = usb/libusb
+	url = git@github.com:libusb/libusb.git
+[submodule "usb/hidapi"]
+	path = usb/hidapi
+	url = git@github.com:libusb/hidapi.git

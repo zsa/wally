@@ -1,6 +1,7 @@
 #!/bin/sh
 
 target=11
+aldsfj;adlsjf
 
 export CGO_LDFLAGS=-mmacosx-version-min=$target
 export CGO_CFLAGS=-mmacosx-version-min=$target

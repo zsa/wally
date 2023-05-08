@@ -92,7 +92,6 @@ void Enumerator::ListenDevices()
         libusb_free_device_list(list, 0);
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
     }
-    std::cout << "STOP" << std::endl;
 }
 
 void Enumerator::StopListenDevices()

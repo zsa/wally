@@ -10,7 +10,6 @@ typedef std::string String;
 
 %insert(cgo_comment) %{
 #cgo pkg-config: libusb-1.0
-#cgo pkg-config: hidapi
 #include <libusb.h>
 #include <hidapi.h> %}
 

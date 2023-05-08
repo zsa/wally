@@ -8,7 +8,7 @@ import (
 	"time"
 
 	wails "github.com/wailsapp/wails/v2/pkg/runtime"
-	"github.com/zsa/wally/usb"
+	usb "github.com/zsa/zsausb"
 )
 
 type Step int8
@@ -175,9 +175,10 @@ func (s *State) HandleUSBConnectionEvent(connect bool, dev usb.Device) {
 	name := dev.GetFriendly_name()
 	portNumber := dev.GetPort_number()
 	protocol := dev.GetProtocol()
+	ignitionTarget := dev.GetIgnition_target()
 
 	if connect {
-		device := usb.USBDevice{FriendlyName: name, Model: model, Fingerprint: fingerprint, PortNumber: portNumber, Bootloader: bootloader, FirmwareFormat: firmwareFormat, Protocol: protocol, Handle: dev}
+		device := usb.USBDevice{FriendlyName: name, Model: model, Fingerprint: fingerprint, PortNumber: portNumber, Bootloader: bootloader, FirmwareFormat: firmwareFormat, Protocol: protocol, Handle: dev, IgnitionTarget: ignitionTarget}
 		s.Devices[fingerprint] = device
 		uiEvent.Emit("deviceConnected", &DeviceConnectionEvent{Device: device})
 		s.Log("info", "New device detected:")

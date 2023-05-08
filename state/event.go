@@ -5,7 +5,7 @@ import (
 	"sync"
 
 	"github.com/wailsapp/wails/v2/pkg/runtime"
-	"github.com/zsa/wally/usb"
+	usb "github.com/zsa/zsausb"
 )
 
 type DeviceConnectionEvent struct {

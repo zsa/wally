@@ -12,7 +12,7 @@ require (
 	golang.org/x/exp v0.0.0-20220303212507-bbda1eaf7a17 // indirect
 )
 
-//replace github.com/zsa/zsausb => /Users/florian/dev/go/src/github.com/zsa/zsausb
+replace github.com/zsa/zsausb => ../zsausb
 
 require (
 	github.com/bep/debounce v1.2.1 // indirect
@@ -24,7 +24,7 @@ require (
 	github.com/leaanthony/go-ansi-parser v1.0.1 // indirect
 	github.com/leaanthony/gosod v1.0.3 // indirect
 	github.com/leaanthony/slicer v1.5.0 // indirect
-	github.com/marcinbor85/gohex v0.0.0-20210308104911-55fb1c624d84
+	github.com/marcinbor85/gohex v0.0.0-20210308104911-55fb1c624d84 // indirect
 	github.com/mattn/go-colorable v0.1.12 // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect
 	github.com/pkg/browser v0.0.0-20210706143420-7d21f8c997e2 // indirect

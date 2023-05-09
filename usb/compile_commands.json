@@ -1,6 +1,0 @@
-[
-{
-  "directory": "/Users/florian/dev/go/src/github.com/zsa/keymapp/usb",
-  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "arm64", "-mmacosx-version-min=12.4", "-isysroot", "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk", "-std=c++20", "-I", "/opt/homebrew/Cellar/libusb/1.0.26/include/libusb-1.0", "-I", "/opt/homebrew/Cellar/hidapi/0.12.0/include/hidapi", "-o", "build/.objs/usblib/macosx/arm64/release/enumerator.cpp.o", "enumerator.cpp"],
-  "file": "enumerator.cpp"
-}]
